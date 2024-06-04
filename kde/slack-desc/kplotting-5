@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+         |-----handy-ruler------------------------------------------------------|
+kplotting-5: kplotting-5 (Data plotting)
+kplotting-5:
+kplotting-5: KPlotWidget is a QWidget-derived class that provides a virtual base
+kplotting-5: class for easy data-plotting. The idea behind KPlotWidget is that you
+kplotting-5: only have to specify information in data units; i.e., the natural
+kplotting-5: units of the data being plotted. KPlotWidget automatically converts
+kplotting-5: everything to screen pixel units. KPlotWidget draws X and Y axes with
+kplotting-5: tick marks and tick labels, and automatically determines how many tick
+kplotting-5: marks to use and where they should be, based on the data limits
+kplotting-5: specified for the plot.
+kplotting-5:

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+           |-----handy-ruler------------------------------------------------------|
+ktexteditor-5: ktexteditor-5 (text editor component)
+ktexteditor-5:
+ktexteditor-5: KTextEditor provides a powerful text editor component that you can
+ktexteditor-5: embed in your application, either as a KPart or using the
+ktexteditor-5: KF5::TextEditor library. The text editor component contains many
+ktexteditor-5: useful features, from syntax highlighting and automatic indentation to
+ktexteditor-5: advanced scripting support, making it suitable for everything from a
+ktexteditor-5: simple embedded text-file editor to an advanced IDE.
+ktexteditor-5:
+ktexteditor-5:
+ktexteditor-5:

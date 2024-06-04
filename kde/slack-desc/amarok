@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+      |-----handy-ruler------------------------------------------------------|
+amarok: amarok (KDE Music Player)
+amarok:
+amarok: Amarok is a powerful music player for Linux, Unix and Windows with an
+amarok: intuitive interface. It makes playing the music you love and
+amarok: discovering new music easier than ever before - and it looks good
+amarok: doing it!
+amarok:
+amarok: Homepage: https://amarok.kde.org/
+amarok:
+amarok:
+amarok:

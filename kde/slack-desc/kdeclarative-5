@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+            |-----handy-ruler------------------------------------------------------|
+kdeclarative-5: kdeclarative-5 (Integration of QML and KDE workspaces)
+kdeclarative-5:
+kdeclarative-5: KDeclarative provides integration of QML and KDE work spaces. It
+kdeclarative-5: comprises two parts: a library used by the C++ part of your
+kdeclarative-5: application to intergrate QML with KDE Frameworks specific features,
+kdeclarative-5: and a series of QML imports that offer bindings to some of the
+kdeclarative-5: frameworks.
+kdeclarative-5:
+kdeclarative-5:
+kdeclarative-5:
+kdeclarative-5:

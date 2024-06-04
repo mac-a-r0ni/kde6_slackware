@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+       |-----handy-ruler------------------------------------------------------|
+purpose-5: purpose-5 (offers actions for a specific purpose-5)
+purpose-5:
+purpose-5: This framework offers the possibility to create integrate services and
+purpose-5: actions on any application without having to implement them
+purpose-5: specifically. Purpose will offer them mechanisms to list the different
+purpose-5: alternatives to execute given the requested action type and will
+purpose-5: facilitate components so that all the plugins can receive all the
+purpose-5: information they need.
+purpose-5:
+purpose-5:
+purpose-5:

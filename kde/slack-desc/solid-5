@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+     |-----handy-ruler------------------------------------------------------|
+solid-5: solid-5 (Desktop hardware abstraction)
+solid-5:
+solid-5: Solid is a device integration framework. It provides a way of querying
+solid-5: and interacting with hardware independently of the underlying
+solid-5: operating system. It provides hardware discovery, power management,
+solid-5: and network management features.
+solid-5:
+solid-5: Homepage: https://api.kde.org/frameworks/solid-5/html/
+solid-5:
+solid-5:
+solid-5:

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+                   |-----handy-ruler------------------------------------------------------|
+xwaylandvideobridge: xwaylandvideobridge (stream Wayland windows to X applications)
+xwaylandvideobridge:
+xwaylandvideobridge: By design, X11 applications can't access window or screen contents
+xwaylandvideobridge: for wayland clients. This is fine in principle,
+xwaylandvideobridge: but it breaks screen sharing in tools like Discord,
+xwaylandvideobridge: MS Teams, Skype, etc and more.
+xwaylandvideobridge: XWayland Video Bridge allows us to share specific windows to
+xwaylandvideobridge: X11 clients, but within the control of the user at all times.
+xwaylandvideobridge:
+xwaylandvideobridge: Homepage: https://invent.kde.org/system/xwaylandvideobridge
+xwaylandvideobridge:

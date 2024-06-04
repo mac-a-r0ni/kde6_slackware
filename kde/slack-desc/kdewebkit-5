@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+         |-----handy-ruler------------------------------------------------------|
+kdewebkit-5: kdewebkit-5 (WebKit rendering engine for KDE)
+kdewebkit-5:
+kdewebkit-5: This library provides KDE integration of the QtWebKit library. If you
+kdewebkit-5: are using QtWebKit in your KDE application, you are encouraged to use
+kdewebkit-5: this layer instead of using the QtWebKit classes directly. In
+kdewebkit-5: particular, you should use KWebView in place of QWebView,
+kdewebkit-5: KGraphicsWebView in place of QGraphicsWebView and KWebPage in place of
+kdewebkit-5: QWebPage. See the documentation for more information.
+kdewebkit-5:
+kdewebkit-5:
+kdewebkit-5:

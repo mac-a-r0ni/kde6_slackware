@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+             |-----handy-ruler------------------------------------------------------|
+ktexttemplate: ktexttemplate (separate document structure from data)
+ktexttemplate:
+ktexttemplate: The goal of KTextTemplate is to make it easier for application
+ktexttemplate: developers to separate the structure of documents from the data
+ktexttemplate: they contain, opening the door for theming and advanced
+ktexttemplate: generation of other text such as code.
+ktexttemplate: The syntax uses the syntax of the Django template system,
+ktexttemplate: and the core design of Django is reused in KTextTemplate.
+ktexttemplate:
+ktexttemplate: Home page: https://invent.kde.org/frameworks/ktexttemplate
+ktexttemplate:

@@ -1,0 +1,20 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+                       |-----handy-ruler------------------------------------------------------|
+accessibility-inspector: accessibility-inspector (KDE accessibility inspector)
+accessibility-inspector:
+accessibility-inspector: This is KDE's application to inspect your applications accessibility
+accessibility-inspector: tree.
+accessibility-inspector:
+accessibility-inspector:
+accessibility-inspector:
+accessibility-inspector:
+accessibility-inspector:
+accessibility-inspector:
+accessibility-inspector:
+accessibility-inspector:

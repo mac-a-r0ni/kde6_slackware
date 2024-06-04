@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+                  |-----handy-ruler------------------------------------------------------|
+qqc2-desktop-style-5: qqc2-desktop-style-5 (desktop integration for Qt Quick Controls 2)
+qqc2-desktop-style-5:
+qqc2-desktop-style-5: QQC2-Desktop-Style is a style for Qt Quick Controls 2 (QQC2) which
+qqc2-desktop-style-5: uses QStyle to paint the controls in order to give them a native look
+qqc2-desktop-style-5: and feel.
+qqc2-desktop-style-5:
+qqc2-desktop-style-5: Homepage: https://api.kde.org/frameworks/qqc2-desktop-style-5/html/
+qqc2-desktop-style-5:
+qqc2-desktop-style-5:
+qqc2-desktop-style-5:
+qqc2-desktop-style-5:

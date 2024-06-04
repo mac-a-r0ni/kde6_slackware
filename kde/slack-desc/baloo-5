@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|' on
+# the right side marks the last column you can put a character in. You must make
+# exactly 11 lines for the formatting to be correct. It's also customary to
+# leave one space after the ':'.
+
+     |-----handy-ruler------------------------------------------------------|
+baloo-5: baloo-5 (framework for searching and managing metadata)
+baloo-5:
+baloo-5: Baloo is a framework for searching and managing metadata. Baloo
+baloo-5: focuses on providing a very small memory footprint along with
+baloo-5: extremely fast searching. It also supports storing additional file
+baloo-5: based metadata via extended attributes.
+baloo-5:
+baloo-5:
+baloo-5:
+baloo-5:
+baloo-5:

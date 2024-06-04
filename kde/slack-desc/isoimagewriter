@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+              |-----handy-ruler------------------------------------------------------|
+isoimagewriter: isoimagewriter (write hybrid ISO image to USB disk)
+isoimagewriter:
+isoimagewriter: ISO Image Writer is a tool to write a .iso file to a USB disk.
+isoimagewriter: It uses udisks2 so it does not run as root.
+isoimagewriter: It will verify ISOs from a range of distros to ensure they are
+isoimagewriter: valid compared to the checksums or digital signatures.
+isoimagewriter:
+isoimagewriter:
+isoimagewriter:
+isoimagewriter: Homepage: https://community.kde.org/ISOImageWriter
+isoimagewriter:

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+              |-----handy-ruler------------------------------------------------------|
+plasma5support: plasma5support (support for porting from KF5/Qt5 to KF6/Qt6)
+plasma5support:
+plasma5support: Plasma5Support Framework contains Dataengines migration aids
+plasma5support: for KF5 -> KF6 migration.
+plasma5support: Dataengine support is not in the kf6 version of plasma anymore.
+plasma5support: Dataengines should be migrated to QML imports, but in the meantime
+plasma5support: remaining engines can use the dataengine implementation here.
+plasma5support:
+plasma5support:
+plasma5support: Home page: https://invent.kde.org/plasma/plasma5support
+plasma5support:
