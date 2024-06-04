@@ -1,0 +1,73 @@
+#!/bin/sh
+
+# Build (and install) all KDE dependencies
+# Modified from the KDE Slackware script by Eric Hameleers <alien@slackware.com>
+
+# Set initial variables:
+CWD=$(pwd)
+TMP=${TMP:-/tmp}
+
+# Set the config option variables if they are not already set:
+[ -r ./alldeps.options ] && . ./alldeps.options
+
+# Avoid conflict with older versions of Qt that are installed:
+QTDIR=/usr/lib${LIBDIRSUFFIX}/qt6 ; export QTDIR
+
+# Yes, olm needs to be built/installed twice:
+ALLDEPS=" \
+  cmark \
+  ddcutil \
+  quazip \
+  qca \
+  gpgme \
+  qtkeychain \
+  qcoro \
+  olm \
+  libQuotient \
+  kdsoap \
+  polkit-qt-1 \
+  mujs \
+  luajit \
+  mpv \
+  mpvqt \
+  phonon \
+  phonon-backend-gstreamer \
+  phonon-backend-mpv \
+  libdisplay-info \
+  futuresql \
+  wayland-utils \
+  olm \
+  yt-dlp \
+  "
+
+# Allow for specification of individual packages to be built:
+if [ -z "$1" ]; then
+  MODQUEUE=$ALLDEPS
+elif [ "$1" = "--list"  ]; then
+  echo ${ALLDEPS} | tr ' ' '\n'
+  exit 0
+else
+  MODQUEUE="$*"
+fi
+
+for module in \
+  $MODQUEUE ;
+do
+  pushd $module
+    ./$module.SlackBuild
+    if [ $? = 0 ]; then
+      # Yes, I will build with the fresh packages installed:
+      upgradepkg --install-new --reinstall ${TMP}/${module}-*.txz
+      # Keep MIME database current:
+      /usr/bin/update-mime-database /usr/share/mime 1> /dev/null 2> /dev/null &
+      rm -rf ${TMP}/package-${module} ${TMP}/${module}-$VERSION
+      if [ "$module" == "qt6" ]; then
+        source /etc/profile.d/${module}.sh
+      fi
+    else
+      echo "${module} failed to build."
+      exit 1
+    fi
+  popd
+done
+
