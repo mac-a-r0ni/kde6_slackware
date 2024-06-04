@@ -1,0 +1,105 @@
+# Set default arch/build.  A default version is not needed since
+# package versions are determined by their source tarvall.
+
+[ -z $BUILD ] && export BUILD=1
+[ -z $TAG ] && export TAG=_KDE6
+
+# Automatically determine the architecture we're building on:
+if [ -z "$ARCH" ]; then
+  case "$(uname -m)" in
+    i?86) ARCH=i586 ;;
+    arm*) readelf /usr/bin/file -A | egrep -q "Tag_CPU.*[4,5]" && ARCH=arm || ARCH=armv7hl ;;
+    # Unless $ARCH is already set, use uname -m for all other archs:
+    *) ARCH=$(uname -m) ;;
+  esac
+  export ARCH
+fi
+
+[ -z $PKGARCH ] && export PKGARCH=$ARCH
+
+# Use this as CFLAGS and CXXFLAGS:
+if [ -z "$SLKCFLAGS" ]; then
+  if [ "$ARCH" = "i486" ]; then
+    export SLKCFLAGS="-O2 -march=i486 -mtune=i686"
+    export LIBDIRSUFFIX=""
+  elif [ "$ARCH" = "i586" ]; then
+    export SLKCFLAGS="-O2 -march=i586 -mtune=i686"
+    export LIBDIRSUFFIX=""
+  elif [ "$ARCH" = "s390" ]; then
+    export SLKCFLAGS="-O2"
+    export LIBDIRSUFFIX=""
+  elif [ "$ARCH" = "x86_64" ]; then
+    export SLKCFLAGS="-O2 -fPIC"
+    export LIBDIRSUFFIX="64"
+  elif [ "$ARCH" = "aarch64" ]; then
+    export SLKCFLAGS="-O2 -fPIC"
+    export LIBDIRSUFFIX="64"
+  elif [ "$ARCH" = "arm" ]; then
+    export SLKCFLAGS="-O2 -march=armv4 -mtune=xscale"
+    export LIBDIRSUFFIX=""
+  elif [ "$ARCH" = "armel" ]; then
+    export SLKCFLAGS="-O2 -march=armv4t"
+    export LIBDIRSUFFIX=""
+  elif [ "$ARCH" = "armv7hl" ]; then
+    export SLKCFLAGS="-O2 -march=armv7-a -mfpu=vfpv3-d16"
+    export LIBDIRSUFFIX=""
+  else
+    export SLKCFLAGS="-O2"
+    export LIBDIRSUFFIX=""
+  fi
+fi
+
+# Use this to set the number of parallel make jobs:
+NUMJOBS=${NUMJOBS:-" -j $(expr $(nproc) + 1) "}
+export NUMJOBS
+
+# Additional cmake flags that are spanned across the KDE modules
+# Do not use "final build" unless we build an actual release.
+export KDE_OPT_ARGS=" \
+  -DSITE=\"slackware.com\" \
+  -DKDE_DISTRIBUTION_TEXT=\"volkerdi@slackware.com\" \
+  -DBUILD_TESTING=OFF \
+  -DKDE_PLATFORM_FEATURE_DISABLE_DEPRECATED=TRUE \
+ "
+
+# Qt5 specific flags:
+export KDE_QT5_ARGS=(
+  -DQT_MAJOR_VERSION=5
+  -DBUILD_QT6:BOOL=OFF
+  -DBUILD_QT5:BOOL=ON
+  -DQT_PLUGINS_DIR=lib$LIBDIRSUFFIX/qt5/plugins
+  -DQT_PLUGIN_INSTALL_DIR=lib$LIBDIRSUFFIX/qt5/plugins
+  -DQML_INSTALL_DIR=lib$LIBDIRSUFFIX/qt5/qml
+)
+
+# Qt6 specific flags:
+export KDE_QT6_ARGS=(
+  -DQT_MAJOR_VERSION=6
+  -DQT_VERSION_MAJOR=6
+  -DBUILD_WITH_QT6:BOOL=ON
+  -DBUILD_QT6:BOOL=ON
+  -DBUILD_QT5:BOOL=OFF
+  -DQT_PLUGINS_DIR=lib$LIBDIRSUFFIX/qt6/plugins
+  -DQT_PLUGIN_INSTALL_DIR=lib$LIBDIRSUFFIX/qt6/plugins
+  -DQML_INSTALL_DIR=lib$LIBDIRSUFFIX/qt6/qml
+)
+
+# Double-quoting required because $SLKCFLAGS contains spaces:
+export KDE_BUILD_ARGS=(
+  -DCMAKE_BUILD_TYPE=Release
+  "-DCMAKE_C_FLAGS:STRING=$SLKCFLAGS"
+  "-DCMAKE_C_FLAGS_RELEASE:STRING=$SLKCFLAGS"
+  "-DCMAKE_CXX_FLAGS:STRING=$SLKCFLAGS"
+  "-DCMAKE_CXX_FLAGS_RELEASE:STRING=$SLKCFLAGS"
+  -DCMAKE_INSTALL_PREFIX=/usr
+  -DCMAKE_INSTALL_LIBDIR=lib$LIBDIRSUFFIX
+  -DCMAKE_INSTALL_MANDIR=/usr/man
+  -DCMAKE_INSTALL_SYSCONFDIR=/etc/kde
+  -DMAN_INSTALL_DIR=/usr/man
+  -DSYSCONF_INSTALL_DIR=/etc/kde
+  -DLIB_INSTALL_DIR=lib$LIBDIRSUFFIX
+  -DLIB_SUFFIX=${LIBDIRSUFFIX}
+  -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  -Wno-dev
+ )
+

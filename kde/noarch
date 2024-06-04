@@ -1,0 +1,10 @@
+# List packages with an $ARCH of "noarch" (i.e. packages
+# that contain no binaries) here:
+
+breeze-icons
+kde-wallpapers
+oxygen-fonts
+oxygen-icons
+oxygen-icons5
+plasma-workspace-wallpapers
+
