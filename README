@@ -1,0 +1,48 @@
+https://community.kde.org/Frameworks/6.0_Release_notes
+https://community.kde.org/Plasma/Plasma_6.0_Release_notes
+https://community.kde.org/KDE_Gear/24.02_Release_notes
+https://community.kde.org/Plasma/Plasma_6
+https://download.kde.org/unstable/qqc2-breeze5-style/
+https://download.kde.org/unstable/kdsoap-ws-discovery-client/kdsoap-ws-discovery-client-0.3.0.tar.xz
+
+Keep Slackware KDE packages:
+
+alkimia
+calligra
+calligraplan
+fcitx5-configtool
+fcitx5-theme-breeze
+kColorPicker
+kImageAnnotator
+kaudiocreator
+kdevelop
+kdev-php
+kdev-python
+kile
+kmymoney
+kquickimageeditor
+krita
+kstars
+labplot
+latte-dock
+libindi
+libnova
+okteta
+stellarsolver
+wcslib
+
+# Watch Slackware package:
+grantlee: still needed by Qt5-based rocs
+  (Qt6-based grantlee is renamed to frameworks:ktexttemplate)
+
+Fail to build:
+Applications:
+kgpg (needs old KDEPIM: grantleetheme-5 kmime-5 libakonadi-5 akonadi-contacts-5)
+kget ("undefined reference to Settings::self" en final linker error)
+kdevelop (needs grantlee?)
+kdev-php
+kdev-python
+
+Applications-extra:
+okteta
+
