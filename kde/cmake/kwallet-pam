@@ -1,0 +1,9 @@
+mkdir cmake-build
+cd cmake-build
+  cmake \
+    "${KDE_BUILD_ARGS[@]/-DCMAKE_INSTALL_PREFIX=?*/}" \
+    "${KDE_QT6_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    -DCMAKE_INSTALL_PREFIX=/ \
+    ..
+

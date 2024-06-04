@@ -1,0 +1,13 @@
+mkdir cmake-build
+cd cmake-build
+  cmake \
+    "${KDE_BUILD_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    -DQT_MAJOR_VERSION=5 \
+    -DBUILD_QT5:BOOL=ON \
+    -DQT_PLUGINS_DIR=lib$LIBDIRSUFFIX/qt5/plugins \
+    -DQT_PLUGIN_INSTALL_DIR=lib$LIBDIRSUFFIX/qt5/plugins \
+    -DQML_INSTALL_DIR=lib$LIBDIRSUFFIX/qt5/qml \
+    -DBUILD_KRITA_QT_DESIGNER_PLUGINS=ON \
+    ..
+

@@ -1,0 +1,9 @@
+mkdir cmake-build
+cd cmake-build
+  cmake \
+    "${KDE_BUILD_ARGS[@]}" \
+    "${KDE_QT5_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    -DBUILD_KWALLETD=OFF \
+    ..
+

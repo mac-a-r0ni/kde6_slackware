@@ -1,0 +1,10 @@
+mkdir cmake-build
+cd cmake-build
+  cmake \
+    "${KDE_BUILD_ARGS[@]}" \
+    "${KDE_QT5_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    -DCLANG_BUILTIN_DIR=$(/bin/ls -d /usr/lib$LIBDIRSUFFIX/clang/*/include) \
+    -DBUILD_TESTING=OFF \
+    ..
+

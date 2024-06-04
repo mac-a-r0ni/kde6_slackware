@@ -1,0 +1,16 @@
+mkdir cmake-build
+cd cmake-build
+  cmake \
+    "${KDE_BUILD_ARGS[@]}" \
+    "${KDE_QT6_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    -DWITH_APPS="CLI;Qt;KDE" \
+    -DWITH_CHROMAPRINT=OFF \
+    -DWITH_FFMPEG=ON \
+    -DWITH_GSTREAMER=ON \
+    -DWITH_LIBDIR=lib$LIBDIRSUFFIX \
+    -DWITH_MANDIR=man \
+    -DWITH_DOCDIR=share/kid3/doc \
+    -DWITH_NO_MANCOMPRESS=ON \
+    ..
+

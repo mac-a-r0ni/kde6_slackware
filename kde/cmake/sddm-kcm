@@ -1,0 +1,10 @@
+mkdir cmake-build
+cd cmake-build
+  cmake \
+    "${KDE_BUILD_ARGS[@]}" \
+    "${KDE_QT6_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    -DSDDM_CONFIG_DIR=/etc/sddm.conf.d \
+    -DSDDM_CONFIG_FILE=/etc/sddm.conf \
+    ..
+

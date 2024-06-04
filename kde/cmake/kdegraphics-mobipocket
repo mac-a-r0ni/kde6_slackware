@@ -1,0 +1,22 @@
+# Configure the Qt6 support first:
+mkdir cmake-build-qt6
+cd cmake-build-qt6
+  cmake \
+    "${KDE_BUILD_ARGS[@]}" \
+    "${KDE_QT6_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    ..
+
+cd -
+
+# Configure the Qt5 support next:
+mkdir cmake-build-qt5
+cd cmake-build-qt5
+  cmake \
+    "${KDE_BUILD_ARGS[@]}" \
+    "${KDE_QT5_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    ..
+
+# make can pick up from here, and first build the Qt5, then Qt6 stuff.
+

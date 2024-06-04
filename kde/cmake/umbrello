@@ -1,0 +1,12 @@
+mkdir cmake-build
+cd cmake-build
+  cmake \
+    "${KDE_BUILD_ARGS[@]}" \
+    "${KDE_QT5_ARGS[@]}" \
+    $KDE_OPT_ARGS \
+    -DBUILD_APIDOC=OFF \
+    -DBUILD_UNITTESTS=OFF \
+    -DBUILD_UNITTESTS=OFF \
+    ..
+
+    #-DBUILD_KF6=ON \
