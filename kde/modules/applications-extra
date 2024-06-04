@@ -1,0 +1,27 @@
+# See https://github.com/KDE/kdesrc-build/blob/master/kf6-applications-build-include for Plasma6 build instructions;
+# Our pre-release ignore list is prefixed with '##'
+#
+# applications-extra
+##calligra
+##calligraplan
+digikam
+krita
+kdiagram
+kjots
+##kstars
+#kuser
+krusader
+kile
+##kaudiocreator
+oxygen-gtk2
+alkimia
+kmymoney
+okteta
+krename
+ktimetracker
+##labplot
+kid3
+kdevelop-pg-qt
+kdsoap-ws-discovery-client
+amarok
+haruna

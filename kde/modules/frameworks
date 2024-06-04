@@ -1,0 +1,83 @@
+# KDE Frameworks.
+#
+# KF5: https://api.kde.org/frameworks/index.html
+# KF6: https://invent.kde.org/frameworks
+# See also: https://community.kde.org/Frameworks/6.0_Release_notes
+#
+# Tier 1, depends on Qt5, system libraries:
+extra-cmake-modules
+attica
+kitemmodels
+kitemviews
+ktexttemplate
+kplotting
+threadweaver
+kcodecs
+kdbusaddons
+kcoreaddons
+kguiaddons
+kidletime
+kwidgetsaddons
+sonnet
+kconfig
+kwindowsystem
+solid
+karchive
+ki18n
+networkmanager-qt
+modemmanager-qt
+bluez-qt
+prison
+kirigami
+syntax-highlighting
+kholidays
+kcalendarcore
+kcontacts
+kuserfeedback
+# Tier 2, depends on Tier 1, Qt5, system libraries:
+breeze-icons
+kapidox
+kdnssd
+oxygen-icons
+kauth
+kcrash
+knotifications
+kjobwidgets
+kcompletion
+kdoctools
+kpackage
+kunitconversion
+kpty
+kimageformats
+kfilemetadata
+syndication
+kquickcharts
+kcolorscheme
+kstatusnotifieritem
+# Tier 3, depends on Tier 1 and 2, Qt5, system libraries:
+kconfigwidgets
+kservice
+kglobalaccel
+kiconthemes
+kwallet
+kdesu
+ktextwidgets
+kxmlgui
+kbookmarks
+kded
+kio
+knewstuff
+kparts
+kdeclarative
+knotifyconfig
+ktexteditor
+kcmutils
+ksvg
+kpeople
+baloo
+qqc2-desktop-style
+purpose
+# Tier 4, depends on Tier 1, 2 and 3, Qt5, system libraries:
+krunner
+kdav
+frameworkintegration

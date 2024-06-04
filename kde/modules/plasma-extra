@@ -1,0 +1,14 @@
+# Our pre-release ignore list is prefixed with '##'
+#
+# plasma-extra
+sddm
+kpeoplevcard
+pulseaudio-qt
+##latte-dock
+oxygen-fonts
+plasma-wayland-protocols
+ktextaddons
+kirigami-addons
+libqaccessibilityclient
+kmoretools
+xwaylandvideobridge
