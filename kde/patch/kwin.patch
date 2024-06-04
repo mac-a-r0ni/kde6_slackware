@@ -1,0 +1,1 @@
+cat $CWD/patch/kwin/013e69988ffdbed1d3c684a536c0d4b79c7de680.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }

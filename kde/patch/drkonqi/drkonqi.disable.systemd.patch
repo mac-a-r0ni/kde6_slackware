@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt     2023-10-20 16:22:41.000000000 +0200
++++ b/CMakeLists.txt     2023-10-24 22:39:10.946659020 +0200
+@@ -75,7 +75,7 @@
+ 
+ if(CMAKE_SYSTEM_NAME MATCHES Linux)
+     find_package(Systemd 249)
+-    set_package_properties(Systemd PROPERTIES TYPE REQUIRED PURPOSE "Coredumpd integration.")
++    set_package_properties(Systemd PROPERTIES TYPE OPTIONAL PURPOSE "Coredumpd integration.")
+ endif()
+ 
+ if(Systemd_FOUND)
+

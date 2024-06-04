@@ -1,0 +1,1 @@
+#cat $CWD/patch/kitinerary/6a0a4f455d58b96b8965667a7eb057abd244d87e.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }

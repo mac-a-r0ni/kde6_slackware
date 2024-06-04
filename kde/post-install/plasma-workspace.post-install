@@ -1,0 +1,45 @@
+
+# Use ck-launch-session in runlevel 3 if that is available,
+# to start and attach a ConsoleKit session to the X session:
+mkdir -p $PKG/etc/X11/xinit
+cat $CWD/post-install/plasma-workspace/xinit/xinitrc.kde \
+  | sed -e "s/@LIBDIRSUFFIX@/$LIBDIRSUFFIX/g" \
+  > $PKG/etc/X11/xinit/xinitrc.kde
+chmod 0755 $PKG/etc/X11/xinit/xinitrc.kde
+
+# Add a script that launches a Plasma Wayland session from the commandline:
+mkdir -p $PKG/usr/bin
+cat $CWD/post-install/plasma-workspace/scripts/startkwayland \
+  | sed -e "s/@LIBDIRSUFFIX@/$LIBDIRSUFFIX/g" \
+  > $PKG/usr/bin/startkwayland
+chmod 0755 $PKG/usr/bin/startkwayland
+
+# Set required environment for the Wayland session:
+#sed -e 's/^Exec=/Exec=env GDK_BACKEND=wayland QT_QPA_PLATFORM=wayland /' \
+#  -i $PKG/usr/share/wayland-sessions/plasma.desktop
+
+# Install custom "full wayland" session
+pushd $PKG/usr/share/wayland-sessions/
+sed '/^Name/d;s/^Exec=/Exec=env GDK_BACKEND=wayland QT_QPA_PLATFORM=wayland /' plasma.desktop > z_plasmafullwayland.desktop
+echo 'Name=Plasma (Full Wayland)' >> z_plasmafullwayland.desktop
+popd
+
+# Add a "fail-safe" version of KDE Plasma desktop session.
+# Prefix the name with "z_" because SDDM is braindead:
+mkdir -p $PKG/usr/share/xsessions
+cat $CWD/post-install/plasma-workspace/xsession/plasmax11-safe.desktop \
+  | sed -e "s,@PREFIX@,/usr,g" \
+  >  $PKG/usr/share/xsessions/z_plasmax11-safe.desktop
+
+# Move the polkit dbus configuration files to the proper place:
+if [ -d $PKG/etc/kde/dbus-1 ]; then
+  mkdir -p $PKG/etc
+  mv $PKG/etc/kde/dbus-1 $PKG/etc/
+fi
+
+# Install a PAM file for Plasma Workspace:
+install -Dm644 $CWD/post-install/plasma-workspace/pam.d/kde $PKG/etc/pam.d/kde.new
+
+# Since elogind does not set DBUS_SESSION_BUS_ADDRESS we need to start
+# Plasma X11 session through dbus-run-session like Wayland is launched:
+sed -i $PKG/usr/share/xsessions/plasmax11.desktop -e "s,^Exec=/,Exec=dbus-run-session /,"

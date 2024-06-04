@@ -1,0 +1,5 @@
+# Backported fix for the build with >=QtWaylandScanner-6.7.1. For details, see the link bellow:
+#
+# https://github.com/KDE/krfb/commit/36349df89bfd8b213074e61faac4c5651d439cdd
+
+#cat $CWD/patch/krfb/krfb-24.02.2.diff  | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }

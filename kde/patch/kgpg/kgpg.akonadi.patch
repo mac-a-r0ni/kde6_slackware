@@ -1,0 +1,40 @@
+From fdcf789732c7379c6270df16e0a2fb947d9c24e5 Mon Sep 17 00:00:00 2001
+From: Bart Ribbers <bribbers@disroot.org>
+Date: Sun, 3 Sep 2023 16:33:50 +0200
+Subject: [PATCH] Update akonadi-contact targets to their updated versions
+
+ContactEditor got renamed to AkonadiContactsWidgets in https://invent.kde.org/pim/akonadi-contacts/-/commit/ee03f35f4e3724887211db33d1be9e4ddb4249e1
+AkonadiContact got renamed to AkonadiContactCore in https://invent.kde.org/pim/akonadi-contacts/-/commit/e98905db5cd363d713eef5b7beede677e0319253
+---
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3a650615..bafee93b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -64,8 +64,8 @@ find_package(KF${KF_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED
+ )
+ 
+ # 5.23.80 aka 23.07.80
+-find_package(KPim${KF_MAJOR_VERSION}AkonadiContact 5.23.80 REQUIRED)
+-find_package(KPim${KF_MAJOR_VERSION}ContactEditor 5.23.80 REQUIRED)
++find_package(KPim${KF_MAJOR_VERSION}AkonadiContactCore 5.23.80 REQUIRED)
++find_package(KPim${KF_MAJOR_VERSION}AkonadiContactWidgets 5.23.80 REQUIRED)
+ 
+ if (QT_MAJOR_VERSION STREQUAL "6")
+     find_package(Qt6Core5Compat)
+@@ -274,8 +274,8 @@ target_link_libraries(kgpg_lib
+     KF${KF_MAJOR_VERSION}::XmlGui
+     KF${KF_MAJOR_VERSION}::WidgetsAddons
+     KF${KF_MAJOR_VERSION}::WindowSystem
+-    KPim${KF_MAJOR_VERSION}::AkonadiContact
+-    KPim${KF_MAJOR_VERSION}::ContactEditor
++    KPim${KF_MAJOR_VERSION}::AkonadiContactCore
++    KPim${KF_MAJOR_VERSION}::AkonadiContactWidgets
+     Qt::PrintSupport
+ )
+ if (QT_MAJOR_VERSION STREQUAL "6")
+-- 
+GitLab
+

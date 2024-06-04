@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Start KWin as a Plasma 6 Wayland session
+#export GDK_BACKEND=wayland
+#export QT_QPA_PLATFORM=wayland
+
+/usr/lib@LIBDIRSUFFIX@/libexec/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland

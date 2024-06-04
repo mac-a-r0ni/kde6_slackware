@@ -1,0 +1,2 @@
+# Drop old Plasma 5 applications.menu
+#rm -r $PKG/etc

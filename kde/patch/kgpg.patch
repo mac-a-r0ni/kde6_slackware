@@ -1,0 +1,6 @@
+# Only autostart in Plasma:
+cat $CWD/patch/kgpg/kgpg.only.autostart.in.plasma.diff | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+
+# Plasma6 Alpha needs a patch:
+#cat $CWD/patch/kgpg/kgpg.akonadi.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+

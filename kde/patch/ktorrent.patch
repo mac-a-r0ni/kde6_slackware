@@ -1,0 +1,4 @@
+# As long as ktorrent is Qt5 based, we need to patch out
+# the call for plasma-workspace:
+#cat $CWD/patch/ktorrent/ktorrent.noworkspace.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+
