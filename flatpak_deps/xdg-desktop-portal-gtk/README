@@ -1,0 +1,4 @@
+xdg-desktop-portal-gtk (gtk sandboxing desktop APIs)
+
+xdg-desktop-portal-gtk are APIs for building sandoxed portal of
+desktop services and integrations.

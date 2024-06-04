@@ -1,0 +1,8 @@
+PRGNAM="discover"
+VERSION="6.0.5"
+HOMEPAGE="https://download.kde.org/stable/plasma/"
+DOWNLOAD="https://download.kde.org/stable/plasma/6.0.5/discover-6.0.5.tar.xz"
+MD5SUM="f84b8a4b729850cc05ef7e06f7526fec"
+REQUIRES="kde"
+MAINTAINER="Jay Lanagan"
+EMAIL="j@lngn.net"
