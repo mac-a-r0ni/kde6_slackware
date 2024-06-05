@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+           |-----handy-ruler------------------------------------------------------|
+klevernotes: klevernotes (KDE note-taking app)
+klevernotes:
+klevernotes: KleverNotes is a note taking and management application for your
+klevernotes: mobile and desktop devices. It uses markdown and allow you to
+klevernotes: preview your content.
+klevernotes:
+klevernotes:
+klevernotes:
+klevernotes:
+klevernotes:
+klevernotes:
