@@ -42,6 +42,7 @@ bluedevil
 kmenuedit
 polkit-kde-agent-1
 kscreen
+#krdp
 sddm-kcm
 kde-gtk-config
 ksshaskpass
