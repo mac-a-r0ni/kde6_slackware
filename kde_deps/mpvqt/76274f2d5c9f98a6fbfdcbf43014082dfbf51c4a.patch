@@ -1,0 +1,23 @@
+From 76274f2d5c9f98a6fbfdcbf43014082dfbf51c4a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?George=20Florea=20B=C4=83nu=C8=99?= <georgefb899@gmail.com>
+Date: Tue, 21 May 2024 22:53:41 +0300
+Subject: [PATCH] mpvcontroller: set `vo` property to `libmpv`
+
+---
+ src/mpvcontroller.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/mpvcontroller.cpp b/src/mpvcontroller.cpp
+index 0701bed..0c3c3b3 100644
+--- a/src/mpvcontroller.cpp
++++ b/src/mpvcontroller.cpp
+@@ -183,6 +183,9 @@ void MpvController::init()
+         qFatal("could not initialize mpv context");
+     }
+     mpv_set_wakeup_callback(d_ptr->m_mpv, MpvController::mpvEvents, this);
++
++    // otherwise mpv opens a separate window
++    setProperty(QStringLiteral("vo"), QStringLiteral("libmpv"));
+ }
+ 
+ void MpvController::mpvEvents(void *ctx)
