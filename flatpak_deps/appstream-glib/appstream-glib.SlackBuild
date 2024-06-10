@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=appstream-glib
-VERSION=${VERSION:-0.8.2}
+VERSION=${VERSION:-0.8.3}
 SRCVERSION=$(echo "$PRGNAM" | tr - _)_$(echo "$VERSION" | tr . _)
 BUILD=${BUILD:-1}
 TAG=${TAG:-""}
@@ -89,6 +89,7 @@ meson setup .. \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --sysconfdir=/etc \
   --mandir=/usr/man \
+  -Dbuilder=false \
   -Drpm=false
 
 # not sure why this is necessary
