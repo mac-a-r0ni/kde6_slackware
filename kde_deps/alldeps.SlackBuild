@@ -26,9 +26,6 @@ ALLDEPS=" \
   libQuotient \
   kdsoap \
   polkit-qt-1 \
-  mujs \
-  luajit \
-  mpv \
   mpvqt \
   phonon \
   phonon-backend-gstreamer \
