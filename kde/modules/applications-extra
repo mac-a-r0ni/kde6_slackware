@@ -3,12 +3,13 @@
 #
 # applications-extra
 calligra
-#calligraplan
+kdiagram-5
+calligraplan
 digikam
 krita
 kdiagram
 kjots
-kstars
+##kstars
 #kuser
 krusader
 kile

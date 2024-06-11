@@ -1,31 +1,18 @@
-https://community.kde.org/Frameworks/6.0_Release_notes
-https://community.kde.org/Plasma/Plasma_6.0_Release_notes
+https://kde.org/announcements/frameworks/6/6.3.0/
 https://kde.org/announcements/gear/24.05.0/
-https://community.kde.org/KDE_Gear/24.05_Release_notes
-https://community.kde.org/Plasma/Plasma_6
-https://download.kde.org/unstable/qqc2-breeze5-style/
-https://download.kde.org/unstable/kdsoap-ws-discovery-client/kdsoap-ws-discovery-client-0.3.0.tar.xz
+https://kde.org/announcements/frameworks/5/5.116.0/
+
 
 Keep Slackware KDE packages:
 
-alkimia
-calligra
-calligraplan
 fcitx5-configtool
 fcitx5-theme-breeze
-kColorPicker
-kImageAnnotator
 kaudiocreator
-kile
-kmymoney
-kquickimageeditor
-krita
 kstars
 labplot
 latte-dock
 libindi
 libnova
-okteta
 stellarsolver
 wcslib
 
@@ -37,7 +24,3 @@ Fail to build:
 Applications:
 kgpg (needs old KDEPIM: grantleetheme-5 kmime-5 libakonadi-5 akonadi-contacts-5)
 kget ("undefined reference to Settings::self" en final linker error)
-
-Applications-extra:
-okteta
-

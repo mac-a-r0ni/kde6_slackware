@@ -5,7 +5,7 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-         |-----handy-ruler------------------------------------------------------|
+           |-----handy-ruler------------------------------------------------------|
 kdewebkit-5: kdewebkit-5 (WebKit rendering engine for KDE)
 kdewebkit-5:
 kdewebkit-5: This library provides KDE integration of the QtWebKit library. If you
