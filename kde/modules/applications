@@ -185,7 +185,7 @@ minuet
 #libkgeomap
 
 # Obsolete:
-#kross-interpreters
+kross-interpreters
 
 # Needs ffmpeg and dvdauthor to be really useful:
 kdenlive

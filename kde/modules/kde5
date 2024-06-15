@@ -55,7 +55,8 @@ kded-5
 kio-5
 knewstuff-5
 kparts-5
-kdesignerplugin-5
+kdelibs4support
+kdesignerplugin
 kdewebkit-5
 kdeclarative-5
 kcmutils-5

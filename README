@@ -1,13 +1,12 @@
 https://kde.org/announcements/frameworks/6/6.3.0/
-https://kde.org/announcements/gear/24.05.0/
 https://kde.org/announcements/frameworks/5/5.116.0/
+https://kde.org/announcements/gear/24.05.1/
 
 
 Keep Slackware KDE packages:
 
 fcitx5-configtool
 fcitx5-theme-breeze
-kaudiocreator
 kstars
 labplot
 latte-dock
@@ -22,5 +21,4 @@ grantlee: still needed by Qt5-based rocs
 
 Fail to build:
 Applications:
-kgpg (needs old KDEPIM: grantleetheme-5 kmime-5 libakonadi-5 akonadi-contacts-5)
-kget ("undefined reference to Settings::self" en final linker error)
+None?
