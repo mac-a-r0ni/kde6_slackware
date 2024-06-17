@@ -25,6 +25,8 @@ ALLDEPS=" \
   libostree \
   bubblewrap \
   flatpak \
+  discover \
+  flatpak-kcm \
   "
 
 # Allow for specification of individual packages to be built:
