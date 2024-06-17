@@ -1,0 +1,174 @@
+#!/bin/bash
+
+# Slackware build script for VLC media player
+# Written by Andrea De Pasquale <andrea@de-pasquale.name>
+# Based on Eric Hameleers' Slackware build script,
+# modified to build VLC only, shared libraries needed.
+
+# Copyright (c) 2007,2008,2009,2010,2011  Eric Hameleers, Eindhoven, Netherlands
+# Copyright (c) 2014-2022  Christoph Willing, Brisbane, Australia
+# Copyright (c) 2022  Bill Kirkpatrick, Bay City, Texas, USA
+# Copyright (c) 2023  Tim Dickson, Scotland
+# Copyright (c) 2024  Steven Voges <Oregon, USA>
+# All rights reserved.
+#
+#   Redistribution and use of this script, with or without modification is
+#   permitted, provided that the following conditions are met:
+
+# 1. Redistribution of this script must retain the above copyright notice,
+#    this list of conditions and the following disclaimer.
+#   copies.
+#
+#   THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
+#   WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+#   IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+#   INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+#   BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+#   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+#   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+#   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+#   WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#   POSSIBILITY OF SUCH DAMAGE.
+# -----------------------------------------------------------------------------
+
+# 20221224 bkw: Modified by SlackBuilds.org, BUILD=4:
+# - libebml builds are OK now, get rid of "stop the build" code.
+# - don't install useless INSTALL and ABOUT-NLS in doc dir.
+
+# 20220215 bkw: Modified by SlackBuilds.org:
+# - stop the build if libebml is installed, since it will fail.
+
+# 20230224 tjd: updated for 3.0.18 added patch to disable libplacebo
+# thanks to bkw
+
+cd $(dirname $0) ; CWD=$(pwd)
+
+PRGNAM=vlc
+VERSION=${VERSION:-3.0.20}
+BUILD=${BUILD:-1}
+TAG=${TAG:-""}
+PKGTYPE=${PKGTYPE:-txz}
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i586 ;;
+    arm*) ARCH=arm ;;
+    *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
+fi
+
+TMP=${TMP:-/tmp}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i586" ]; then
+  SLKCFLAGS="-O2 -march=i586 -mtune=i686"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
+elif [ "$ARCH" = "aarch64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+SLKLDFLAGS="-lrt"
+
+set -e
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+cd $PRGNAM-$VERSION
+
+sed -i '/DEPRECATED/s:^://:' modules/text_renderer/freetype/text_layout.c
+
+patch -p1 < $CWD/dvdread.patch
+patch -p1 < $CWD/dvdnav.patch
+patch -p1 < $CWD/projectM.patch
+patch -p1 < $CWD/cache.patch
+
+# Don't enable wayland by default
+wayland="--disable-wayland" ; [ "${WAYLAND:-yes}" != "no" ] && wayland="--enable-wayland"
+
+# Enable vlc to be run as root
+runasroot=""; [ "${RUNASROOT:-no}" != "no" ] && runasroot="--enable-run-as-root"
+
+# Give the possibility to explicitly disable aom support
+aom=""; [ "${AOM:-yes}" = "no" ] && aom="--disable-aom"
+
+# Allow to build without lua
+lua=""; [ "${LUA:-yes}" = "no" ] && lua="--disable-lua"
+
+autoreconf -fiv
+
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 -o -perm 511 \) \
+ -exec chmod 755 {} \+ -o \
+ \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
+ -exec chmod 644 {} \+
+
+patch -p1 < $CWD/4645.patch
+patch -p1 < $CWD/4665.patch
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
+LDFLAGS="$SLKLDFLAGS" \
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --sysconfdir=/etc \
+  --mandir=/usr/man \
+  --docdir=/usr/doc/vlc-$VERSION \
+  --localstatedir=/var \
+  --build=$ARCH-slackware-linux \
+  --enable-qt=5 \
+  --enable-merge-ffmpeg \
+  --disable-libplacebo \
+  --disable-upnp \
+  $wayland \
+  $runasroot \
+  $aom \
+  $lua
+make
+make DESTDIR=$PKG install
+
+install -D -m0644 extras/analyser/vlc.vim $PKG/usr/share/vim/vimfiles/syntax/vlc.vim
+
+rm -f $PKG/usr/lib*/*.la
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" \
+  | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
+
+mkdir -p $PKG/usr/man/man1
+gzip -9c doc/vlc.1 > $PKG/usr/man/man1/vlc.1.gz
+find $PKG/usr/man -type f -name "*.?" -exec gzip -9f {} \;
+for i in $(find $PKG/usr/man -type l -name "*.?") ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a \
+  AUTHORS COPYING NEWS README THANKS \
+  $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+find $PKG/usr/doc -type f -exec chmod 644 {} \;
+chown -R root:root $PKG/usr/doc/$PRGNAM-$VERSION/*
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+###sbolint off
+sed -e s/%LIBDIRSUFFIX%/$LIBDIRSUFFIX/g $CWD/doinst.sh.in > $PKG/install/doinst.sh
+###sbolint on
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE

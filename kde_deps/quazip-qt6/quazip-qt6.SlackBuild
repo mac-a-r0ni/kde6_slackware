@@ -23,8 +23,9 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PKGNAM=quazip
-VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
+SRCNAM=quazip
+PKGNAM=quazip-qt6
+VERSION=${VERSION:-$(echo $SRCNAM-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 BUILD=${BUILD:-1}
 TAG=${TAG:-""}
 
@@ -55,13 +56,10 @@ if [ "$ARCH" = "i586" ]; then
 elif [ "$ARCH" = "i686" ]; then
   SLKCFLAGS="-O2 -march=i686"
   LIBDIRSUFFIX=""
-elif [ "$ARCH" = "s390" ]; then
-  SLKCFLAGS="-O2"
-  LIBDIRSUFFIX=""
-elif [ "$ARCH" = "x86_64" ]; then
+elif [ "$ARCH" = "aarch64" ]; then
   SLKCFLAGS="-O2 -fPIC"
   LIBDIRSUFFIX="64"
-elif [ "$ARCH" = "aarch64" ]; then
+elif [ "$ARCH" = "x86_64" ]; then
   SLKCFLAGS="-O2 -fPIC"
   LIBDIRSUFFIX="64"
 elif [ "$ARCH" = "armv7hl" ]; then
@@ -79,9 +77,9 @@ rm -rf $PKG
 mkdir -p $TMP $PKG
 
 cd $TMP
-rm -rf $PKGNAM-$VERSION
-tar xvf $CWD/$PKGNAM-$VERSION.tar.?z || exit 1
-cd $PKGNAM-$VERSION || exit 1
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/$SRCNAM-$VERSION.tar.?z || exit 1
+cd $SRCNAM-$VERSION || exit 1
 
 chown -R root:root .
 find . \
@@ -91,23 +89,6 @@ find . \
   -exec chmod 644 {} \+
 
 # Configure, build, and install:
-# First, Qt5 support:
-mkdir cmake-build
-cd cmake-build
-  cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
-    -DCMAKE_C_FLAGS_RELEASE:STRING="$SLKCFLAGS" \
-    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
-    -DCMAKE_CXX_FLAGS_RELEASE:STRING="$SLKCFLAGS" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib${LIBDIRSUFFIX} \
-    -DLIB_SUFFIX=${LIBDIRSUFFIX} \
-    -DQUAZIP_QT_MAJOR_VERSION=5 \
-    .. || exit 1
-  make $NUMJOBS || make || exit 1
-  make install DESTDIR=$PKG || exit 1
-cd ..
 # Next, Qt6 support:
 mkdir cmake-build-qt6
 cd cmake-build-qt6
@@ -131,12 +112,6 @@ rm -f $PKG/usr/lib${LIBDIRSUFFIX}/*.a
 
 # Strip binaries:
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
-
-# Add a documentation directory:
-mkdir -p $PKG/usr/doc/${PKGNAM}-$VERSION
-cp -a \
-  CONTRIBUTING* COPYING* NEWS* README* \
-  $PKG/usr/doc/${PKGNAM}-$VERSION
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc

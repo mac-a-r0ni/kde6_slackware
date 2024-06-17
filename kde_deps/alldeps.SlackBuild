@@ -17,17 +17,18 @@ QTDIR=/usr/lib${LIBDIRSUFFIX}/qt6 ; export QTDIR
 ALLDEPS=" \
   cmark \
   ddcutil \
-  quazip \
+  quazip-qt6 \
   qca \
-  gpgme \
-  qtkeychain \
+  gpgme-qt6 \
+  qtkeychain-qt6 \
   qcoro \
   olm \
   libQuotient \
-  kdsoap \
+  kdsoap-qt6 \
   polkit-qt-1 \
+  vlc \
   mpvqt \
-  phonon \
+  phonon-qt6 \
   phonon-backend-vlc \
   phonon-backend-gstreamer \
   phonon-backend-mpv \

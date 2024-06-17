@@ -1,0 +1,36 @@
+VLC media player is a free and open source media player and multi-
+media framework written by the VideoLAN project. VLC is a portable
+multimedia player, encoder, and streamer supporting many audio and
+video codecs and file formats as well as DVDs, VCDs, and various
+streaming protocols. It is able to stream over networks and to
+transcode multimedia files and save them into various formats.
+
+This build aims to support as many options as possible using
+the SlackBuilds listed in the REQUIRES field of the vlc.info file.
+No script changes are necessary to include particular options; if they
+are detected at build time, they will be included. Conversely if
+optional packages are not available at build time, vlc will generally
+continue to build with a reduced feature set.
+
+Support for Wayland is a special case. It is not supported by default
+but can be enabled setting the WAYLAND environment variable to "yes"
+when running the SlackBuild e.g.
+  WAYLAND=yes sh vlc.SlackBuild
+
+By default, the vlc runtime is not able to be run as root. This
+security feature may be side stepped by building vlc with the RUNASROOT
+environment variable set e.g.
+  RUNASROOT=yes sh vlc.SlackBuild
+
+Playing of AV1 encoded video is supported when either of SBo's
+multimedia/aom or libraries/dav1d packages is detected when vlc
+is built.  One of these is expected to become required in a future
+release.  Some versions of the automatically detected optional aom
+package are incompatible with this version of vlc and in this case
+the build will fail. This can be avoided by setting the AOM environment
+variable to "no" e.g.
+  AOM=no sh vlc.SlackBuild
+
+You may disable LUA support by setting the LUA environment variable.
+This will remove the lua dependency e.g.
+  LUA=no sh vlc.SlackBuild

@@ -1,8 +1,8 @@
 #!/bin/sh 
 
 # Copyright 2008  Robby Workman, Northport, Alabama, USA
-# Copyright 2008, 2009, 2010, 2011, 2012, 2018, 2020  Patrick J. Volkerding, Sebeka, MN, USA
-# Copyright 2010, 2011, 2012, 2014, 2015, 2016, 2017, 2018, 2019, 2023  Eric Hameleers, Eindhoven, NL
+# Copyright 2008, 2009, 2010, 2011, 2012, 2018, 2020, 2024  Patrick J. Volkerding, Sebeka, MN, USA
+# Copyright 2010, 2011, 2012, 2014, 2015, 2016, 2017, 2018, 2019  Eric Hameleers, Eindhoven, NL
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,10 +24,11 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PKGNAM=phonon
-VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
+SRCNAM=phonon
+PKGNAM=phonon-qt6
+VERSION=${VERSION:-$(echo $SRCNAM-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 BUILD=${BUILD:-1}
-TAG=${TAG:-"_KDE6"}
+TAG=${TAG:-""}
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
@@ -85,9 +86,9 @@ PKG=$TMP/package-$PKGNAM
 rm -rf $PKG
 mkdir -p $TMP $PKG
 cd $TMP
-rm -rf $PKGNAM-$VERSION
-tar xvf $CWD/$PKGNAM-$VERSION.tar.?z || exit 1
-cd $PKGNAM-$VERSION || exit 1
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/$SRCNAM-$VERSION.tar.?z || exit 1
+cd $SRCNAM-$VERSION || exit 1
 
 chown -R root:root .
 find . \
@@ -96,25 +97,6 @@ find . \
   \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
   -exec chmod 644 {} \+
 
-# First, build Qt5 support:
-mkdir build-qt5
-cd build-qt5
-  cmake \
-    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
-    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMAN_INSTALL_DIR=/usr/man \
-    -DLIB_SUFFIX=${LIBDIRSUFFIX} \
-    -DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT:BOOL=ON \
-    -DPHONON_QT_PLUGIN_INSTALL_DIR=/usr/lib$LIBDIRSUFFIX/qt5/plugins/designer \
-    -DWITH_QZeitgeist=BOOL:OFF \
-    -DWITH_PulseAudio=BOOL:${PULSEAUDIO} \
-    -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
-    -DPHONON_BUILD_QT6=BOOL:OFF \
-    ..
-  make $NUMJOBS || make || exit 1
-  make install DESTDIR=$PKG || exit 1
-cd -
 # Next, Qt6 support:
 mkdir build-qt6
 cd build-qt6
@@ -143,6 +125,18 @@ mkdir -p $PKG//usr/lib${LIBDIRSUFFIX}/qt6/plugins/designer
 mv $PKG/usr/lib${LIBDIRSUFFIX}/qt5/plugins/designer/phonon4qt6widgets.so \
    $PKG/usr/lib${LIBDIRSUFFIX}/qt6/plugins/designer
 
+# script builds whatever it wants it seems, clean it up
+rm -rf $PKG/usr/include/phonon4qt5
+rm -rf $PKG/usr/bin
+rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/cmake/phonon4qt5
+rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/libphonon4qt5*
+rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/pkgconfig/phonon4qt5.pc
+rm -rf $PKG/usr/lib${LIBDIRSUFFIX}/qt5/*
+rm -rf $PKG/usr/share/locale/*
+rmdir $PKG/usr/lib${LIBDIRSUFFIX}/qt5/
+rmdir $PKG/usr/share/locale/
+rmdir $PKG/usr/share
+
 # Compress and link manpages, if any:
 if [ -d $PKG/usr/man ]; then
   ( cd $PKG/usr/man
@@ -157,9 +151,6 @@ if [ -d $PKG/usr/man ]; then
     done
   )
 fi
-
-mkdir -p $PKG/usr/doc/$PKGNAM-$VERSION
-cp -a doc/{BUGS,IDEAS,TODO} $PKG/usr/doc/$PKGNAM-$VERSION
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" \
   | grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null
