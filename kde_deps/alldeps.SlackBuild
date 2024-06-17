@@ -28,6 +28,7 @@ ALLDEPS=" \
   polkit-qt-1 \
   mpvqt \
   phonon \
+  phonon-backend-vlc \
   phonon-backend-gstreamer \
   phonon-backend-mpv \
   libdisplay-info \
