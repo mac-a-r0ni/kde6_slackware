@@ -27,6 +27,7 @@ PKGNAM=libdisplay-info
 SRCVER=${SRCVER:-$(echo $PKGNAM-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 VERSION=$(echo $SRCVER | tr -d r)
 BUILD=${BUILD:-1}
+TAG=${TAG:-""}
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
