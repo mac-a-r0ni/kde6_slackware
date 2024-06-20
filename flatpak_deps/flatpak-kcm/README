@@ -1,4 +1,3 @@
-lxqt-labwc-session (experimental Wayland LXQt session)
+flatpak-kcm (flatpak perms management)
 
-Full configured LXQt Wayland session using labwc with some
-limitations.
+Flatpak Permissions Management KCM.
