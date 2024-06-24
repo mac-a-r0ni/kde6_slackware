@@ -6,6 +6,7 @@
 # Set initial variables:
 CWD=$(pwd)
 TMP=${TMP:-/tmp}
+TAG=${TAG:-"_KDE6"}
 
 # Set the config option variables if they are not already set:
 [ -r ./alldeps.options ] && . ./alldeps.options
@@ -13,10 +14,10 @@ TMP=${TMP:-/tmp}
 # Avoid conflict with older versions of Qt that are installed:
 QTDIR=/usr/lib${LIBDIRSUFFIX}/qt6 ; export QTDIR
 
-# Yes, olm needs to be built/installed twice:
+# Build optional phonon backends
 ALLDEPS=" \
+  phonon-backend-gstreamer \
   phonon-backend-mpv \
-  phonon-backend-vlc \
   "
 
 # Allow for specification of individual packages to be built:

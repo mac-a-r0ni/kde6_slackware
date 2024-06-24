@@ -1,8 +1,1 @@
-mkdir cmake-build
-cd cmake-build
-  cmake \
-    "${KDE_BUILD_ARGS[@]}" \
-    $KDE_OPT_ARGS \
-    -DQT_DIR=/usr/lib$LIBDIRSUFFIX/cmake/Qt6 \
-    ..
-
+cmake5
