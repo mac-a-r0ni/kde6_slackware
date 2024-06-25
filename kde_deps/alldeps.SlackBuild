@@ -15,6 +15,10 @@ QTDIR=/usr/lib${LIBDIRSUFFIX}/qt6 ; export QTDIR
 
 # Yes, olm needs to be built/installed twice:
 ALLDEPS=" \
+  libindi \
+  wcslib \
+  libnova \
+  stellarsolver \
   cmark \
   ddcutil \
   readstat \
