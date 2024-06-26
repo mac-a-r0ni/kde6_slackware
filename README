@@ -1,3 +1,4 @@
+https://kde.org/announcements/plasma/6/6.1.1/
 https://kde.org/announcements/frameworks/6/6.3.0/
 https://kde.org/announcements/frameworks/5/5.116.0/
 https://kde.org/announcements/gear/24.05.1/
@@ -16,6 +17,15 @@ Keep Slackware KDE packages:
 
 fcitx5-configtool
 fcitx5-theme-breeze
-latte-dock
+latte-dock (is this no longer supported?)
 
 Please let me know if anything is missing, or any optional things you'd like to see added.
+
+I aim to completely replace Slackware's /kde directory. This includes replacing Plasma 5 with 6
+and all supplimental applications. The idea is to only require users blacklist the /kde folder
+within slackpkg+ and replace it with the contents of this repo.
+
+That said, I intend to ship every possible package which existed in KDE5 with a direct 
+replacement from KDE6. Other packages from /l & /n will be supplimented when qt6 libs
+are needed by a package with a "-qt6" suffixed name. This way, intrusion into your system
+is minimal, as only the /kde directory needs replacing and maintaining.
