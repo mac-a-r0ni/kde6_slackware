@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-           |-----handy-ruler------------------------------------------------------|
-kiconthemes-5: kiconthemes-5 (Icon GUI utilities)
-kiconthemes-5:
-kiconthemes-5: The KIconThemes library contains classes to improve the handling of
-kiconthemes-5: icons in applications using the KDE Frameworks.
-kiconthemes-5:
-kiconthemes-5:
-kiconthemes-5:
-kiconthemes-5:
-kiconthemes-5:
-kiconthemes-5:
-kiconthemes-5:
+            |-----handy-ruler------------------------------------------------------|
+kiconthemes5: kiconthemes5 (Icon GUI utilities)
+kiconthemes5:
+kiconthemes5: The KIconThemes library contains classes to improve the handling of
+kiconthemes5: icons in applications using the KDE Frameworks.
+kiconthemes5:
+kiconthemes5:
+kiconthemes5:
+kiconthemes5:
+kiconthemes5:
+kiconthemes5:
+kiconthemes5:

@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-           |-----handy-ruler------------------------------------------------------|
-kcoreaddons-5: kcoreaddons-5 (QtCore addon library)
-kcoreaddons-5:
-kcoreaddons-5: KCoreAddons provides classes built on top of QtCore to perform various
-kcoreaddons-5: tasks such as manipulating mime types, autosaving files, creating
-kcoreaddons-5: backup files, generating random sequences, performing text
-kcoreaddons-5: manipulations such as macro replacement, accessing user information
-kcoreaddons-5: and many more.
-kcoreaddons-5:
-kcoreaddons-5:
-kcoreaddons-5:
-kcoreaddons-5:
+            |-----handy-ruler------------------------------------------------------|
+kcoreaddons5: kcoreaddons5 (QtCore addon library)
+kcoreaddons5:
+kcoreaddons5: KCoreAddons provides classes built on top of QtCore to perform various
+kcoreaddons5: tasks such as manipulating mime types, autosaving files, creating
+kcoreaddons5: backup files, generating random sequences, performing text
+kcoreaddons5: manipulations such as macro replacement, accessing user information
+kcoreaddons5: and many more.
+kcoreaddons5:
+kcoreaddons5:
+kcoreaddons5:
+kcoreaddons5:

@@ -5,15 +5,15 @@
 # exactly 11 lines for the formatting to be correct. It's also customary to
 # leave one space after the ':'.
 
-          |-----handy-ruler------------------------------------------------------|
-libkgapi-5: libkgapi (Google service API library)
-libkgapi-5:
-libkgapi-5: A KDE-based library for accessing various Google services via their
-libkgapi-5: public API.
-libkgapi-5:
-libkgapi-5:
-libkgapi-5:
-libkgapi-5:
-libkgapi-5:
-libkgapi-5:
-libkgapi-5:
+         |-----handy-ruler------------------------------------------------------|
+libkgapi5: libkgapi (Google service API library)
+libkgapi5:
+libkgapi5: A KDE-based library for accessing various Google services via their
+libkgapi5: public API.
+libkgapi5:
+libkgapi5:
+libkgapi5:
+libkgapi5:
+libkgapi5:
+libkgapi5:
+libkgapi5:

@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':'.
 
-         |-----handy-ruler------------------------------------------------------|
-kcontacts-5: kcontacts-5 (address book API for KDE)
-kcontacts-5:
-kcontacts-5: kcontacts-5 contains an address book API for KDE. This can be used by
-kcontacts-5: all KDE applications using data of this type, e.g. KAddressBook,
-kcontacts-5: KMail, KOrganizer, KPilot etc.
-kcontacts-5:
-kcontacts-5:
-kcontacts-5:
-kcontacts-5:
-kcontacts-5:
-kcontacts-5:
+          |-----handy-ruler------------------------------------------------------|
+kcontacts5: kcontacts5 (address book API for KDE)
+kcontacts5:
+kcontacts5: kcontacts5 contains an address book API for KDE. This can be used by
+kcontacts5: all KDE applications using data of this type, e.g. KAddressBook,
+kcontacts5: KMail, KOrganizer, KPilot etc.
+kcontacts5:
+kcontacts5:
+kcontacts5:
+kcontacts5:
+kcontacts5:
+kcontacts5:

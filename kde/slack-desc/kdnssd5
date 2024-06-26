@@ -5,15 +5,15 @@
 # exactly 11 lines for the formatting to be correct. It's also customary to
 # leave one space after the ':'.
 
-      |-----handy-ruler------------------------------------------------------|
-kdnssd-5: kdnssd-5 (network monitor for zeroconf)
-kdnssd-5:
-kdnssd-5: A network monitor for DNS-SD services (Zeroconf).
-kdnssd-5:
-kdnssd-5:
-kdnssd-5:
-kdnssd-5:
-kdnssd-5:
-kdnssd-5:
-kdnssd-5:
-kdnssd-5:
+       |-----handy-ruler------------------------------------------------------|
+kdnssd5: kdnssd5 (network monitor for zeroconf)
+kdnssd5:
+kdnssd5: A network monitor for DNS-SD services (Zeroconf).
+kdnssd5:
+kdnssd5:
+kdnssd5:
+kdnssd5:
+kdnssd5:
+kdnssd5:
+kdnssd5:
+kdnssd5:

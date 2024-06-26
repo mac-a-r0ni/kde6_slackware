@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-            |-----handy-ruler------------------------------------------------------|
-kglobalaccel-5: kglobalaccel-5 (Global desktop keyboard shortcuts)
-kglobalaccel-5:
-kglobalaccel-5: KGlobalAccel allows you to have global accelerators that are
-kglobalaccel-5: independent of the focused window. Unlike regular shortcuts, the
-kglobalaccel-5: application's window does not need focus for them to be activated.
-kglobalaccel-5:
-kglobalaccel-5:
-kglobalaccel-5:
-kglobalaccel-5:
-kglobalaccel-5:
-kglobalaccel-5:
+             |-----handy-ruler------------------------------------------------------|
+kglobalaccel5: kglobalaccel5 (Global desktop keyboard shortcuts)
+kglobalaccel5:
+kglobalaccel5: KGlobalAccel allows you to have global accelerators that are
+kglobalaccel5: independent of the focused window. Unlike regular shortcuts, the
+kglobalaccel5: application's window does not need focus for them to be activated.
+kglobalaccel5:
+kglobalaccel5:
+kglobalaccel5:
+kglobalaccel5:
+kglobalaccel5:
+kglobalaccel5:

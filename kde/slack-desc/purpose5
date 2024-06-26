@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':'.
 
-       |-----handy-ruler------------------------------------------------------|
-purpose-5: purpose-5 (offers actions for a specific purpose-5)
-purpose-5:
-purpose-5: This framework offers the possibility to create integrate services and
-purpose-5: actions on any application without having to implement them
-purpose-5: specifically. Purpose will offer them mechanisms to list the different
-purpose-5: alternatives to execute given the requested action type and will
-purpose-5: facilitate components so that all the plugins can receive all the
-purpose-5: information they need.
-purpose-5:
-purpose-5:
-purpose-5:
+        |-----handy-ruler------------------------------------------------------|
+purpose5: purpose5 (offers actions for a specific purpose5)
+purpose5:
+purpose5: This framework offers the possibility to create integrate services and
+purpose5: actions on any application without having to implement them
+purpose5: specifically. Purpose will offer them mechanisms to list the different
+purpose5: alternatives to execute given the requested action type and will
+purpose5: facilitate components so that all the plugins can receive all the
+purpose5: information they need.
+purpose5:
+purpose5:
+purpose5:

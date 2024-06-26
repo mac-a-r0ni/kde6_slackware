@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-        |-----handy-ruler------------------------------------------------------|
-kcmutils-5: kcmutils-5 (KDE System Settings utilities)
-kcmutils-5:
-kcmutils-5: KCMUtils provides various classes to work with KCModules. KCModules
-kcmutils-5: can be created with the KConfigWidgets framework.
-kcmutils-5:
-kcmutils-5:
-kcmutils-5:
-kcmutils-5:
-kcmutils-5:
-kcmutils-5:
-kcmutils-5:
+         |-----handy-ruler------------------------------------------------------|
+kcmutils5: kcmutils5 (KDE System Settings utilities)
+kcmutils5:
+kcmutils5: KCMUtils provides various classes to work with KCModules. KCModules
+kcmutils5: can be created with the KConfigWidgets framework.
+kcmutils5:
+kcmutils5:
+kcmutils5:
+kcmutils5:
+kcmutils5:
+kcmutils5:
+kcmutils5:

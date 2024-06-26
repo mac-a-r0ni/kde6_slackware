@@ -5,15 +5,15 @@
 # exactly 11 lines for the formatting to be correct. It's also customary to
 # leave one space after the ':'.
 
-    |-----handy-ruler------------------------------------------------------|
-kdav-5: kdav-5 (KDE DAV protocol implementation)
-kdav-5:
-kdav-5: The DAV protocol extends HTTP with new methods that allow a DAV client
-kdav-5: to create, modify, and update files and directories in the server.
-kdav-5: KDAV provides a DAV protocol implemention with KJobs. Calendars and
-kdav-5: todos are supported, using either GroupDAV or CalDAV, and contacts are
-kdav-5: supported using GroupDAV or CardDAV.
-kdav-5:
-kdav-5:
-kdav-5:
-kdav-5:
+     |-----handy-ruler------------------------------------------------------|
+kdav5: kdav5 (KDE DAV protocol implementation)
+kdav5:
+kdav5: The DAV protocol extends HTTP with new methods that allow a DAV client
+kdav5: to create, modify, and update files and directories in the server.
+kdav5: KDAV provides a DAV protocol implemention with KJobs. Calendars and
+kdav5: todos are supported, using either GroupDAV or CalDAV, and contacts are
+kdav5: supported using GroupDAV or CardDAV.
+kdav5:
+kdav5:
+kdav5:
+kdav5:

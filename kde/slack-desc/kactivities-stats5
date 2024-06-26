@@ -5,15 +5,15 @@
 # exactly 11 lines for the formatting to be correct. It's also customary to
 # leave one space after the ':'.
 
-                 |-----handy-ruler------------------------------------------------------|
-kactivities-stats-5: kactivities-stats-5 (component of KDE Activities)
-kactivities-stats-5:
-kactivities-stats-5: kactivities-stats-5 is library for accessing the usage data collected by
-kactivities-stats-5: the Activities system.
-kactivities-stats-5:
-kactivities-stats-5:
-kactivities-stats-5:
-kactivities-stats-5:
-kactivities-stats-5:
-kactivities-stats-5:
-kactivities-stats-5:
+                  |-----handy-ruler------------------------------------------------------|
+kactivities-stats5: kactivities-stats5 (component of KDE Activities)
+kactivities-stats5:
+kactivities-stats5: kactivities-stats5 is library for accessing the usage data collected by
+kactivities-stats5: the Activities system.
+kactivities-stats5:
+kactivities-stats5:
+kactivities-stats5:
+kactivities-stats5:
+kactivities-stats5:
+kactivities-stats5:
+kactivities-stats5:

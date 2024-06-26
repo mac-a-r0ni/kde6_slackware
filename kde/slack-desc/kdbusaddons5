@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-           |-----handy-ruler------------------------------------------------------|
-kdbusaddons-5: kdbusaddons-5 (Convenience classes for D-Bus)
-kdbusaddons-5:
-kdbusaddons-5: KDBusAddons provides convenience classes on top of QtDBus, as well as
-kdbusaddons-5: an API to create KDED modules.
-kdbusaddons-5:
-kdbusaddons-5:
-kdbusaddons-5:
-kdbusaddons-5:
-kdbusaddons-5:
-kdbusaddons-5:
-kdbusaddons-5:
+            |-----handy-ruler------------------------------------------------------|
+kdbusaddons5: kdbusaddons5 (Convenience classes for D-Bus)
+kdbusaddons5:
+kdbusaddons5: KDBusAddons provides convenience classes on top of QtDBus, as well as
+kdbusaddons5: an API to create KDED modules.
+kdbusaddons5:
+kdbusaddons5:
+kdbusaddons5:
+kdbusaddons5:
+kdbusaddons5:
+kdbusaddons5:
+kdbusaddons5:

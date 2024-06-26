@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-   |-----handy-ruler------------------------------------------------------|
-kjs-5: kjs-5 (Javascript engine)
-kjs-5:
-kjs-5: The KJS library provides an ECMAScript compatible interpreter. The
-kjs-5: ECMA standard is based on well known scripting languages such as
-kjs-5: Mozilla's JavaScript and Microsoft's JScript.
-kjs-5:
-kjs-5:
-kjs-5:
-kjs-5:
-kjs-5:
-kjs-5:
+    |-----handy-ruler------------------------------------------------------|
+kjs5: kjs5 (Javascript engine)
+kjs5:
+kjs5: The KJS library provides an ECMAScript compatible interpreter. The
+kjs5: ECMA standard is based on well known scripting languages such as
+kjs5: Mozilla's JavaScript and Microsoft's JScript.
+kjs5:
+kjs5:
+kjs5:
+kjs5:
+kjs5:
+kjs5:

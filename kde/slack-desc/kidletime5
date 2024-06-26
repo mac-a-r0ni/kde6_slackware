@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-         |-----handy-ruler------------------------------------------------------|
-kidletime-5: kidletime-5 (report system/user idle time)
-kidletime-5:
-kidletime-5: KIdleTime is a singleton reporting information on idle time. It is
-kidletime-5: useful not only for finding out about the current idle time of the
-kidletime-5: system, but also for getting notified upon idle time events, such as
-kidletime-5: custom timeouts or user activity.
-kidletime-5:
-kidletime-5:
-kidletime-5:
-kidletime-5:
-kidletime-5:
+          |-----handy-ruler------------------------------------------------------|
+kidletime5: kidletime5 (report system/user idle time)
+kidletime5:
+kidletime5: KIdleTime is a singleton reporting information on idle time. It is
+kidletime5: useful not only for finding out about the current idle time of the
+kidletime5: system, but also for getting notified upon idle time events, such as
+kidletime5: custom timeouts or user activity.
+kidletime5:
+kidletime5:
+kidletime5:
+kidletime5:
+kidletime5:

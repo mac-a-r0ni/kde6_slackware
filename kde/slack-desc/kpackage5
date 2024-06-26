@@ -5,15 +5,15 @@
 # exactly 11 lines for the formatting to be correct. It's also customary to
 # leave one space after the ':'.
 
-        |-----handy-ruler------------------------------------------------------|
-kpackage-5: kpackage-5 (KDE application package manager)
-kpackage-5:
-kpackage-5: KPackage is a KDE 5 Framework that lets applications manage user
-kpackage-5: installable packages of non-binary assets.
-kpackage-5:
-kpackage-5:
-kpackage-5:
-kpackage-5:
-kpackage-5:
-kpackage-5:
-kpackage-5:
+         |-----handy-ruler------------------------------------------------------|
+kpackage5: kpackage5 (KDE application package manager)
+kpackage5:
+kpackage5: KPackage is a KDE 5 Framework that lets applications manage user
+kpackage5: installable packages of non-binary assets.
+kpackage5:
+kpackage5:
+kpackage5:
+kpackage5:
+kpackage5:
+kpackage5:
+kpackage5:

@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-          |-----handy-ruler------------------------------------------------------|
-kguiaddons-5: kguiaddons-5 (KDE GUI Addons)
-kguiaddons-5:
-kguiaddons-5: The KDE GUI addons provide utilities for graphical user interfaces in
-kguiaddons-5: the areas of colors, fonts, text, images, and keyboard input.
-kguiaddons-5:
-kguiaddons-5:
-kguiaddons-5:
-kguiaddons-5:
-kguiaddons-5:
-kguiaddons-5:
-kguiaddons-5:
+           |-----handy-ruler------------------------------------------------------|
+kguiaddons5: kguiaddons5 (KDE GUI Addons)
+kguiaddons5:
+kguiaddons5: The KDE GUI addons provide utilities for graphical user interfaces in
+kguiaddons5: the areas of colors, fonts, text, images, and keyboard input.
+kguiaddons5:
+kguiaddons5:
+kguiaddons5:
+kguiaddons5:
+kguiaddons5:
+kguiaddons5:
+kguiaddons5:

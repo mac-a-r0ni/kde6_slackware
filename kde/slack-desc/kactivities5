@@ -5,15 +5,15 @@
 # exactly 11 lines for the formatting to be correct. It's also customary to
 # leave one space after the ':'.
 
-           |-----handy-ruler------------------------------------------------------|
-kactivities-5: kactivities-5 (API for using Activities)
-kactivities-5:
-kactivities-5: API for using and interacting with Activities as a consumer,
-kactivities-5: application adding information to them, or as an activity manager.
-kactivities-5:
-kactivities-5:
-kactivities-5:
-kactivities-5:
-kactivities-5:
-kactivities-5:
-kactivities-5:
+            |-----handy-ruler------------------------------------------------------|
+kactivities5: kactivities5 (API for using Activities)
+kactivities5:
+kactivities5: API for using and interacting with Activities as a consumer,
+kactivities5: application adding information to them, or as an activity manager.
+kactivities5:
+kactivities5:
+kactivities5:
+kactivities5:
+kactivities5:
+kactivities5:
+kactivities5:

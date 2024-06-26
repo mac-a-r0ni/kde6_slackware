@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-         |-----handy-ruler------------------------------------------------------|
-knewstuff-5: knewstuff-5 (data sharing framework)
-knewstuff-5:
-knewstuff-5: The KNewStuff library implements collaborative data sharing for
-knewstuff-5: applications. It uses libattica to support the Open Collaboration
-knewstuff-5: Services specification.
-knewstuff-5:
-knewstuff-5:
-knewstuff-5:
-knewstuff-5:
-knewstuff-5:
-knewstuff-5:
+          |-----handy-ruler------------------------------------------------------|
+knewstuff5: knewstuff5 (data sharing framework)
+knewstuff5:
+knewstuff5: The KNewStuff library implements collaborative data sharing for
+knewstuff5: applications. It uses libattica to support the Open Collaboration
+knewstuff5: Services specification.
+knewstuff5:
+knewstuff5:
+knewstuff5:
+knewstuff5:
+knewstuff5:
+knewstuff5:

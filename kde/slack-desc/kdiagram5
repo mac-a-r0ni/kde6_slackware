@@ -5,15 +5,15 @@
 # exactly 11 lines for the formatting to be correct. It's also customary to
 # leave one space after the ':'.
 
-          |-----handy-ruler------------------------------------------------------|
-kdiagram-5: kdiagram-5 (libraries for creating business diagrams)
-kdiagram-5:
-kdiagram-5: Powerful libraries (KChart, KGantt) for creating business diagrams.
-kdiagram-5:
-kdiagram-5: Homepage: https://github.com/KDE/kdiagram
-kdiagram-5:
-kdiagram-5:
-kdiagram-5:
-kdiagram-5:
-kdiagram-5:
-kdiagram-5:
+         |-----handy-ruler------------------------------------------------------|
+kdiagram5: kdiagram5 (libraries for creating business diagrams)
+kdiagram5:
+kdiagram5: Powerful libraries (KChart, KGantt) for creating business diagrams.
+kdiagram5:
+kdiagram5: Homepage: https://github.com/KDE/kdiagram
+kdiagram5:
+kdiagram5:
+kdiagram5:
+kdiagram5:
+kdiagram5:
+kdiagram5:

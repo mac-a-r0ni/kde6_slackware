@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-        |-----handy-ruler------------------------------------------------------|
-attica-5: attica-5 (Open Collaboration Service library)
-attica-5:
-attica-5: Attica is a Qt library that implements the freedesktop.org
-attica-5: specification for the Open Collaboration Services API version 1.4.
-attica-5: It grants easy access to the services such as querying information
-attica-5: about persons and contents.
-attica-5:
-attica-5:
-attica-5:
-attica-5:
-attica-5:
+       |-----handy-ruler------------------------------------------------------|
+attica5: attica5 (Open Collaboration Service library)
+attica5:
+attica5: Attica is a Qt library that implements the freedesktop.org
+attica5: specification for the Open Collaboration Services API version 1.4.
+attica5: It grants easy access to the services such as querying information
+attica5: about persons and contents.
+attica5:
+attica5:
+attica5:
+attica5:
+attica5:

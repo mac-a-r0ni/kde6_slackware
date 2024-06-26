@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-    |-----handy-ruler------------------------------------------------------|
-kpty-5: kpty-5 (pseudo terminal library)
-kpty-5:
-kpty-5: The KPty library provides primitives to interface with pseudo terminal
-kpty-5: devices as well as a KProcess derived class for running child
-kpty-5: processes and communicating with them using a pty.
-kpty-5:
-kpty-5:
-kpty-5:
-kpty-5:
-kpty-5:
-kpty-5:
+     |-----handy-ruler------------------------------------------------------|
+kpty5: kpty5 (pseudo terminal library)
+kpty5:
+kpty5: The KPty library provides primitives to interface with pseudo terminal
+kpty5: devices as well as a KProcess derived class for running child
+kpty5: processes and communicating with them using a pty.
+kpty5:
+kpty5:
+kpty5:
+kpty5:
+kpty5:
+kpty5:

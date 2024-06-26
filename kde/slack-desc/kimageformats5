@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-             |-----handy-ruler------------------------------------------------------|
-kimageformats-5: kimageformats-5 (QImage format plugins)
-kimageformats-5:
-kimageformats-5: This framework provides additional image format plugins for QtGui. As
-kimageformats-5: such it is not required for the compilation of any other software, but
-kimageformats-5: may be a runtime requirement for Qt-based software to support certain
-kimageformats-5: image formats.
-kimageformats-5:
-kimageformats-5:
-kimageformats-5:
-kimageformats-5:
-kimageformats-5:
+              |-----handy-ruler------------------------------------------------------|
+kimageformats5: kimageformats5 (QImage format plugins)
+kimageformats5:
+kimageformats5: This framework provides additional image format plugins for QtGui. As
+kimageformats5: such it is not required for the compilation of any other software, but
+kimageformats5: may be a runtime requirement for Qt-based software to support certain
+kimageformats5: image formats.
+kimageformats5:
+kimageformats5:
+kimageformats5:
+kimageformats5:
+kimageformats5:

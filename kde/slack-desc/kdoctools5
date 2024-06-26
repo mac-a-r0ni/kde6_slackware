@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-         |-----handy-ruler------------------------------------------------------|
-kdoctools-5: kdoctools-5 (Create documentation from DocBook)
-kdoctools-5:
-kdoctools-5: KDocTools provides tools to generate documentation in various formats
-kdoctools-5: from DocBook files.
-kdoctools-5:
-kdoctools-5:
-kdoctools-5:
-kdoctools-5:
-kdoctools-5:
-kdoctools-5:
-kdoctools-5:
+          |-----handy-ruler------------------------------------------------------|
+kdoctools5: kdoctools5 (Create documentation from DocBook)
+kdoctools5:
+kdoctools5: KDocTools provides tools to generate documentation in various formats
+kdoctools5: from DocBook files.
+kdoctools5:
+kdoctools5:
+kdoctools5:
+kdoctools5:
+kdoctools5:
+kdoctools5:
+kdoctools5:

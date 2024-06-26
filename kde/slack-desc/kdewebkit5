@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-           |-----handy-ruler------------------------------------------------------|
-kdewebkit-5: kdewebkit-5 (WebKit rendering engine for KDE)
-kdewebkit-5:
-kdewebkit-5: This library provides KDE integration of the QtWebKit library. If you
-kdewebkit-5: are using QtWebKit in your KDE application, you are encouraged to use
-kdewebkit-5: this layer instead of using the QtWebKit classes directly. In
-kdewebkit-5: particular, you should use KWebView in place of QWebView,
-kdewebkit-5: KGraphicsWebView in place of QGraphicsWebView and KWebPage in place of
-kdewebkit-5: QWebPage. See the documentation for more information.
-kdewebkit-5:
-kdewebkit-5:
-kdewebkit-5:
+          |-----handy-ruler------------------------------------------------------|
+kdewebkit5: kdewebkit5 (WebKit rendering engine for KDE)
+kdewebkit5:
+kdewebkit5: This library provides KDE integration of the QtWebKit library. If you
+kdewebkit5: are using QtWebKit in your KDE application, you are encouraged to use
+kdewebkit5: this layer instead of using the QtWebKit classes directly. In
+kdewebkit5: particular, you should use KWebView in place of QWebView,
+kdewebkit5: KGraphicsWebView in place of QGraphicsWebView and KWebPage in place of
+kdewebkit5: QWebPage. See the documentation for more information.
+kdewebkit5:
+kdewebkit5:
+kdewebkit5:

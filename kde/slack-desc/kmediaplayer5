@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-            |-----handy-ruler------------------------------------------------------|
-kmediaplayer-5: kmediaplayer-5 (Interface for media player KParts)
-kmediaplayer-5:
-kmediaplayer-5: KMediaPlayer builds on the KParts framework to provide a common
-kmediaplayer-5: interface for KParts that can play media files.
-kmediaplayer-5:
-kmediaplayer-5:
-kmediaplayer-5:
-kmediaplayer-5:
-kmediaplayer-5:
-kmediaplayer-5:
-kmediaplayer-5:
+             |-----handy-ruler------------------------------------------------------|
+kmediaplayer5: kmediaplayer5 (Interface for media player KParts)
+kmediaplayer5:
+kmediaplayer5: KMediaPlayer builds on the KParts framework to provide a common
+kmediaplayer5: interface for KParts that can play media files.
+kmediaplayer5:
+kmediaplayer5:
+kmediaplayer5:
+kmediaplayer5:
+kmediaplayer5:
+kmediaplayer5:
+kmediaplayer5:

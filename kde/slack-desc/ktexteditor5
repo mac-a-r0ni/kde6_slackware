@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-           |-----handy-ruler------------------------------------------------------|
-ktexteditor-5: ktexteditor-5 (text editor component)
-ktexteditor-5:
-ktexteditor-5: KTextEditor provides a powerful text editor component that you can
-ktexteditor-5: embed in your application, either as a KPart or using the
-ktexteditor-5: KF5::TextEditor library. The text editor component contains many
-ktexteditor-5: useful features, from syntax highlighting and automatic indentation to
-ktexteditor-5: advanced scripting support, making it suitable for everything from a
-ktexteditor-5: simple embedded text-file editor to an advanced IDE.
-ktexteditor-5:
-ktexteditor-5:
-ktexteditor-5:
+            |-----handy-ruler------------------------------------------------------|
+ktexteditor5: ktexteditor5 (text editor component)
+ktexteditor5:
+ktexteditor5: KTextEditor provides a powerful text editor component that you can
+ktexteditor5: embed in your application, either as a KPart or using the
+ktexteditor5: KF5::TextEditor library. The text editor component contains many
+ktexteditor5: useful features, from syntax highlighting and automatic indentation to
+ktexteditor5: advanced scripting support, making it suitable for everything from a
+ktexteditor5: simple embedded text-file editor to an advanced IDE.
+ktexteditor5:
+ktexteditor5:
+ktexteditor5:

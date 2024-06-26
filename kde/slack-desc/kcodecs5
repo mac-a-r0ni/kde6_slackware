@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-       |-----handy-ruler------------------------------------------------------|
-kcodecs-5: kcodecs-5 (String encoding library)
-kcodecs-5:
-kcodecs-5: KCodecs provide a collection of methods to manipulate strings using
-kcodecs-5: various encodings. It can automatically determine the charset of a
-kcodecs-5: string, translate XML entities, validate email addresses, and find
-kcodecs-5: encodings by name in a more tolerant way than QTextCodec (useful e.g.
-kcodecs-5: for data coming from the Internet).
-kcodecs-5:
-kcodecs-5:
-kcodecs-5:
-kcodecs-5:
+        |-----handy-ruler------------------------------------------------------|
+kcodecs5: kcodecs5 (String encoding library)
+kcodecs5:
+kcodecs5: KCodecs provide a collection of methods to manipulate strings using
+kcodecs5: various encodings. It can automatically determine the charset of a
+kcodecs5: string, translate XML entities, validate email addresses, and find
+kcodecs5: encodings by name in a more tolerant way than QTextCodec (useful e.g.
+kcodecs5: for data coming from the Internet).
+kcodecs5:
+kcodecs5:
+kcodecs5:
+kcodecs5:

@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-     |-----handy-ruler------------------------------------------------------|
-ki18n-5: ki18n-5 (UI text internationalization)
-ki18n-5:
-ki18n-5: KI18n provides functionality for internationalizing user interface
-ki18n-5: text in applications, based on the GNU Gettext translation system.
-ki18n-5: It wraps the standard Gettext functionality, so that the programmers
-ki18n-5: and translators can use the familiar Gettext tools and workflows.
-ki18n-5: KI18n also provides argument capturing, customizable markup, and
-ki18n-5: translation scripting.
-ki18n-5:
-ki18n-5:
-ki18n-5:
+      |-----handy-ruler------------------------------------------------------|
+ki18n5: ki18n5 (UI text internationalization)
+ki18n5:
+ki18n5: KI18n provides functionality for internationalizing user interface
+ki18n5: text in applications, based on the GNU Gettext translation system.
+ki18n5: It wraps the standard Gettext functionality, so that the programmers
+ki18n5: and translators can use the familiar Gettext tools and workflows.
+ki18n5: KI18n also provides argument capturing, customizable markup, and
+ki18n5: translation scripting.
+ki18n5:
+ki18n5:
+ki18n5:

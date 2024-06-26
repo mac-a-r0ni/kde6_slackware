@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-         |-----handy-ruler------------------------------------------------------|
-kplotting-5: kplotting-5 (Data plotting)
-kplotting-5:
-kplotting-5: KPlotWidget is a QWidget-derived class that provides a virtual base
-kplotting-5: class for easy data-plotting. The idea behind KPlotWidget is that you
-kplotting-5: only have to specify information in data units; i.e., the natural
-kplotting-5: units of the data being plotted. KPlotWidget automatically converts
-kplotting-5: everything to screen pixel units. KPlotWidget draws X and Y axes with
-kplotting-5: tick marks and tick labels, and automatically determines how many tick
-kplotting-5: marks to use and where they should be, based on the data limits
-kplotting-5: specified for the plot.
-kplotting-5:
+          |-----handy-ruler------------------------------------------------------|
+kplotting5: kplotting5 (Data plotting)
+kplotting5:
+kplotting5: KPlotWidget is a QWidget-derived class that provides a virtual base
+kplotting5: class for easy data-plotting. The idea behind KPlotWidget is that you
+kplotting5: only have to specify information in data units; i.e., the natural
+kplotting5: units of the data being plotted. KPlotWidget automatically converts
+kplotting5: everything to screen pixel units. KPlotWidget draws X and Y axes with
+kplotting5: tick marks and tick labels, and automatically determines how many tick
+kplotting5: marks to use and where they should be, based on the data limits
+kplotting5: specified for the plot.
+kplotting5:

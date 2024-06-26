@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-            |-----handy-ruler------------------------------------------------------|
-ktextwidgets-5: ktextwidgets-5 (text editing widgets)
-ktextwidgets-5:
-ktextwidgets-5: KTextWidgets provides widgets for displaying and editing text. It
-ktextwidgets-5: supports rich text as well as plain text.
-ktextwidgets-5:
-ktextwidgets-5:
-ktextwidgets-5:
-ktextwidgets-5:
-ktextwidgets-5:
-ktextwidgets-5:
-ktextwidgets-5:
+             |-----handy-ruler------------------------------------------------------|
+ktextwidgets5: ktextwidgets5 (text editing widgets)
+ktextwidgets5:
+ktextwidgets5: KTextWidgets provides widgets for displaying and editing text. It
+ktextwidgets5: supports rich text as well as plain text.
+ktextwidgets5:
+ktextwidgets5:
+ktextwidgets5:
+ktextwidgets5:
+ktextwidgets5:
+ktextwidgets5:
+ktextwidgets5:

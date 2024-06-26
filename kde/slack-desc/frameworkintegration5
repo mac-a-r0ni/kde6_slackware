@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-                      |-----handy-ruler------------------------------------------------------|
-frameworkintegration-5: frameworkintegration-5 (applications integration with KDE)
-frameworkintegration-5:
-frameworkintegration-5: Framework providing components to allow applications to integrate
-frameworkintegration-5: with a KDE Workspace.
-frameworkintegration-5:
-frameworkintegration-5: Homepage: https://community.kde.org/Frameworks
-frameworkintegration-5:
-frameworkintegration-5:
-frameworkintegration-5:
-frameworkintegration-5:
-frameworkintegration-5:
+                     |-----handy-ruler------------------------------------------------------|
+frameworkintegration5: frameworkintegration5 (applications integration with KDE)
+frameworkintegration5:
+frameworkintegration5: Framework providing components to allow applications to integrate
+frameworkintegration5: with a KDE Workspace.
+frameworkintegration5:
+frameworkintegration5: Homepage: https://community.kde.org/Frameworks
+frameworkintegration5:
+frameworkintegration5:
+frameworkintegration5:
+frameworkintegration5:
+frameworkintegration5:

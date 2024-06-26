@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-           |-----handy-ruler------------------------------------------------------|
-kcompletion-5: kcompletion-5 (Powerful completion framework)
-kcompletion-5:
-kcompletion-5: When typing filenames, email addresses and other text where the user
-kcompletion-5: often wants to select from existing data (including what they
-kcompletion-5: previously typed) rather than enter anything wholly original, users
-kcompletion-5: often find it helpful if they only need to type the first few
-kcompletion-5: characters, and then have the application offer them a set of choices
-kcompletion-5: or attempt to finish off what they were typing. This framework helps
-kcompletion-5: implement this in Qt-based applications. 
-kcompletion-5:
-kcompletion-5:
+            |-----handy-ruler------------------------------------------------------|
+kcompletion5: kcompletion5 (Powerful completion framework)
+kcompletion5:
+kcompletion5: When typing filenames, email addresses and other text where the user
+kcompletion5: often wants to select from existing data (including what they
+kcompletion5: previously typed) rather than enter anything wholly original, users
+kcompletion5: often find it helpful if they only need to type the first few
+kcompletion5: characters, and then have the application offer them a set of choices
+kcompletion5: or attempt to finish off what they were typing. This framework helps
+kcompletion5: implement this in Qt-based applications.
+kcompletion5:
+kcompletion5:

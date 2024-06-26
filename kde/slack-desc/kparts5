@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-      |-----handy-ruler------------------------------------------------------|
-kparts-5: kparts-5 (UI framework)
-kparts-5:
-kparts-5: The KParts library implements the framework for KDE parts, which are
-kparts-5: elaborate widgets with a user-interface defined in terms of actions
-kparts-5: (menu items, toolbar icons).
-kparts-5:
-kparts-5:
-kparts-5:
-kparts-5:
-kparts-5:
-kparts-5:
+       |-----handy-ruler------------------------------------------------------|
+kparts5: kparts5 (UI framework)
+kparts5:
+kparts5: The KParts library implements the framework for KDE parts, which are
+kparts5: elaborate widgets with a user-interface defined in terms of actions
+kparts5: (menu items, toolbar icons).
+kparts5:
+kparts5:
+kparts5:
+kparts5:
+kparts5:
+kparts5:

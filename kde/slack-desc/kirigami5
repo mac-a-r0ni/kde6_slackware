@@ -6,14 +6,14 @@
 # customary to leave one space after the ':'.
 
          |-----handy-ruler------------------------------------------------------|
-kirigami-5: kirigami-5 (interface components for QtQuick)
-kirigami-5:
-kirigami-5: Kirigami is a set of user interface components created to enable the
-kirigami-5: creation of pleasant, efficient applications by KDE's Plasma team and
-kirigami-5: the KDE Visual Design Group.
-kirigami-5:
-kirigami-5:
-kirigami-5:
-kirigami-5:
-kirigami-5:
-kirigami-5:
+kirigami5: kirigami5 (interface components for QtQuick)
+kirigami5:
+kirigami5: Kirigami is a set of user interface components created to enable the
+kirigami5: creation of pleasant, efficient applications by KDE's Plasma team and
+kirigami5: the KDE Visual Design Group.
+kirigami5:
+kirigami5:
+kirigami5:
+kirigami5:
+kirigami5:
+kirigami5:

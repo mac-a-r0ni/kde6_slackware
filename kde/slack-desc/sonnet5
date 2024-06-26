@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-      |-----handy-ruler------------------------------------------------------|
-sonnet-5: sonnet-5 (Multi-language spell checker)
-sonnet-5:
-sonnet-5: Sonnet is a plugin-based spell checking library for Qt-based
-sonnet-5: applications. It supports several different plugins, including HSpell,
-sonnet-5: Enchant, ASpell and HUNSPELL. It also supports automated language
-sonnet-5: detection, based on a combination of different algorithms.
-sonnet-5:
-sonnet-5:
-sonnet-5:
-sonnet-5:
-sonnet-5:
+       |-----handy-ruler------------------------------------------------------|
+sonnet5: sonnet5 (Multi-language spell checker)
+sonnet5:
+sonnet5: Sonnet is a plugin-based spell checking library for Qt-based
+sonnet5: applications. It supports several different plugins, including HSpell,
+sonnet5: Enchant, ASpell and HUNSPELL. It also supports automated language
+sonnet5: detection, based on a combination of different algorithms.
+sonnet5:
+sonnet5:
+sonnet5:
+sonnet5:
+sonnet5:

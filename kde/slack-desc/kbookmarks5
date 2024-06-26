@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-          |-----handy-ruler------------------------------------------------------|
-kbookmarks-5: kbookmarks-5 (Bookmarks management library)
-kbookmarks-5:
-kbookmarks-5: KBookmarks lets you access and manipulate bookmarks stored using the
-kbookmarks-5: XBEL format. The most common use for bookmarks is web browsers, but
-kbookmarks-5: this can also be useful in any application where local files or URLs
-kbookmarks-5: can be saved as bookmarks.
-kbookmarks-5:
-kbookmarks-5: For more information on the XBEL format, see:
-kbookmarks-5:   http://pyxml.sourceforge.net/topics/xbel/
-kbookmarks-5:
-kbookmarks-5:
+           |-----handy-ruler------------------------------------------------------|
+kbookmarks5: kbookmarks5 (Bookmarks management library)
+kbookmarks5:
+kbookmarks5: KBookmarks lets you access and manipulate bookmarks stored using the
+kbookmarks5: XBEL format. The most common use for bookmarks is web browsers, but
+kbookmarks5: this can also be useful in any application where local files or URLs
+kbookmarks5: can be saved as bookmarks.
+kbookmarks5:
+kbookmarks5: For more information on the XBEL format, see:
+kbookmarks5:   http://pyxml.sourceforge.net/topics/xbel/
+kbookmarks5:
+kbookmarks5:

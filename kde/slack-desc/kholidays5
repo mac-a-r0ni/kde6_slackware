@@ -5,15 +5,15 @@
 # make exactly 11 lines for the formatting to be correct. It's also
 # customary to leave one space after the ':'.
 
-         |-----handy-ruler------------------------------------------------------|
-kholidays-5: kholidays-5 (KDE library for regional holiday information)
-kholidays-5:
-kholidays-5: The KHolidays library in kdepimlibs provides details on public
-kholidays-5: holidays for a given country and date range. A separate library and
-kholidays-5: file format is required as iCalendar is not capable of expressing
-kholidays-5: recurrence rules for all possible holidays.
-kholidays-5:
-kholidays-5:
-kholidays-5:
-kholidays-5:
-kholidays-5:
+          |-----handy-ruler------------------------------------------------------|
+kholidays5: kholidays5 (KDE library for regional holiday information)
+kholidays5:
+kholidays5: The KHolidays library in kdepimlibs provides details on public
+kholidays5: holidays for a given country and date range. A separate library and
+kholidays5: file format is required as iCalendar is not capable of expressing
+kholidays5: recurrence rules for all possible holidays.
+kholidays5:
+kholidays5:
+kholidays5:
+kholidays5:
+kholidays5:

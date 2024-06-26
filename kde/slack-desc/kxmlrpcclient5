@@ -5,15 +5,15 @@
 # exactly 11 lines for the formatting to be correct. It's also customary to
 # leave one space after the ':'.
 
-             |-----handy-ruler------------------------------------------------------|
-kxmlrpcclient-5: kxmlrpcclient-5 (library providing API to access XML RPC)
-kxmlrpcclient-5:
-kxmlrpcclient-5: Tier 3 KDE Frameworks library providing API to access XML RPC.
-kxmlrpcclient-5:
-kxmlrpcclient-5:
-kxmlrpcclient-5:
-kxmlrpcclient-5:
-kxmlrpcclient-5:
-kxmlrpcclient-5:
-kxmlrpcclient-5:
-kxmlrpcclient-5:
+              |-----handy-ruler------------------------------------------------------|
+kxmlrpcclient5: kxmlrpcclient5 (library providing API to access XML RPC)
+kxmlrpcclient5:
+kxmlrpcclient5: Tier 3 KDE Frameworks library providing API to access XML RPC.
+kxmlrpcclient5:
+kxmlrpcclient5:
+kxmlrpcclient5:
+kxmlrpcclient5:
+kxmlrpcclient5:
+kxmlrpcclient5:
+kxmlrpcclient5:
+kxmlrpcclient5:

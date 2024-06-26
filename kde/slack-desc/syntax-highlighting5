@@ -5,15 +5,15 @@
 # exactly 11 lines for the formatting to be correct. It's also customary to
 # leave one space after the ':'.
 
-                   |-----handy-ruler------------------------------------------------------|
-syntax-highlighting-5: syntax-highlighting-5 (syntax highlighting for Kate)
-syntax-highlighting-5:
-syntax-highlighting-5: Syntax highlighting engine for structured text and code.
-syntax-highlighting-5:
-syntax-highlighting-5:
-syntax-highlighting-5:
-syntax-highlighting-5:
-syntax-highlighting-5:
-syntax-highlighting-5:
-syntax-highlighting-5:
-syntax-highlighting-5:
+                    |-----handy-ruler------------------------------------------------------|
+syntax-highlighting5: syntax-highlighting5 (syntax highlighting for Kate)
+syntax-highlighting5:
+syntax-highlighting5: Syntax highlighting engine for structured text and code.
+syntax-highlighting5:
+syntax-highlighting5:
+syntax-highlighting5:
+syntax-highlighting5:
+syntax-highlighting5:
+syntax-highlighting5:
+syntax-highlighting5:
+syntax-highlighting5:
