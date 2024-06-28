@@ -15,8 +15,6 @@ but also change and make my own attempts at improvements. In spirit, it's all on
 
 Keep Slackware KDE packages:
 
-fcitx5-configtool
-fcitx5-theme-breeze
 latte-dock (is this no longer supported?)
 
 Please let me know if anything is missing, or any optional things you'd like to see added.
@@ -25,7 +23,7 @@ I aim to completely replace Slackware's /kde directory. This includes replacing 
 and all supplimental applications. The idea is to only require users blacklist the /kde folder
 within slackpkg+ and replace it with the contents of this repo.
 
-That said, I intend to ship every possible package which existed in KDE5 with a direct 
+That said, I intend to ship every possible package which existed in KDE5 with a direct
 replacement from KDE6. Other packages from /l & /n will be supplimented when qt6 libs
 are needed by a package with a "-qt6" suffixed name. This way, intrusion into your system
 is minimal, as only the /kde directory needs replacing and maintaining.

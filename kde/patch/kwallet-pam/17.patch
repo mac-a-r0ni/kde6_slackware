@@ -1,0 +1,136 @@
+From a84bb9dde7855f044388778a59fb1a94a8809c61 Mon Sep 17 00:00:00 2001
+From: Daniel Exner <dex+kde@dragonslave.de>
+Date: Wed, 26 Jun 2024 11:12:14 +0200
+Subject: [PATCH 1/2] * Switch to pkgconfig to find libgcrypt (allows building
+ with libgcrypt 1.11)
+
+---
+ CMakeLists.txt                    |  3 +-
+ cmake/modules/FindLibGcrypt.cmake | 67 -------------------------------
+ 2 files changed, 2 insertions(+), 68 deletions(-)
+ delete mode 100644 cmake/modules/FindLibGcrypt.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6b7daa8..b171d37 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,7 +18,8 @@ include(ECMConfiguredInstall)
+ include(KDEGitCommitHooks)
+ 
+ find_package(PAM REQUIRED)
+-find_package(LibGcrypt 1.5.0 REQUIRED)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(LIBGCRYPT REQUIRED IMPORTED_TARGET libgcrypt)
+ 
+ find_program(SOCAT_EXECUTABLE socat)
+ 
+diff --git a/cmake/modules/FindLibGcrypt.cmake b/cmake/modules/FindLibGcrypt.cmake
+deleted file mode 100644
+index 9857b72..0000000
+--- a/cmake/modules/FindLibGcrypt.cmake
++++ /dev/null
+@@ -1,67 +0,0 @@
+-
+-# - Try to find the Gcrypt library
+-# Once run this will define
+-#
+-#  LIBGCRYPT_FOUND - set if the system has the gcrypt library
+-#  LIBGCRYPT_INCLUDE_DIR - the path to find the gcrypt header
+-#  LIBGCRYPT_CFLAGS - the required gcrypt compilation flags
+-#  LIBGCRYPT_LIBRARIES - the linker libraries needed to use the gcrypt library
+-#
+-# libgcrypt is moving to pkg-config, but earlier version don't have it
+-#
+-# SPDX-FileCopyrightText: 2006 Brad Hards <bradh@kde.org>
+-#
+-# SPDX-License-Identifier: BSD-3-Clause
+-
+-if(NOT LibGcrypt_FIND_VERSION)
+-    set(LibGcrypt_FIND_VERSION "1.6.1")
+-endif()
+-
+-#search in typical paths for libgcrypt-config
+-FIND_PROGRAM(LIBGCRYPTCONFIG_EXECUTABLE NAMES libgcrypt-config)
+-
+-#reset variables
+-set(LIBGCRYPT_LIBRARIES)
+-set(LIBGCRYPT_INCLUDE_DIR)
+-set(LIBGCRYPT_CFLAGS)
+-
+-# if libgcrypt-config has been found
+-IF(LIBGCRYPTCONFIG_EXECUTABLE)
+-
+-  # workaround for MinGW/MSYS
+-  # CMake can't starts shell scripts on windows so it need to use sh.exe
+-  EXECUTE_PROCESS(COMMAND sh ${LIBGCRYPTCONFIG_EXECUTABLE} --libs RESULT_VARIABLE _return_VALUE OUTPUT_VARIABLE LIBGCRYPT_LIBRARIES OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  EXECUTE_PROCESS(COMMAND sh ${LIBGCRYPTCONFIG_EXECUTABLE} --prefix RESULT_VARIABLE _return_VALUE OUTPUT_VARIABLE LIBGCRYPT_PREFIX OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  EXECUTE_PROCESS(COMMAND sh ${LIBGCRYPTCONFIG_EXECUTABLE} --cflags RESULT_VARIABLE _return_VALUE OUTPUT_VARIABLE LIBGCRYPT_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  EXECUTE_PROCESS(COMMAND sh ${LIBGCRYPTCONFIG_EXECUTABLE} --version RESULT_VARIABLE _return_VALUEVersion OUTPUT_VARIABLE LIBGCRYPT_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
+-
+-  IF(NOT LIBGCRYPT_CFLAGS AND NOT _return_VALUE)
+-    SET(LIBGCRYPT_CFLAGS " ")
+-  ENDIF(NOT LIBGCRYPT_CFLAGS AND NOT _return_VALUE)
+-
+-  IF(LIBGCRYPT_PREFIX)
+-    SET(LIBGCRYPT_INCLUDE_DIR "${LIBGCRYPT_PREFIX}/include")
+-  ENDIF(LIBGCRYPT_PREFIX)
+-
+-  IF(LIBGCRYPT_LIBRARIES AND LIBGCRYPT_CFLAGS)
+-    SET(LIBGCRYPT_FOUND TRUE)
+-  ENDIF(LIBGCRYPT_LIBRARIES AND LIBGCRYPT_CFLAGS)
+-
+-  if(LIBGCRYPT_VERSION VERSION_LESS ${LibGcrypt_FIND_VERSION})
+-     message(WARNING "libgcrypt found but version is less than required, Found ${LIBGCRYPT_VERSION} Required ${LibGcrypt_FIND_VERSION}")
+-     SET(LIBGCRYPT_FOUND FALSE)
+-  endif()
+-
+-ENDIF(LIBGCRYPTCONFIG_EXECUTABLE)
+-
+-if (LIBGCRYPT_FOUND)
+-   if (NOT LibGcrypt_FIND_QUIETLY)
+-      message(STATUS "Found libgcrypt: ${LIBGCRYPT_LIBRARIES}")
+-   endif (NOT LibGcrypt_FIND_QUIETLY)
+-else (LIBGCRYPT_FOUND)
+-   if (LibGcrypt_FIND_REQUIRED)
+-      message(WARNING "Could not find libgcrypt libraries")
+-   endif (LibGcrypt_FIND_REQUIRED)
+-endif (LIBGCRYPT_FOUND)
+-
+-MARK_AS_ADVANCED(LIBGCRYPT_CFLAGS LIBGCRYPT_LIBRARIES)
+-- 
+GitLab
+
+
+From 7af250e2db143b29c1db39057f387224a326cde2 Mon Sep 17 00:00:00 2001
+From: Daniel Exner <dex+kde@dragonslave.de>
+Date: Wed, 26 Jun 2024 15:55:00 +0200
+Subject: [PATCH 2/2] * apply patch from @aacid
+
+---
+ CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b171d37..fc33454 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,7 +33,6 @@ include_directories (
+    ${PAM_INCLUDE_DIR}
+    ${CMAKE_BINARY_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+-   ${LIBGCRYPT_INCLUDE_DIR}
+ )
+ 
+ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050c00)
+@@ -85,7 +84,7 @@ add_library (${library_name} SHARED ${pam_kwallet_SRCS})
+ set_target_properties (${library_name} PROPERTIES PREFIX "")
+ target_link_libraries (${library_name}
+    ${PAM_LIBRARIES}
+-   ${LIBGCRYPT_LIBRARIES}
++   PkgConfig::LIBGCRYPT
+ )
+ 
+ # add clang-format target for all our real source files
+-- 
+GitLab
+
