@@ -31,11 +31,11 @@ cat $CWD/post-install/plasma-workspace/xsession/plasmax11-safe.desktop \
   | sed -e "s,@PREFIX@,/usr,g" \
   >  $PKG/usr/share/xsessions/z_plasmax11-safe.desktop
 
-# Move the polkit dbus configuration files to the proper place:
-if [ -d $PKG/etc/kde/dbus-1 ]; then
-  mkdir -p $PKG/etc
-  mv $PKG/etc/kde/dbus-1 $PKG/etc/
-fi
+## Move the polkit dbus configuration files to the proper place:
+#if [ -d $PKG/etc/kde/dbus-1 ]; then
+#  mkdir -p $PKG/etc
+#  mv $PKG/etc/kde/dbus-1 $PKG/etc/
+#fi
 
 # Install a PAM file for Plasma Workspace:
 install -Dm644 $CWD/post-install/plasma-workspace/pam.d/kde $PKG/etc/pam.d/kde.new
