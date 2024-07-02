@@ -28,9 +28,7 @@ oxygen
 oxygen-sounds
 ocean-sound-theme
 plasma5support
-plasma-workspace
 kde-cli-tools
-# Circular dependency between plasma-workspace and kde-cli-tools:
 plasma-workspace
 systemsettings
 plasma-desktop
@@ -42,7 +40,7 @@ bluedevil
 kmenuedit
 polkit-kde-agent-1
 kscreen
-#krdp
+krdp
 sddm-kcm
 kde-gtk-config
 ksshaskpass
@@ -60,7 +58,7 @@ plasma-disks
 #plasma-thunderbolt
 #plasma-nano
 #plasma-mobile
-#plasma-welcome
+plasma-welcome
 qqc2-breeze-style
 #qqc2-breeze5-style
 plasma-firewall
