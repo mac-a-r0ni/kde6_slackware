@@ -28,7 +28,6 @@ preserve_perms() {
   config $NEW
 }
 
-config etc/profile.d/flatpak.sh.new
 preserve_perms etc/profile.d/flatpak.sh.new
 
 # Make the flathub repositories available systemwide:
