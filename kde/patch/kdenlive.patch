@@ -1,2 +1,0 @@
-# Fix freeze on playback in kdenlive:
-cat $CWD/patch/kdenlive/8be0e826.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
