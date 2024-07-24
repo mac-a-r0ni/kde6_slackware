@@ -32,7 +32,7 @@ if [ -z "$SLKCFLAGS" ]; then
     export SLKCFLAGS="-O2 -march=x86-64 -mtune=generic -fPIC"
     export LIBDIRSUFFIX="64"
   elif [ "$ARCH" = "aarch64" ]; then
-    export SLKCFLAGS="-O2 -march=aarch64 -mtune=generic -fPIC"
+    export SLKCFLAGS="-O2 -march=armv8-a -mtune=generic -fPIC"
     export LIBDIRSUFFIX="64"
   elif [ "$ARCH" = "arm" ]; then
     export SLKCFLAGS="-O2 -march=armv4 -mtune=xscale"
