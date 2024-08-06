@@ -28,8 +28,8 @@
 #wget -c --no-check-certificate https://dev.gentoo.org/~graaff/libstemmer_c-20140325.tgz
 
 PRGNAM=libstemmer
-SRCNAM=libstemmer_c
-VERSION=${VERSION:-20140325}
+SRCNAM=snowball
+VERSION=${VERSION:-2.2.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-""}
 TMP=${TMP:-/tmp}
@@ -62,9 +62,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $SRCNAM
-tar xfv $CWD/$SRCNAM.tgz
-cd $SRCNAM
+rm -rf $SRCNAM-$VERSION
+tar xfv $CWD/$SRCNAM-$VERSION.tar.?z
+cd $SRCNAM-$VERSION
 
 chown -R root:root .
 find -L . \
@@ -73,7 +73,7 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-zcat $CWD/libstemmer_c-shared-library.patch.gz | patch -p0 || exit
+cat $CWD/libstemmer_c-shared-library.patch | patch -p1 || exit
 
 make $JOBS libstemmer.so stemwords || make libstemmer.so stemwords
 
@@ -85,7 +85,7 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a MANIFEST README \
+cp -a AUTHORS CONTRIBUTING.rst COPYING NEWS README.rst \
   $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$(basename $0) > $PKG/usr/doc/$PRGNAM-$VERSION/$(basename $0)
 
