@@ -291,6 +291,8 @@ cd $PKG
   done
 
 cd $TMP/$SRCNAM-$VERSION
+# We just want the libs for vlc
+rm -rf $PKG/usr/{bin,man,share}
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | \
   grep ELF | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
