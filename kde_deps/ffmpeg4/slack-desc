@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+       |-----handy-ruler------------------------------------------------------|
+ffmpeg4: ffmpeg4 (software to record, convert and stream audio and video)
+ffmpeg4:
+ffmpeg4: FFmpeg is the leading multimedia framework, able to decode, encode,
+ffmpeg4: transcode, mux, demux, stream, filter and play pretty much anything
+ffmpeg4: that humans and machines have created. It supports the most obscure
+ffmpeg4: ancient formats up to the cutting edge. It includes libavcodec, the
+ffmpeg4: leading audio/video codec library.
+ffmpeg4:
+ffmpeg4: Homepage: https://ffmpeg.org/
+ffmpeg4:
+ffmpeg4:
