@@ -219,7 +219,7 @@ skanlite
 kdevelop
 kdev-php
 kdev-python
-umbrello
+#umbrello
 
 # New in 21.12.0:
 zanshin
