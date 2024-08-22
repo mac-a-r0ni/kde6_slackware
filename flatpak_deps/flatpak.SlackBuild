@@ -14,7 +14,6 @@ TMP=${TMP:-/tmp}
 #QTDIR=/usr/lib${LIBDIRSUFFIX}/qt6 ; export QTDIR
 
 ALLDEPS=" \
-  scdoc \
   xdg-desktop-portal-gtk \
   xdg-dbus-proxy \
   libstemmer \
