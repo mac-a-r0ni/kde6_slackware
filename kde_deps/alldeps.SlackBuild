@@ -23,6 +23,7 @@ ALLDEPS=" \
   stellarsolver \
   cmark \
   ddcutil \
+  graphvis \
   readstat \
   quazip-qt6 \
   qca \
