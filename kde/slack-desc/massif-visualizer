@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description. Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in. You must
+# make exactly 11 lines for the formatting to be correct. It's also
+# customary to leave one space after the ':'.
+
+                 |-----handy-ruler------------------------------------------------------|
+massif-visualizer: massif-visualizer (valgrind massif visualizer)
+massif-visualizer:
+massif-visualizer: Massif Visualizer is a tool that - who'd guess that - visualizes
+massif-visualizer: massif data. You run your application in Valgrind with --tool=massif
+massif-visualizer: and then open the generated massif.out.%pid in the visualizer. Gzip
+massif-visualizer: or Bzip2 compressed massif files can also be opened transparently.
+massif-visualizer:
+massif-visualizer: Homepage: https://apps.kde.org/massif_visualizer/
+massif-visualizer:
+massif-visualizer:
+massif-visualizer:
