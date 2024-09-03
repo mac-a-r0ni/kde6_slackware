@@ -1,2 +1,0 @@
-cat $CWD/patch/calligra/icon_fix_wayland.diff | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
-cat $CWD/patch/calligra/include_icons.diff | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
