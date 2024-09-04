@@ -1,14 +1,15 @@
 # See https://github.com/KDE/kdesrc-build/blob/master/kf6-applications-build-include for Plasma6 build instructions;
 # See also: https://community.kde.org/KDE_Gear/24.02_Release_notes
-# Not ported to Qt6 yet:
+# Not ported to Qt6 yet (list out of date):
 # artikulate cantor cervisia juk kamoso kde-dev-utils kdesdk-thumbnailers kdev-php kdev-python kdevelop kgpg kig kio-gdrive kipi-plugins kmix konversation kqtquickcharts krfb ktouch kwave libkipi lokalize marble poxml rocs umbrello 
 #
 # Our pre-release ignore list is prefixed with '##'
 #
 # Some of the kdegraphics needs to be compiled first:
 colord-kde
-libkipi
-kipi-plugins
+# removed from gear
+#libkipi
+#kipi-plugins
 libkexiv2
 libkdcraw
 ksanecore
