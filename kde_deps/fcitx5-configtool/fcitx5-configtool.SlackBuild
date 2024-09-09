@@ -27,7 +27,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PKGNAM=fcitx5-configtool
 VERSION=${VERSION:-$(echo $PKGNAM-*.tar.zst | rev | cut -f 3- -d . | cut -f 1 -d - | cut -f 2- -d _ | rev)}
 BUILD=${BUILD:-1}
-TAG=${TAG:-""}
+TAG=${TAG:-"_KDE6"}
 
 NUMJOBS=${NUMJOBS:-" -j$(expr $(nproc) + 1) "}
 

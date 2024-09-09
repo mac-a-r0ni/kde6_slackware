@@ -27,7 +27,7 @@ SRCNAM=gpgme
 PKGNAM=gpgme-qt6
 VERSION=${VERSION:-1.23.2}
 BUILD=${BUILD:-1}
-TAG=${TAG:-""}
+TAG=${TAG:-"_KDE6"}
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then

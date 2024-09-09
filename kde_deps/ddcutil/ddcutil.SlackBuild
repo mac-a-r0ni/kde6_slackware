@@ -27,7 +27,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PRGNAM=ddcutil
 VERSION=${VERSION:-2.1.4}
 BUILD=${BUILD:-2}
-TAG=${TAG:-""}
+TAG=${TAG:-"_KDE6"}
 PKGTYPE=${PKGTYPE:-txz}
 
 if [ -z "$ARCH" ]; then

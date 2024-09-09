@@ -32,7 +32,7 @@ SRCNAM=ffmpeg
 PKGNAM=ffmpeg4
 VERSION=${VERSION:-$(echo $SRCNAM-*.tar.xz | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 BUILD=${BUILD:-1}
-TAG=${TAG:-""}
+TAG=${TAG:-"_KDE6"}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in

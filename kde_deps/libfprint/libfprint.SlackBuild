@@ -27,7 +27,7 @@ PKGNAM=libfprint
 SRCVER=${SRCVER:-$(echo $PKGNAM-*.tar.bz2 | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 VERSION=$(echo $SRCVER | tr -d v)
 BUILD=${BUILD:-1}
-TAG=${TAG:-""}
+TAG=${TAG:-"_KDE6"}
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then

@@ -28,7 +28,7 @@ SRCNAM=phonon
 PKGNAM=phonon-qt6
 VERSION=${VERSION:-$(echo $SRCNAM-*.tar.?z | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 BUILD=${BUILD:-1}
-TAG=${TAG:-""}
+TAG=${TAG:-"_KDE6"}
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
@@ -63,11 +63,11 @@ fi
 
 # Configure for ALSA only if PulseAudio is not installed:
 if [ ! -r /usr/lib${LIBDIRSUFFIX}/pkgconfig/libpulse.pc ]; then
-  TAG="${TAG}_alsa"
+  TAG="_KDE6_alsa"
   PULSEAUDIO=OFF
 else
   PULSEAUDIO=ON
-  TAG=${TAG:-""}
+  TAG=${TAG:-"_KDE6"}
 fi
 
 # If the variable PRINT_PACKAGE_NAME is set, then this script will report what
