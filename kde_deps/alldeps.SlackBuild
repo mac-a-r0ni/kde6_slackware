@@ -33,7 +33,7 @@ ALLDEPS=" \
   olm \
   libQuotient \
   kdsoap-qt6 \
-  polkit-qt-1 \
+  polkit-qt-1-qt6 \
   ffmpeg4 \
   vlc \
   mpvqt \
