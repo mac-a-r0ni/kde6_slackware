@@ -6,7 +6,7 @@ kgamma
 kdecoration
 breeze
 breeze-gtk
-#breeze-grub
+breeze-grub
 #breeze-plymouth
 kglobalacceld
 kwayland-integration
