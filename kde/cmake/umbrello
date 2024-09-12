@@ -6,7 +6,6 @@ cd cmake-build
     $KDE_OPT_ARGS \
     -DBUILD_APIDOC=OFF \
     -DBUILD_UNITTESTS=OFF \
-    -DBUILD_UNITTESTS=OFF \
     -DBUILD_PHP_IMPORT=OFF \
     ..
 
