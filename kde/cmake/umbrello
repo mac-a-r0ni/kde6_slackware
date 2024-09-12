@@ -7,6 +7,6 @@ cd cmake-build
     -DBUILD_APIDOC=OFF \
     -DBUILD_UNITTESTS=OFF \
     -DBUILD_UNITTESTS=OFF \
+    -DBUILD_KF6=ON \
     ..
 
-    #-DBUILD_KF6=ON \
