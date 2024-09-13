@@ -1,5 +1,25 @@
-REMOVE THESE LEFTOVER KDE5 PACKAGES:
+THESE PACKAGES HAVE BEEN RENAMED/REMOVED:
 
+kactivities
+kactivities-stats
+kdewebkit
+kemoticons
+kgamma5
+khtml
 khotkeys
+kinit
+kipi-plugins
+kirigami2
+kjs
+kjsembed
+kmediaplayer
+knotes
 kopete
+kross
+kxmlrpcclient
 latte-dock
+libkipi
+plasma-framework
+
+To ensure you don't inadvertantly install them, I suggest
+adding them to the '/etc/slackpkg/blacklist' file.

@@ -1,7 +1,7 @@
 https://kde.org/announcements/plasma/6/6.1.5/
 https://kde.org/announcements/frameworks/6/6.5.0/
 https://kde.org/announcements/frameworks/5/5.116.0/
-https://kde.org/announcements/gear/24.08.0/
+https://kde.org/announcements/gear/24.08.1/
 
 This is a fork of AlienBOBs 'ktown' repo for
 latest & greatest KDE on Slackware-current systems.
@@ -13,17 +13,13 @@ https://www.linuxquestions.org/questions/slackware-14/building-the-plasma6-for-s
 This fork on github is a fork of a fork, basically. I follow things being done and try to integrate it here for building on aarch64,
 but also change and make my own attempts at improvements. In spirit, it's all one big project made with love for the community!
 
-Keep Slackware KDE packages:
-
-latte-dock (is this no longer supported?)
-
 Please let me know if anything is missing, or any optional things you'd like to see added.
 
 I aim to completely replace Slackware's /kde directory. This includes replacing Plasma 5 with 6
-and all supplimental applications. The idea is to only require users blacklist the /kde folder
-within slackpkg+ and replace it with the contents of this repo.
+and all supplimental applications. Please see the REMOVE_PKGS file in this folder for
+the packages not existing in this set.
 
-That said, I intend to ship every possible package which existed in KDE5 with a direct
+I intend to ship every possible package which existed in KDE5 with a direct
 replacement from KDE6. Other packages from /l & /n will be supplimented when qt6 libs
 are needed by a package with a "-qt6" suffixed name. This way, intrusion into your system
 is minimal, as only the /kde directory needs replacing and maintaining.
