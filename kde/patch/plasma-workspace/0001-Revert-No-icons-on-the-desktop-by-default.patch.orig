@@ -116,11 +116,11 @@ reason not to have them.
 +++ ./kioworkers/desktop/kio_desktop.cpp	2023-02-14 12:08:58.205793836 -0600
 @@ -76,6 +76,10 @@
          // Copy the .directory file
-         QFile::copy(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kio_desktop/directory.desktop")), desktopPath + "/.directory_L1");
+         QFile::copy(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kio_desktop/directory.desktop")), desktopPath + "/.directory");
  
 +        // Copy the trash link
 +        QFile::copy(QStandardPaths::locate(QStandardPaths::GenericDataLocation, QStringLiteral("kio_desktop/directory.trash")),
-+                    desktopPath + "/trash.desktop_L1");
++                    desktopPath + "/trash.desktop");
 + 
          // Copy the desktop links
          QSet<QString> links;
