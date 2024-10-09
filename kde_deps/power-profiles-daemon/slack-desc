@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                     |-----handy-ruler-------------------------------------------------------------------|
+power-profiles-daemon: power-profiles-daemon (power profiles over D-bus)
+power-profiles-daemon:
+power-profiles-daemon: power-profiles-daemon offers to modify system behaviour based upon user-selected
+power-profiles-daemon: power profiles. There are 3 different power profiles, a "balanced" default mode.
+power-profiles-daemon: The first 2 of those are available on every system.The "performance"mode is only
+power-profiles-daemon: available on select systems and is implemented by different "drivers" based on the
+power-profiles-daemon: system or systems it targets.
+power-profiles-daemon:
+power-profiles-daemon: Homepage: https://gitlab.freedesktop.org/upower/power-profiles-daemon
+power-profiles-daemon:
+power-profiles-daemon:
