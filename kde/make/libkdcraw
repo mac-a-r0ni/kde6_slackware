@@ -1,0 +1,11 @@
+# The libkexiv2 cmake left us in cmake-build-qt5,
+# so we build and install Qt5 support first:
+make $NUMJOBS || make || exit 1
+make install DESTDIR=$PKG || exit 1
+
+# Go back to cmake-build-qt6 and build/install the Qt6 support:
+cd ..
+cd cmake-build-qt6
+make $NUMJOBS || make || exit 1
+make install DESTDIR=$PKG || exit 1
+
