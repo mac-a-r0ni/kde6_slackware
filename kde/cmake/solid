@@ -4,8 +4,5 @@ cd cmake-build
     "${KDE_BUILD_ARGS[@]}" \
     "${KDE_QT6_ARGS[@]}" \
     $KDE_OPT_ARGS \
-    -DWITH_NEW_POWER_ASYNC_API:BOOL=ON \
-    -DWITH_NEW_POWER_ASYNC_FREEDESKTOP:BOOL=ON \
-    -DWITH_NEW_SOLID_JOB:BOOL=ON \
     ..
 
