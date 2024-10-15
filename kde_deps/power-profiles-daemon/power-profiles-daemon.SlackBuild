@@ -24,11 +24,10 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=power-profiles-daemon
-VERSION=${VERSION:-0.23}
-TAG=${TAG:-_KDE6}
+PKGNAM=power-profiles-daemon
+VERSION=${VERSION:-$(echo $PKGNAM-*.tar.?z* | rev | cut -f 3- -d . | cut -f 1 -d - | rev)}
 BUILD=${BUILD:-1}
-PKGTYPE=${PKGTYPE:-txz}
+TAG=${TAG:-"_KDE6"}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -39,13 +38,12 @@ if [ -z "$ARCH" ]; then
 fi
 
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
-  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  echo "$PKGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
   exit 0
 fi
 
 TMP=${TMP:-/tmp}
-PKG=$TMP/package-$PRGNAM
-OUTPUT=${OUTPUT:-$TMP}
+PKG=$TMP/package-$PKGNAM
 
 if [ "$ARCH" = "i586" ]; then
   SLKCFLAGS="-O2 -march=i586 -mtune=i686"
@@ -67,12 +65,13 @@ fi
 set -e
 
 rm -rf $PKG
-mkdir -p $TMP $PKG
+mkdir -p $TMP $PKG $OUTPUT
+
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.?z*
-cd $PRGNAM-$VERSION
-patch -Np1 -i $CWD/1.patch
+rm -rf $PKGNAM-$VERSION
+tar xvf $CWD/$PKGNAM-$VERSION.tar.?z*
+
+cd $PKGNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -95,19 +94,24 @@ CXXFLAGS="$SLKCFLAGS" \
     -Dstrip=true
 "${NINJA:=ninja}"
   DESTDIR=$PKG $NINJA install
-
 cd ..
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+# Install the Slackware power-profiles init script:
+mkdir -p $PKG/etc/rc.d
+cp -a $CWD/rc.power-profiles $PKG/etc/rc.d/rc.power-profiles.new
+chown root:root $PKG/etc/rc.d/rc.power-profiles.new
+chmod 755 $PKG/etc/rc.d/rc.power-profiles.new
+
+mkdir -p $PKG/usr/doc/$PKGNAM-$VERSION
 cp -a COPYING NEWS README.md \
-    $PKG/usr/doc/$PRGNAM-$VERSION
-cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+    $PKG/usr/doc/$PKGNAM-$VERSION
 
 mkdir -p $PKG/install
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
+/sbin/makepkg -l y -c n $TMP/$PKGNAM-$VERSION-$ARCH-$BUILD$TAG.txz
