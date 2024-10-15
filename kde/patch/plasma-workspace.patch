@@ -1,2 +1,1 @@
-#cat $CWD/patch/plasma-workspace/0001-Revert-No-icons-on-the-desktop-by-default.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
-#cat $CWD/patch/plasma-workspace/c5b182922af4608c36b32654302630ad4d6a6e7d.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+cat $CWD/patch/plasma-workspace/0001-Revert-No-icons-on-the-desktop-by-default.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
