@@ -1,0 +1,1051 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 79283ea0..c4f0df7b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -124,8 +124,21 @@ find_package(KPim6CalendarUtils ${CALENDARUTILS_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KPim6IdentityManagementWidgets ${IDENTITYMANAGEMENT_LIB_VERSION} CONFIG REQUIRED)
+ find_package(KPim6Mime ${KMIME_LIB_VERSION} CONFIG REQUIRED)
+ 
+-find_package(LibVLC "3.0.0" QUIET REQUIRED)
+-set_package_properties(LibVLC PROPERTIES PURPOSE "Needed to play audio alarms")
++option(ENABLE_LIBVLC "Build support for LibVLC" ON)
++add_feature_info(ENABLE_LIBVLC ${ENABLE_LIBVLC} "Provides support for playing sound files using LibVLC")
++
++option(ENABLE_LIBMPV "Build support for Libmpv" OFF)
++add_feature_info(ENABLE_LIBMPV ${ENABLE_LIBMPV} "Provides support for playing sound files using Libmpv")
++
++if(ENABLE_LIBVLC)
++    find_package(LibVLC "3.0.0" QUIET REQUIRED)
++    set_package_properties(LibVLC PROPERTIES PURPOSE "Needed to play audio alarms")
++elseif(ENABLE_LIBMPV)
++    find_package(Libmpv "2.3.0" QUIET REQUIRED)
++    set_package_properties(Libmpv PROPERTIES PURPOSE "Needed to play audio alarms")
++else()
++    message(FATAL_ERROR "Support for either ENABLE_LIBVLC or ENABLE_LIBMPV must be enabled for playing sound files")
++endif()
+ 
+ find_package(KF6TextEditTextToSpeech ${KTEXTADDONS_MIN_VERSION} CONFIG)
+ set_package_properties(KF6TextEditTextToSpeech PROPERTIES DESCRIPTION
+diff --git a/cmake/modules/FindLibmpv.cmake b/cmake/modules/FindLibmpv.cmake
+new file mode 100644
+index 00000000..95e7a445
+--- /dev/null
++++ b/cmake/modules/FindLibmpv.cmake
+@@ -0,0 +1,82 @@
++#
++# SPDX-FileCopyrightText: 2006 Laurent Montel <montel@kde.org>
++# SPDX-FileCopyrightText: 2019 Heiko Becker <heirecka@exherbo.org>
++# SPDX-FileCopyrightText: 2020 Elvis Angelaccio <elvis.angelaccio@kde.org>
++# SPDX-FileCopyrightText: 2021 George Florea Bănuș <georgefb899@gmail.com>
++#
++# SPDX-License-Identifier: BSD-3-Clause
++#
++#
++# FindLibmpv
++# ----------
++#
++# Find the mpv media player client library.
++#
++# Defines the following variables:
++#
++# - Libmpv_FOUND
++#     True if it finds the library and include directory
++#
++# - Libmpv_INCLUDE_DIRS
++#     The libmpv include dirs for use with target_include_directories
++#
++# - Libmpvb_LIBRARIES
++#     The libmpv libraries for use with target_link_libraries()
++#
++# - Libmpv_VERSION
++#     The version of the found libmpv
++#
++#
++# Defines the following imported target if 'Libmpv_FOUND' is true:
++#
++# - Libmpv::Libmpv
++#
++
++find_package(PkgConfig QUIET)
++
++pkg_search_module(PC_MPV QUIET mpv)
++
++find_path(Libmpv_INCLUDE_DIRS
++    NAMES client.h
++    PATH_SUFFIXES mpv
++    HINTS ${PC_MPV_INCLUDEDIR}
++)
++
++
++find_library(Libmpv_LIBRARIES
++    NAMES mpv
++    HINTS ${PC_MPV_LIBDIR}
++)
++
++set(Libmpv_VERSION ${PC_MPV_VERSION})
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(Libmpv
++    FOUND_VAR
++        Libmpv_FOUND
++    REQUIRED_VARS
++        Libmpv_LIBRARIES
++        Libmpv_INCLUDE_DIRS
++    VERSION_VAR
++        Libmpv_VERSION
++)
++
++if (Libmpv_FOUND AND NOT TARGET Libmpv::Libmpv)
++    add_library(Libmpv::Libmpv UNKNOWN IMPORTED)
++    set_target_properties(Libmpv::Libmpv PROPERTIES
++        IMPORTED_LOCATION "${Libmpv_LIBRARIES}"
++        INTERFACE_INCLUDE_DIRECTORIES "${Libmpv_INCLUDE_DIRS}"
++    )
++    # TODO: we should eventually use pkg_check_module to create a target
++    if (ANDROID)
++        target_link_libraries(Libmpv::Libmpv INTERFACE ${PC_MPV_LINK_LIBRARIES})
++    endif()
++endif()
++
++mark_as_advanced(Libmpv_LIBRARIES Libmpv_INCLUDE_DIRS)
++
++include(FeatureSummary)
++set_package_properties(Libmpv PROPERTIES
++    URL "https://mpv.io"
++    DESCRIPTION "mpv media player client library"
++)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 27858489..85176098 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -274,6 +274,18 @@ if(ENABLE_RTC_WAKE_FROM_SUSPEND)
+     )
+ endif()
+ 
++if(ENABLE_LIBVLC)
++    set(kalarm_bin_SRCS ${kalarm_bin_SRCS}
++        audioplayer_vlc.cpp
++        audioplayer_vlc.h
++    )
++elseif(ENABLE_LIBMPV)
++    set(kalarm_bin_SRCS ${kalarm_bin_SRCS}
++        audioplayer_mpv.cpp
++        audioplayer_mpv.h
++    )
++endif()
++
+ ki18n_wrap_ui(kalarm_bin_SRCS
+     wakedlg.ui
+     resources/singlefileresourceconfigdialog.ui
+@@ -329,8 +341,16 @@ target_link_libraries(kalarm_bin
+     KF6::Contacts
+     KPim6::IdentityManagementWidgets
+     KPim6::Mime
+-    LibVLC::LibVLC
+ )
++
++if(ENABLE_LIBVLC)
++    target_link_libraries(kalarm_bin LibVLC::LibVLC)
++    target_compile_definitions(kalarm_bin PUBLIC -DHAVE_LIBVLC)
++elseif(ENABLE_LIBMPV)
++    target_link_libraries(kalarm_bin Libmpv::Libmpv)
++    target_compile_definitions(kalarm_bin PUBLIC -DHAVE_LIBMPV)
++endif()
++
+ if(TARGET KF6::TextEditTextToSpeech)
+     target_link_libraries(kalarm_bin KF6::TextEditTextToSpeech)
+ endif()
+diff --git a/src/audioplayer.cpp b/src/audioplayer.cpp
+index 5349a873..a84771b0 100644
+--- a/src/audioplayer.cpp
++++ b/src/audioplayer.cpp
+@@ -11,22 +11,16 @@
+ #include "kalarm.h"
+ #include "kalarm_debug.h"
+ 
+-#include <KAboutData>
+-#include <KIO/Job>
+-#include <KIO/FileCopyJob>
+-#include <KLocalizedString>
+-
+-#include <QApplication>
+-#include <QByteArray>
+-#include <QEventLoopLocker>
+-#include <QFile>
+-#include <QIcon>
+-#include <QTemporaryFile>
+ #include <QTimer>
+ #include <QUrl>
+ 
+-#include <vlc/vlc.h>
+-#include <ctime>
++#ifdef HAVE_LIBVLC
++#include "audioplayer_vlc.h"
++using AudioPlayerBackend = AudioPlayerVlc;
++#elif defined(HAVE_LIBMPV)
++#include "audioplayer_mpv.h"
++using AudioPlayerBackend = AudioPlayerMpv;
++#endif
+ 
+ AudioPlayer* AudioPlayer::mInstance = nullptr;
+ QString      AudioPlayer::mError;
+@@ -43,10 +37,18 @@ AudioPlayer* AudioPlayer::create(Type type, const QUrl& audioFile, float volume,
+ {
+     if (mInstance)
+         return nullptr;
+-    mInstance = new AudioPlayer(type, audioFile, volume, fadeVolume, fadeSeconds, parent);
++    mInstance = new AudioPlayerBackend(type, audioFile, volume, fadeVolume, fadeSeconds, parent);
+     return mInstance;
+ }
+ 
++/******************************************************************************
++* Return whether the audio player backend supports fade.
++*/
++bool AudioPlayer::providesFade()
++{
++    return AudioPlayerBackend::backendProvidesFade();
++}
++
+ /******************************************************************************
+ * Constructor for audio player.
+ */
+@@ -67,26 +69,6 @@ AudioPlayer::AudioPlayer(Type type, const QUrl& audioFile, float volume, float f
+ 
+     mError.clear();
+ 
+-    // Create the audio instance, and suppress video (which would cause havoc to KAlarm).
+-    const char* argv[] = { "--no-video" };
+-    mAudioInstance = libvlc_new(1, argv);
+-    if (!mAudioInstance)
+-    {
+-        mError = i18nc("@info", "Cannot initialize audio system");
+-        qCCritical(KALARM_LOG) << "AudioPlayer: Error initializing VLC audio";
+-        return;
+-    }
+-
+-    mAudioMedia = audioFile.isLocalFile()
+-                ? libvlc_media_new_path(mAudioInstance, QFile::encodeName(mFile).constData())
+-                : libvlc_media_new_location(mAudioInstance, mFile.toLocal8Bit().constData());
+-    if (!mAudioMedia)
+-    {
+-        mError = xi18nc("@info", "<para>Error opening audio file: <filename>%1</filename></para>", mFile);
+-        qCCritical(KALARM_LOG) << "AudioPlayer: Error opening audio file:" << mFile;
+-        return;
+-    }
+-
+     if (mVolume > 0)
+     {
+         if (mFadeVolume >= 0  &&  mFadeSeconds > 0)
+@@ -99,8 +81,6 @@ AudioPlayer::AudioPlayer(Type type, const QUrl& audioFile, float volume, float f
+         else
+             mCurrentVolume = mVolume;
+     }
+-
+-    mStatus = Ready;
+ }
+ 
+ /******************************************************************************
+@@ -109,26 +89,6 @@ AudioPlayer::AudioPlayer(Type type, const QUrl& audioFile, float volume, float f
+ AudioPlayer::~AudioPlayer()
+ {
+     qCDebug(KALARM_LOG) << "AudioPlayer::~AudioPlayer";
+-    if (status() == Playing)
+-    {
+-        mNoFinishedSignal = true;
+-        stop();
+-    }
+-    if (mAudioPlayer)
+-    {
+-        libvlc_media_player_release(mAudioPlayer);
+-        mAudioPlayer = nullptr;
+-    }
+-    if (mAudioMedia)
+-    {
+-        libvlc_media_release(mAudioMedia);
+-        mAudioMedia = nullptr;
+-    }
+-    if (mAudioInstance)
+-    {
+-        libvlc_release(mAudioInstance);
+-        mAudioInstance = nullptr;
+-    }
+     mInstance = nullptr;
+     qCDebug(KALARM_LOG) << "AudioPlayer::~AudioPlayer exit";
+ }
+@@ -141,65 +101,6 @@ AudioPlayer::Status AudioPlayer::status() const
+     return mError.isEmpty() ? mStatus : Error;
+ }
+ 
+-/******************************************************************************
+-* Play the audio file.
+-*/
+-bool AudioPlayer::play()
+-{
+-    if (mAudioPlayer)
+-        return false;
+-
+-    qCDebug(KALARM_LOG) << "AudioPlayer::play";
+-
+-    // Note that libVLC has some issues which require workarounds to allow
+-    // audio files to be replayed.
+-    // There doesn't seem to be any way of replaying the audio file if the
+-    // media player is reused, so it's necessary to create a new media player
+-    // each time the audio file is played.
+-    // Using a media list player instead can allow replaying to work, but it
+-    // fails on some systems with a VLC "cache_read stream error".
+-    mAudioPlayer = libvlc_media_player_new_from_media(mAudioMedia);
+-    if (!mAudioPlayer)
+-    {
+-        mError = i18nc("@info", "Cannot initialize audio player");
+-        qCCritical(KALARM_LOG) << "AudioPlayer: Error initializing audio player";
+-        return false;
+-    }
+-    libvlc_media_player_set_role(mAudioPlayer, libvlc_role_Notification);
+-
+-    if (mVolume > 0)
+-        libvlc_audio_set_volume(mAudioPlayer, static_cast<int>(mCurrentVolume * 100));
+-
+-    libvlc_event_manager_t* eventManager = libvlc_media_player_event_manager(mAudioPlayer);
+-    if (libvlc_event_attach(eventManager, libvlc_MediaPlayerStopped, &finish_callback, this))
+-    {
+-        qCWarning(KALARM_LOG) << "AudioPlayer: Error setting completion callback";
+-        if (!mCheckPlayTimer)
+-        {
+-            mCheckPlayTimer = new QTimer(this);
+-            connect(mCheckPlayTimer, &QTimer::timeout, this, &AudioPlayer::checkPlay);
+-        }
+-    }
+-    // Does the Error event need to be watched??
+-    libvlc_event_attach(eventManager, libvlc_MediaPlayerEncounteredError, &finish_callback, this);
+-
+-    if (libvlc_media_player_play(mAudioPlayer) < 0)
+-    {
+-        mError = xi18nc("@info", "<para>Error playing audio file: <filename>%1</filename></para>", mFile);
+-        qCWarning(KALARM_LOG) << "AudioPlayer::play: Failed to play sound with VLC:" << mFile;
+-        Q_EMIT finished(false);
+-        return false;
+-    }
+-    if (mFadeTimer  &&  mVolume != mCurrentVolume)
+-    {
+-        mFadeStart = time(nullptr);
+-        mFadeTimer->start(1000);
+-    }
+-    if (mCheckPlayTimer)
+-        mCheckPlayTimer->start(1000);
+-    mStatus = Playing;
+-    return true;
+-}
+ 
+ /******************************************************************************
+ * Called every second to fade the volume.
+@@ -218,72 +119,26 @@ void AudioPlayer::fadeStep()
+         }
+         else
+             mCurrentVolume = mFadeVolume + (mVolume - mFadeVolume) * elapsed / mFadeSeconds;
+-        libvlc_audio_set_volume(mAudioPlayer, static_cast<int>(mCurrentVolume * 100));
++        internalSetVolume();
+     }
+ }
+ 
+ /******************************************************************************
+-* Called on timer if attach to stop event failed, to check for completion.
+-*/
+-void AudioPlayer::checkPlay()
+-{
+-    if (!libvlc_media_player_is_playing(mAudioPlayer))
+-        playFinished(libvlc_MediaPlayerStopped);
+-}
+-
+-/******************************************************************************
+-* Called by VLC to notify play completion or cancellation.
++* Set the status to a non-error value.
+ */
+-void AudioPlayer::finish_callback(const libvlc_event_t* event, void* userdata)
++void AudioPlayer::setOkStatus(Status stat)
+ {
+-    QMetaObject::invokeMethod(static_cast<AudioPlayer*>(userdata), "playFinished", Q_ARG(uint32_t, event->type));
++    Q_ASSERT(stat != Error);
++    mStatus = stat;
+ }
+ 
+ /******************************************************************************
+-* Called to notify play completion.
++* Set the status to Error, and set the error message to display to the user.
+ */
+-void AudioPlayer::playFinished(uint32_t event)
++void AudioPlayer::setErrorStatus(const QString& errorMessage)
+ {
+-    mStatus = Ready;
+-    mFadeStart = 0;
+-    if (mCheckPlayTimer)
+-        mCheckPlayTimer->stop();
+-    bool result;
+-    switch (event)
+-    {
+-        case libvlc_MediaPlayerStopped:
+-            qCDebug(KALARM_LOG) << "AudioPlayer::playFinished:" << mFile;
+-            if (mAudioPlayer)
+-            {
+-                libvlc_media_player_release(mAudioPlayer);
+-                mAudioPlayer = nullptr;
+-            }
+-            result = true;
+-            break;
+-        default:
+-        {
+-            qCCritical(KALARM_LOG) << "AudioPlayer::playFinished: Play failure:" << mFile;
+-            mError = xi18nc("@info", "<para>Error playing audio file: <filename>%1</filename></para>", mFile);
+-            result = false;
+-            break;
+-        }
+-    }
+-
+-    if (!mNoFinishedSignal)
+-        Q_EMIT finished(result);
+-}
+-
+-/******************************************************************************
+-* Called when play completes, the Silence button is clicked, or the display is
+-* closed, to terminate audio access.
+-*/
+-void AudioPlayer::stop()
+-{
+-    qCDebug(KALARM_LOG) << "AudioPlayer::stop";
+-    if (mCheckPlayTimer)
+-        mCheckPlayTimer->stop();
+-    if (mAudioPlayer  &&  libvlc_media_player_is_playing(mAudioPlayer))
+-        libvlc_media_player_stop(mAudioPlayer);
++    mError = errorMessage;
++    mStatus = Error;
+ }
+ 
+ QString AudioPlayer::popError()
+@@ -293,6 +148,6 @@ QString AudioPlayer::popError()
+     return err;
+ }
+ 
+-// vim: et sw=4:
+-
+ #include "moc_audioplayer.cpp"
++
++// vim: et sw=4:
+diff --git a/src/audioplayer.h b/src/audioplayer.h
+index b2f61448..505b1b72 100644
+--- a/src/audioplayer.h
++++ b/src/audioplayer.h
+@@ -11,10 +11,6 @@
+ #include <QObject>
+ 
+ class QTimer;
+-struct libvlc_instance_t;
+-struct libvlc_media_t;
+-struct libvlc_media_player_t;
+-struct libvlc_event_t;
+ 
+ // Class to play an audio file, optionally repeated.
+ class AudioPlayer : public QObject
+@@ -34,42 +30,44 @@ public:
+     ~AudioPlayer() override;
+     Status  status() const;
+     static QString popError();   // fetch last error message, and clear it
+-    static bool providesFade()  { return true; }
++    static bool providesFade();
+ 
+ public Q_SLOTS:
+-    bool    play();
+-    void    stop();
++    virtual bool play() = 0;
++    virtual void stop() = 0;
+ 
+ Q_SIGNALS:
+-    void    finished(bool ok);
++    void finished(bool ok);
+ 
+ private Q_SLOTS:
+-    void    playFinished(uint32_t event);
+-    void    checkPlay();
+-    void    fadeStep();
++    void fadeStep();
+ 
+-private:
++protected:
+     AudioPlayer(Type, const QUrl& audioFile, QObject* parent = nullptr);
+     AudioPlayer(Type, const QUrl& audioFile, float volume, float fadeVolume, int fadeSeconds, QObject* parent = nullptr);
+-    static void finish_callback(const libvlc_event_t* event, void* data);
++    virtual void internalSetVolume() = 0;
++
++    /** Set the status to a non-error value. */
++    void setOkStatus(Status status);
++
++    /** Set the status to Error, and set the error message to display to the user. */
++    void setErrorStatus(const QString& errorMessage);
+ 
+-    static AudioPlayer*    mInstance;
+-    static QString         mError;
+-    QString                mFile;
+-    float                  mVolume;        // configured end volume
+-    float                  mFadeVolume;    // configured start volume
+-    float                  mFadeStep;
+-    float                  mCurrentVolume;
+-    QTimer*                mFadeTimer {nullptr};
+-    time_t                 mFadeStart {0};
+-    int                    mFadeSeconds;   // configured time to fade from mFadeVolume to mVolume
+-    libvlc_instance_t*     mAudioInstance {nullptr};
+-    libvlc_media_t*        mAudioMedia {nullptr};
+-    libvlc_media_player_t* mAudioPlayer {nullptr};
+-    QTimer*                mCheckPlayTimer {nullptr};
+-    Status                 mStatus {Error};
+-    bool                   mPlayedAlready {false};
+-    bool                   mNoFinishedSignal {false};
++    static AudioPlayer* mInstance;
++    QString             mFile;
++    float               mVolume;        // configured end volume
++    float               mFadeVolume;    // configured start volume
++    float               mFadeStep;
++    float               mCurrentVolume;
++    QTimer*             mFadeTimer {nullptr};
++    time_t              mFadeStart {0};
++    int                 mFadeSeconds;   // configured time to fade from mFadeVolume to mVolume
++    bool                mNoFinishedSignal {false};
++
++private:
++    static QString      mError;
++    Status              mStatus {Error};
+ };
+ 
++
+ // vim: et sw=4:
+diff --git a/src/audioplayer_mpv.cpp b/src/audioplayer_mpv.cpp
+new file mode 100644
+index 00000000..9032fb52
+--- /dev/null
++++ b/src/audioplayer_mpv.cpp
+@@ -0,0 +1,205 @@
++/*
++ *  audioplayer_mpv.cpp  -  play an audio file
++ *  Program:  kalarm
++ *  SPDX-FileCopyrightText: 2024 Fabio Bas <ctrlaltca@gmail.com>
++ *  SPDX-FileCopyrightText: 2024 David Jarvie <djarvie@kde.org>
++ *
++ *  SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "audioplayer_mpv.h"
++
++#include "kalarm.h"
++#include "kalarm_debug.h"
++
++#include <KLocalizedString>
++
++#include <QTimer>
++
++#include <mpv/client.h>
++
++/******************************************************************************
++* Constructor for audio player.
++*/
++AudioPlayerMpv::AudioPlayerMpv(Type type, const QUrl& audioFile, float volume, float fadeVolume, int fadeSeconds, QObject* parent)
++    : AudioPlayer(type, audioFile, volume, fadeVolume, fadeSeconds, parent)
++{
++    Q_UNUSED(type)
++    qCDebug(KALARM_LOG) << "AudioPlayerMpv:" << mFile;
++
++    int retval = 0;
++
++    // Qt sets the locale in the QGuiApplication constructor, but libmpv
++    // requires the LC_NUMERIC category to be set to "C", so change it back.
++    // This does not affect Qt's locale settings.
++    std::setlocale(LC_NUMERIC, "C");
++
++    // Create the audio instance
++    mAudioInstance = mpv_create();
++    if (!mAudioInstance)
++    {
++        setErrorStatus(i18nc("@info", "Cannot initialize audio system"));
++        qCCritical(KALARM_LOG) << "AudioPlayerMpv: Error creating MPV audio instance";
++        return;
++    }
++
++    // Set playback options: Suppress video output
++    if ((retval = mpv_set_option_string(mAudioInstance, "vo", "null"))  < 0)
++    {
++        setErrorStatus(i18nc("@info", "Cannot initialize audio system: %1", QString::fromUtf8(mpv_error_string(retval))));
++        qCCritical(KALARM_LOG) << "AudioPlayerMpv: Error suppressing video for MPV audio:" << mpv_error_string(retval);
++        return;
++    }
++
++    // Initialize mpv
++    if ((retval = mpv_initialize(mAudioInstance))  < 0)
++    {
++        setErrorStatus(i18nc("@info", "Cannot initialize audio system: %1", QString::fromUtf8(mpv_error_string(retval))));
++        qCCritical(KALARM_LOG) << "AudioPlayerMpv: Error initializing MPV audio:" << mpv_error_string(retval);
++        return;
++    }
++
++    // Register out event handler callback
++    mpv_set_wakeup_callback(mAudioInstance, AudioPlayerMpv::wakeup_callback, this);
++
++    if (mVolume > 0)
++        internalSetVolume();
++
++    setOkStatus(Ready);
++}
++
++/******************************************************************************
++* Destructor for audio player.
++*/
++AudioPlayerMpv::~AudioPlayerMpv()
++{
++    qCDebug(KALARM_LOG) << "AudioPlayerMpv::~AudioPlayerMpv";
++    if (status() == Playing)
++    {
++        mNoFinishedSignal = true;
++        stop();
++    }
++    if (mAudioInstance)
++    {
++        mpv_set_wakeup_callback(mAudioInstance, nullptr, nullptr);
++        mpv_terminate_destroy(mAudioInstance);
++        mAudioInstance = nullptr;
++    }
++    qCDebug(KALARM_LOG) << "AudioPlayerMpv::~AudioPlayerMpv exit";
++}
++
++
++/******************************************************************************
++* Play the audio file.
++*/
++bool AudioPlayerMpv::play()
++{
++    if (!mAudioInstance)
++        return false;
++
++    qCDebug(KALARM_LOG) << "AudioPlayerMpv::play";
++
++    const char* cmd[] = {"loadfile", mFile.toUtf8().constData(), nullptr};
++    int retval = 0;
++    if ((retval = mpv_command_async(mAudioInstance, 0, cmd)) < 0)
++    {
++        setErrorStatus(xi18nc("@info", "<para>Error playing audio file <filename>%1</filename></para><para>%2</para>",
++            mFile,
++            QString::fromUtf8(mpv_error_string(retval))));
++        qCWarning(KALARM_LOG) << "AudioPlayerMpv::play: Failed to play sound with MPV:" << mFile << mpv_error_string(retval);
++        Q_EMIT finished(false);
++        return false;
++    }
++
++    if (mFadeTimer  &&  mVolume != mCurrentVolume)
++    {
++        mFadeStart = time(nullptr);
++        mFadeTimer->start(1000);
++    }
++    setOkStatus(Playing);
++    return true;
++}
++
++/******************************************************************************
++* Called to set the volume.
++*/
++void AudioPlayerMpv::internalSetVolume()
++{
++    qCDebug(KALARM_LOG) << "AudioPlayerMpv::internalSetVolume" << mCurrentVolume;
++    int retval = 0;
++    const char* volumeLevel = QString::number(static_cast<int>(mCurrentVolume * 100)).toUtf8().constData();
++    if ((retval = mpv_set_option_string(mAudioInstance, "volume", volumeLevel))  < 0)
++    {
++        setErrorStatus(i18nc("@info", "Cannot set the audio volume: %1", QString::fromUtf8(mpv_error_string(retval))));
++        qCWarning(KALARM_LOG) << "AudioPlayerMpv: Error setting MPV audio volume:" << mpv_error_string(retval);
++    }
++}
++
++/******************************************************************************
++* Called by MPV to notify that an event must be handled by our side.
++*/
++void AudioPlayerMpv::wakeup_callback(void* ctx)
++{
++    QMetaObject::invokeMethod(static_cast<AudioPlayerMpv*>(ctx), "onMpvEvents"); // , Qt::QueuedConnection
++}
++
++/******************************************************************************
++* Called to notify play completion.
++*/
++void AudioPlayerMpv::onMpvEvents()
++{
++    qCDebug(KALARM_LOG) << "AudioPlayerMpv::onMpvEvents:" << mFile;
++    // Process all events, until the event queue is empty.
++    while (true)
++    {
++        mpv_event* event = mpv_wait_event(mAudioInstance, 0);
++        if (event->event_id == MPV_EVENT_NONE)
++            break;
++
++        switch (event->event_id)
++        {
++            case MPV_EVENT_END_FILE:
++            {
++                bool result;
++                setOkStatus(Ready);
++                mFadeStart = 0;
++
++                mpv_event_end_file* evt = static_cast<mpv_event_end_file*>(event->data);
++                if (evt && evt->error != 0)
++                {
++                    qCCritical(KALARM_LOG) << "AudioPlayerMpv::onMpvEvents: Play failure:" << mFile << mpv_error_string(evt->error);
++                    setErrorStatus(xi18nc("@info", "<para>Error playing audio file <filename>%1</filename></para><para>%2</para>",
++                        mFile,
++                        QString::fromUtf8(mpv_error_string(evt->error))));
++                    result = false;
++                }
++                else
++                    result = true;
++
++                if (!mNoFinishedSignal)
++                    Q_EMIT finished(result);
++                break;
++            }
++            default:
++                break;
++        }
++    }
++}
++
++/******************************************************************************
++* Called when play completes, the Silence button is clicked, or the display is
++* closed, to terminate audio access.
++*/
++void AudioPlayerMpv::stop()
++{
++    qCDebug(KALARM_LOG) << "AudioPlayerMpv::stop";
++    if (mAudioInstance  &&  status() == Playing)
++    {
++        const char* cmd[] = {"stop"};
++        mpv_command_async(mAudioInstance, 0, cmd);
++    }
++}
++
++#include "moc_audioplayer_mpv.cpp"
++
++// vim: et sw=4:
+diff --git a/src/audioplayer_mpv.h b/src/audioplayer_mpv.h
+new file mode 100644
+index 00000000..ae35620b
+--- /dev/null
++++ b/src/audioplayer_mpv.h
+@@ -0,0 +1,39 @@
++/*
++ *  audioplayer_mpv.h  -  play an audio file
++ *  Program:  kalarm
++ *  SPDX-FileCopyrightText: 2024 Fabio Bas <ctrlaltca@gmail.com>
++ *
++ *  SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#pragma once
++
++#include "audioplayer.h"
++
++struct mpv_handle;
++
++class AudioPlayerMpv : public AudioPlayer
++{
++    Q_OBJECT
++public:
++    AudioPlayerMpv(Type, const QUrl& audioFile, float volume, float fadeVolume, int fadeSeconds, QObject* parent = nullptr);
++    ~AudioPlayerMpv() override;
++    static bool backendProvidesFade() { return true; }
++
++public Q_SLOTS:
++    bool    play() override;
++    void    stop() override;
++
++private Q_SLOTS:
++    void    onMpvEvents();
++
++protected:
++    void internalSetVolume() override;
++
++private:
++    static void wakeup_callback(void* ctx);
++
++    mpv_handle* mAudioInstance {nullptr};
++};
++
++// vim: et sw=4:
+diff --git a/src/audioplayer_vlc.cpp b/src/audioplayer_vlc.cpp
+new file mode 100644
+index 00000000..ba351474
+--- /dev/null
++++ b/src/audioplayer_vlc.cpp
+@@ -0,0 +1,220 @@
++/*
++ *  audioplayer_vlc.cpp  -  play an audio file
++ *  Program:  kalarm
++ *  SPDX-FileCopyrightText: 2024 David Jarvie <djarvie@kde.org>
++ *
++ *  SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "audioplayer_vlc.h"
++
++#include "kalarm.h"
++#include "kalarm_debug.h"
++
++#include <KLocalizedString>
++
++#include <QFile>
++#include <QTimer>
++#include <QUrl>
++
++#include <vlc/vlc.h>
++
++/******************************************************************************
++* Constructor for audio player.
++*/
++AudioPlayerVlc::AudioPlayerVlc(Type type, const QUrl& audioFile, float volume, float fadeVolume, int fadeSeconds, QObject* parent)
++    : AudioPlayer(type, audioFile, volume, fadeVolume, fadeSeconds, parent)
++{
++    Q_UNUSED(type)
++    qCDebug(KALARM_LOG) << "AudioPlayerVlc:" << mFile;
++
++    // Create the audio instance, and suppress video (which would cause havoc to KAlarm).
++    const char* argv[] = { "--no-video" };
++    mAudioInstance = libvlc_new(1, argv);
++    if (!mAudioInstance)
++    {
++        setErrorStatus(i18nc("@info", "Cannot initialize audio system"));
++        qCCritical(KALARM_LOG) << "AudioPlayer: Error initializing VLC audio";
++        return;
++    }
++
++    mAudioMedia = audioFile.isLocalFile()
++                ? libvlc_media_new_path(mAudioInstance, QFile::encodeName(mFile).constData())
++                : libvlc_media_new_location(mAudioInstance, mFile.toLocal8Bit().constData());
++    if (!mAudioMedia)
++    {
++        setErrorStatus(xi18nc("@info", "<para>Error opening audio file: <filename>%1</filename></para>", mFile));
++        qCCritical(KALARM_LOG) << "AudioPlayer: Error opening audio file:" << mFile;
++        return;
++    }
++
++    setOkStatus(Ready);
++}
++
++/******************************************************************************
++* Destructor for audio player.
++*/
++AudioPlayerVlc::~AudioPlayerVlc()
++{
++    qCDebug(KALARM_LOG) << "AudioPlayerVlc::~AudioPlayerVlc";
++    if (status() == Playing)
++    {
++        mNoFinishedSignal = true;
++        stop();
++    }
++    if (mAudioPlayer)
++    {
++        libvlc_media_player_release(mAudioPlayer);
++        mAudioPlayer = nullptr;
++    }
++    if (mAudioMedia)
++    {
++        libvlc_media_release(mAudioMedia);
++        mAudioMedia = nullptr;
++    }
++    if (mAudioInstance)
++    {
++        libvlc_release(mAudioInstance);
++        mAudioInstance = nullptr;
++    }
++    qCDebug(KALARM_LOG) << "AudioPlayerVlc::~AudioPlayerVlc exit";
++}
++
++/******************************************************************************
++* Play the audio file.
++*/
++bool AudioPlayerVlc::play()
++{
++    if (mAudioPlayer)
++        return false;
++
++    qCDebug(KALARM_LOG) << "AudioPlayerVlc::play";
++
++    // Note that libVLC has some issues which require workarounds to allow
++    // audio files to be replayed.
++    // There doesn't seem to be any way of replaying the audio file if the
++    // media player is reused, so it's necessary to create a new media player
++    // each time the audio file is played.
++    // Using a media list player instead can allow replaying to work, but it
++    // fails on some systems with a VLC "cache_read stream error".
++    mAudioPlayer = libvlc_media_player_new_from_media(mAudioMedia);
++    if (!mAudioPlayer)
++    {
++        setErrorStatus(i18nc("@info", "Cannot initialize audio player"));
++        qCCritical(KALARM_LOG) << "AudioPlayer: Error initializing audio player";
++        return false;
++    }
++    libvlc_media_player_set_role(mAudioPlayer, libvlc_role_Notification);
++
++    if (mVolume > 0)
++        internalSetVolume();
++
++    libvlc_event_manager_t* eventManager = libvlc_media_player_event_manager(mAudioPlayer);
++    if (libvlc_event_attach(eventManager, libvlc_MediaPlayerStopped, &finish_callback, this))
++    {
++        qCWarning(KALARM_LOG) << "AudioPlayerVlc: Error setting completion callback";
++        if (!mCheckPlayTimer)
++        {
++            mCheckPlayTimer = new QTimer(this);
++            connect(mCheckPlayTimer, &QTimer::timeout, this, &AudioPlayerVlc::checkPlay);
++        }
++    }
++    // Does the Error event need to be watched??
++    libvlc_event_attach(eventManager, libvlc_MediaPlayerEncounteredError, &finish_callback, this);
++
++    if (libvlc_media_player_play(mAudioPlayer) < 0)
++    {
++        setErrorStatus(xi18nc("@info", "<para>Error playing audio file: <filename>%1</filename></para>", mFile));
++        qCWarning(KALARM_LOG) << "AudioPlayerVlc::play: Failed to play sound with VLC:" << mFile;
++        Q_EMIT finished(false);
++        return false;
++    }
++    if (mFadeTimer  &&  mVolume != mCurrentVolume)
++    {
++        mFadeStart = time(nullptr);
++        mFadeTimer->start(1000);
++    }
++    if (mCheckPlayTimer)
++        mCheckPlayTimer->start(1000);
++    setOkStatus(Playing);
++    return true;
++}
++
++/******************************************************************************
++* Called to set the volume.
++*/
++void AudioPlayerVlc::internalSetVolume()
++{
++    qCDebug(KALARM_LOG) << "AudioPlayerVlc::internalSetVolume" << mCurrentVolume;
++    libvlc_audio_set_volume(mAudioPlayer, static_cast<int>(mCurrentVolume * 100));
++}
++
++/******************************************************************************
++* Called on timer if attach to stop event failed, to check for completion.
++*/
++void AudioPlayerVlc::checkPlay()
++{
++    if (!libvlc_media_player_is_playing(mAudioPlayer))
++        playFinished(libvlc_MediaPlayerStopped);
++}
++
++/******************************************************************************
++* Called by VLC to notify play completion or cancellation.
++*/
++void AudioPlayerVlc::finish_callback(const libvlc_event_t* event, void* userdata)
++{
++    QMetaObject::invokeMethod(static_cast<AudioPlayerVlc*>(userdata), "playFinished", Q_ARG(uint32_t, event->type));
++    if (event->type == libvlc_MediaPlayerEncounteredError)
++        qCWarning(KALARM_LOG) << "AudioPlayerVlc: Error while playing";
++}
++
++/******************************************************************************
++* Called to notify play completion.
++*/
++void AudioPlayerVlc::playFinished(uint32_t event)
++{
++    setOkStatus(Ready);
++    mFadeStart = 0;
++    if (mCheckPlayTimer)
++        mCheckPlayTimer->stop();
++    bool result;
++    switch (event)
++    {
++        case libvlc_MediaPlayerStopped:
++            qCDebug(KALARM_LOG) << "AudioPlayerVlc::playFinished:" << mFile;
++            if (mAudioPlayer)
++            {
++                libvlc_media_player_release(mAudioPlayer);
++                mAudioPlayer = nullptr;
++            }
++            result = true;
++            break;
++        default:
++        {
++            qCCritical(KALARM_LOG) << "AudioPlayerVlc::playFinished: Play failure:" << mFile;
++            setErrorStatus(xi18nc("@info", "<para>Error playing audio file: <filename>%1</filename></para>", mFile));
++            result = false;
++            break;
++        }
++    }
++
++    if (!mNoFinishedSignal)
++        Q_EMIT finished(result);
++}
++
++/******************************************************************************
++* Called when play completes, the Silence button is clicked, or the display is
++* closed, to terminate audio access.
++*/
++void AudioPlayerVlc::stop()
++{
++    qCDebug(KALARM_LOG) << "AudioPlayerVlc::stop";
++    if (mCheckPlayTimer)
++        mCheckPlayTimer->stop();
++    if (mAudioPlayer  &&  libvlc_media_player_is_playing(mAudioPlayer))
++        libvlc_media_player_stop(mAudioPlayer);
++}
++
++#include "moc_audioplayer_vlc.cpp"
++
++// vim: et sw=4:
+diff --git a/src/audioplayer_vlc.h b/src/audioplayer_vlc.h
+new file mode 100644
+index 00000000..145cd89b
+--- /dev/null
++++ b/src/audioplayer_vlc.h
+@@ -0,0 +1,46 @@
++/*
++ *  audioplayer_vlc.h  -  play an audio file
++ *  Program:  kalarm
++ *  SPDX-FileCopyrightText: 2024 David Jarvie <djarvie@kde.org>
++ *
++ *  SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#pragma once
++
++#include "audioplayer.h"
++
++struct libvlc_instance_t;
++struct libvlc_media_t;
++struct libvlc_media_player_t;
++struct libvlc_event_t;
++
++class AudioPlayerVlc : public AudioPlayer
++{
++    Q_OBJECT
++public:
++    AudioPlayerVlc(Type, const QUrl& audioFile, float volume, float fadeVolume, int fadeSeconds, QObject* parent = nullptr);
++    ~AudioPlayerVlc() override;
++    static bool backendProvidesFade() { return true; }
++
++public Q_SLOTS:
++    bool play() override;
++    void stop() override;
++
++private Q_SLOTS:
++    void playFinished(uint32_t event);
++    void checkPlay();
++
++protected:
++    void internalSetVolume() override;
++
++private:
++    static void finish_callback(const libvlc_event_t* event, void* data);
++
++    libvlc_instance_t*     mAudioInstance {nullptr};
++    libvlc_media_t*        mAudioMedia {nullptr};
++    libvlc_media_player_t* mAudioPlayer {nullptr};
++    QTimer*                mCheckPlayTimer {nullptr};
++};
++
++// vim: et sw=4:
