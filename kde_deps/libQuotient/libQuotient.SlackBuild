@@ -90,24 +90,9 @@ find . \
   \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
   -exec chmod 644 {} \+
 
-# Configure, build, and install:
-# First: Qt5 support:
+# 0.9.0 dropped qt5 support
 mkdir cmake-build
 cd cmake-build
-  cmake \
-    -DCMAKE_C_FLAGS="$SLKCFLAGS" \
-    -DCMAKE_CXX_FLAGS="$SLKCFLAGS" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_SUFFIX="$LIBDIRSUFFIX" \
-    -DBUILD_SHARED_LIBS=ON \
-    -DQuotient_ENABLE_E2EE=ON \
-    .. || exit 1
-  make $NUMJOBS || make || exit 1
-  make install DESTDIR=$PKG || exit 1
-cd ..
-# Next: Qt6 support:
-mkdir cmake-build-qt6
-cd cmake-build-qt6
   cmake \
     -DCMAKE_C_FLAGS="$SLKCFLAGS" \
     -DCMAKE_CXX_FLAGS="$SLKCFLAGS" \
