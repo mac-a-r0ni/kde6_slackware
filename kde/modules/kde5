@@ -57,7 +57,8 @@ knewstuff5
 kparts5
 kdelibs4support
 kdesignerplugin
-kdewebkit5
+# removed from slackware -- obsolete
+#kdewebkit5
 kdeclarative5
 kcmutils5
 kinit5
