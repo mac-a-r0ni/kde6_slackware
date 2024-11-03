@@ -8,3 +8,5 @@ mkdir -p $PKG/usr/share/polkit-1/rules.d
 install -m 0644 -o root \
   $CWD/post-install/powerdevil/10-enable-powerdevil-discrete-gpu.rules \
   $PKG/usr/share/polkit-1/rules.d/10-enable-powerdevil-discrete-gpu.rules
+
+sed -i -e "/x-test/d" $PKG/etc/kde/xdg/autostart/powerdevil.desktop
