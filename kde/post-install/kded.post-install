@@ -1,1 +1,0 @@
-sed -i -e "/x-test/d" $PKG/usr/share/applications/org.kde.kded6.desktop
