@@ -1,1 +1,1 @@
-cat $CWD/patch/kalarm/kalarm-v24.08.2-mpv.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+#cat $CWD/patch/kalarm/kalarm-v24.08.2-mpv.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
