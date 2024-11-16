@@ -28,7 +28,6 @@ ALLDEPS=" \
   readstat \
   quazip-qt6 \
   qca \
-  gpgme-qt6 \
   qtkeychain-qt6 \
   qcoro \
   olm \
