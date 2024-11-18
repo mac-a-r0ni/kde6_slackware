@@ -14,7 +14,7 @@ kontactinterface
 ktnef
 akonadi-mime
 akonadi-contacts
-akonadi-notes
+#akonadi-notes
 akonadi-search
 kmailtransport
 libkdepim
