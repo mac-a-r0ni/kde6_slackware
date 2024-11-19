@@ -2,7 +2,7 @@
 # Our pre-release ignore list is prefixed with '##'
 #
 # applications-extra
-calligra
+#calligra - moved to applications
 calligraplan
 digikam
 krita
