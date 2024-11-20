@@ -18,6 +18,7 @@ ALLDEPS=" \
   power-profiles-daemon \
   fcitx5-configtool \
   fcitx5-theme-breeze \
+  fcitx5-qt \
   libindi \
   wcslib \
   libnova \
