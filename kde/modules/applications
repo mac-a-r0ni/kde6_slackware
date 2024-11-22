@@ -166,7 +166,7 @@ kig
 parley
 artikulate
 blinken
-#cantor
+cantor
 kalzium
 kbruch
 kgeography
@@ -181,7 +181,6 @@ marble
 rocs
 step
 minuet
-cantor
 
 # Needs to come after marble (obsolete, removed):
 #libkgeomap
