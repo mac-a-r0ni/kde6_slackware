@@ -69,7 +69,7 @@ kactivities-stats5
 plasma-framework5
 kpeople5
 kxmlrpcclient5
-baloo5
+#baloo5
 qqc2-desktop-style5
 purpose5
 # Tier 4, depends on Tier 1, 2 and 3, Qt5, system libraries:
