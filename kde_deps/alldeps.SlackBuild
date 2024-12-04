@@ -21,6 +21,7 @@ ALLDEPS=" \
   fcitx5-qt \
   libindi \
   wcslib \
+  libfprint \
   libnova \
   stellarsolver \
   cmark \
