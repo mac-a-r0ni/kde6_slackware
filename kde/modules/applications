@@ -1,7 +1,5 @@
 # See https://github.com/KDE/kdesrc-build/blob/master/kf6-applications-build-include for Plasma6 build instructions;
-# See also: https://community.kde.org/KDE_Gear/24.02_Release_notes
-# Not ported to Qt6 yet (list out of date):
-# artikulate cantor cervisia juk kamoso kde-dev-utils kdesdk-thumbnailers kdev-php kdev-python kdevelop kgpg kig kio-gdrive kipi-plugins kmix konversation kqtquickcharts krfb ktouch kwave libkipi lokalize marble poxml rocs umbrello 
+# See also: https://community.kde.org/KDE_Gear/24.12_Release_notes
 #
 # Our pre-release ignore list is prefixed with '##'
 #
@@ -18,6 +16,7 @@ gwenview
 
 # Not currently packaging due to deps needed for kaccounts-integration, and
 # more deps needed for those deps. Might check into it again later...
+# needs: signon-plugin-oauth2, signon-ui, signond - slackbuilds
 #kaccounts-integration
 #kaccounts-providers
 
@@ -65,7 +64,7 @@ lokalize
 poxml
 
 # Rest of kdegraphics:
-#koko
+koko
 kdegraphics-mobipocket
 okular
 kdegraphics-thumbnailers
@@ -237,11 +236,10 @@ kalk
 kde-inotify-survey
 keysmith
 kio-admin
-# Sorry, the mpv/libass deps are getting this one yeeted
 tokodon
 neochat
-# Similar, mpv and invidious/youtube-dl deps:
 plasmatube
+
 # Needs some youtube related Python3 modules:
 #audiotube
 
@@ -256,8 +254,10 @@ isoimagewriter
 
 # Mobile apps:
 #angelfish
+# nice epub reader (even on desktop)
 arianna
 #calindori
+# podcasts app, works well on desktop
 kasts
 #kclock
 #kongress
@@ -277,3 +277,8 @@ skladnik
 # New in 24.08.0
 kgraphviewer
 massif-visualizer
+
+# New in 24.12.0
+# moved into gear
+calligra
+kunifiedpush
