@@ -1,1 +1,0 @@
-cat $CWD/patch/kirigami-gallery/kirigami-gallery.qt5compat.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
