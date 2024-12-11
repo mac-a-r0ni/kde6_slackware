@@ -4,7 +4,7 @@ cd cmake-build
     "${KDE_BUILD_ARGS[@]}" \
     "${KDE_QT6_ARGS[@]}" \
     $KDE_OPT_ARGS \
-    -DENABLE_LIBMPV=ON \
     -DENABLE_LIBVLC=ON \
     ..
 
+#    -DENABLE_LIBMPV=ON \
