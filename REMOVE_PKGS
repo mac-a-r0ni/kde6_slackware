@@ -1,5 +1,6 @@
 THESE PACKAGES HAVE BEEN RENAMED/REMOVED:
 
+akonadi-notes
 kactivities
 kactivities-stats
 kdewebkit
@@ -10,6 +11,7 @@ khotkeys
 kinit
 kipi-plugins
 kirigami2
+kjots
 kjs
 kjsembed
 kmediaplayer
