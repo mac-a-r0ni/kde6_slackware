@@ -30,7 +30,6 @@ ALLDEPS=" \
   readstat \
   quazip-qt6 \
   qca \
-  qtkeychain-qt6 \
   qcoro \
   olm \
   libQuotient \
@@ -41,7 +40,6 @@ ALLDEPS=" \
   mpvqt \
   phonon-qt6 \
   phonon-backend-vlc \
-  libdisplay-info \
   futuresql \
   wayland-utils \
   olm \
