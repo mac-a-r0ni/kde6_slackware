@@ -18,7 +18,6 @@ ALLDEPS=" \
   xdg-dbus-proxy \
   libstemmer \
   gcab \
-  appstream-glib \
   libxmlb \
   appstream \
   libostree \
