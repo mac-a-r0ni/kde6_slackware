@@ -66,8 +66,8 @@ plasma-systemmonitor
 print-manager
 wacomtablet
 ksystemstats
-# These need a few deps added first:
-#lancelot
 # need to install the flatpak-deps prior to including these
 #flatpak-kcm
 #discover
+# Moved from gear to plasma (6.3)
+spectacle
