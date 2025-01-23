@@ -5,5 +5,6 @@ cd cmake-build
     "${KDE_QT6_ARGS[@]}" \
     $KDE_OPT_ARGS \
     -DWITH_GDB12=ON \
+    -DWITH_SYSTEMD=OFF \
     ..
 
