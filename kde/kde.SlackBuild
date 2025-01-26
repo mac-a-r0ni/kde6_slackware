@@ -450,7 +450,7 @@ build_mod_pkg () {
         if [ -r $CWD/makepkg/${PKGNAME} ]; then
           BUILD=$MODBUILD$TAG . $CWD/makepkg/${PKGNAME}
         else
-          /sbin/makepkg -l y -c n ${SLACK_KDE_BUILD_DIR}/${kde_module}/${PKGNAME}-$(echo $MODULAR_PACKAGE_VERSION |tr - _)-${PKGARCH}-${MODBUILD}${TAG}.txz
+          /sbin/makepkg --remove-tmp-rpaths -l y -c n ${SLACK_KDE_BUILD_DIR}/${kde_module}/${PKGNAME}-$(echo $MODULAR_PACKAGE_VERSION |tr - _)-${PKGARCH}-${MODBUILD}${TAG}.txz
         fi
         # We will continue with the fresh packages installed:
         if [ "$UPGRADE" = "yes" -o "$UPGRADE" = "YES" ]; then
