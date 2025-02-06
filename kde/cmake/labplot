@@ -1,10 +1,1 @@
-mkdir cmake-build
-cd cmake-build
-  cmake \
-    "${KDE_BUILD_ARGS[@]}" \
-    "${KDE_QT6_ARGS[@]}" \
-    $KDE_OPT_ARGS \
-    -DLOCAL_DBC_PARSER=OFF \
-    -DLOCAL_VECTOR_BLF=OFF \
-    ..
-
+cmake5
