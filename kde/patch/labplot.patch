@@ -1,0 +1,3 @@
+# fix detection
+cat $CWD/patch/labplot/kuserfeedback.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+cat $CWD/patch/labplot/qxlsx.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
