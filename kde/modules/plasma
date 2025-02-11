@@ -71,3 +71,5 @@ ksystemstats
 # need to install the flatpak-deps prior to including these
 #flatpak-kcm
 #discover
+# moved from applications on 6.3
+spectacle
