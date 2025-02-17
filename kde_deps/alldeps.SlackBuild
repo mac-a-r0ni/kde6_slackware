@@ -27,17 +27,13 @@ ALLDEPS=" \
   cmark \
   ddcutil \
   readstat \
-  quazip-qt6 \
   qca \
   qcoro \
   olm \
   libQuotient \
-  kdsoap-qt6 \
-  polkit-qt-1-qt6 \
   ffmpeg4 \
   vlc \
   mpvqt \
-  phonon-qt6 \
   phonon-backend-vlc \
   futuresql \
   wayland-utils \
