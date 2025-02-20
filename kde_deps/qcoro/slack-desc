@@ -6,14 +6,14 @@
 # customary to leave one space after the ':'.
 
      |-----handy-ruler------------------------------------------------------|
-qcoro: qcoro (C++ Coroutines for Qt)
+qcoro: qcoro (Coroutines for Qt)
 qcoro:
-qcoro: The QCoro library provides set of tools to make use of
-qcoro: C++20 coroutines with Qt.
-qcoro:
-qcoro:
-qcoro:
-qcoro:
+qcoro: The QCoro library provides set of tools to make use of C++20
+qcoro: coroutines with Qt.
 qcoro:
 qcoro: Homepage: https://github.com/danvratil/qcoro
+qcoro:
+qcoro:
+qcoro:
+qcoro:
 qcoro:
