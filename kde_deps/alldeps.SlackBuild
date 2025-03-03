@@ -36,7 +36,6 @@ ALLDEPS=" \
   mpvqt \
   phonon-backend-vlc \
   futuresql \
-  wayland-utils \
   olm \
   yt-dlp \
   "
