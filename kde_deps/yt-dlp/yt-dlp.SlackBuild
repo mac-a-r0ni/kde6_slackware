@@ -37,7 +37,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=yt-dlp
-VERSION=${VERSION:-2025.03.26}
+VERSION=${VERSION:-2025.03.27}
 BUILD=${BUILD:-1}
 TAG=${TAG:-"_KDE6"}
 PKGTYPE=${PKGTYPE:-txz}
