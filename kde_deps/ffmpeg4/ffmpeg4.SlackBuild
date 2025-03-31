@@ -205,6 +205,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-gpl \
   --enable-version3 \
   --enable-avresample \
+  --disable-htmlpages \
   --arch=$ARCH \
   $non_free \
   $aac \
