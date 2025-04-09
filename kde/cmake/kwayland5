@@ -4,7 +4,6 @@ cd cmake-build
     "${KDE_BUILD_ARGS[@]}" \
     "${KDE_QT5_ARGS[@]}" \
     $KDE_OPT_ARGS \
-    -DBUILD_DESKTOPTHEMES=OFF \
-    -DBUILD_QCH=ON \
+    -DEXCLUDE_DEPRECATED_BEFORE_AND_AT=5.74.0 \
     ..
 
