@@ -94,6 +94,7 @@ find . \
 mkdir cmake-build
 cd cmake-build
   cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_C_FLAGS_RELEASE:STRING="$SLKCFLAGS" \

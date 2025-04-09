@@ -96,6 +96,7 @@ find . \
 mkdir cmake-build
 cd cmake-build
   cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_C_FLAGS="$SLKCFLAGS" \
     -DCMAKE_CXX_FLAGS="$SLKCFLAGS" \
     -DCMAKE_INSTALL_PREFIX=/usr \

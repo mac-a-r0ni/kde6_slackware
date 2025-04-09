@@ -80,9 +80,6 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-# mpvcontroller: set vo property to libmpv
-#cat $CWD/76274f2d5c9f98a6fbfdcbf43014082dfbf51c4a.patch | patch -p1 --verbose || exit 1
-
 mkdir build
 cd build
   cmake \
