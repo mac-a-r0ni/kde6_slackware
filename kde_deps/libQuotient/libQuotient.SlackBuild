@@ -99,8 +99,6 @@ cd cmake-build
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_SUFFIX="$LIBDIRSUFFIX" \
     -DBUILD_SHARED_LIBS=ON \
-    -DQuotient_ENABLE_E2EE=ON \
-    -DBUILD_WITH_QT6=ON \
     .. || exit 1
   make $NUMJOBS || make || exit 1
   make install DESTDIR=$PKG || exit 1
