@@ -1,0 +1,56 @@
+#!/bin/sh
+# Start/stop/restart the Power Profiles daemon.
+
+
+ppd_start() {
+  if /usr/bin/daemon --running --name=power-profiles-daemon ; then
+    echo "/usr/libexec/power-profiles-daemon is already running."
+  else
+    echo "Starting power-profiles-daemon:  /usr/libexec/power-profiles-daemon"
+    /usr/bin/daemon --respawn --name=power-profiles-daemon /usr/libexec/power-profiles-daemon
+  fi
+}
+
+ppd_stop() {
+  if /usr/bin/daemon --running --name=power-profiles-daemon ; then
+    echo "Stopping power-profiles-daemon."
+    /usr/bin/daemon --stop --name=power-profiles-daemon
+  else
+    echo "/usr/libexec/power-profiles-daemon is already stopped."
+  fi
+}
+
+ppd_restart() {
+  if /usr/bin/daemon --running --name=power-profiles-daemon ; then
+    echo "Restarting power-profiles-daemon."
+    /usr/bin/daemon --restart --name=power-profiles-daemon
+  else
+    echo "Starting power-profiles-daemon:  /usr/libexec/power-profiles-daemon"
+    /usr/bin/daemon --respawn --name=power-profiles-daemon /usr/libexec/power-profiles-daemon
+  fi
+}
+
+ppd_status() {
+  if /usr/bin/daemon --running --name=power-profiles-daemon ; then
+    echo "/usr/libexec/power-profiles-daemon is running."
+  else
+    echo "/usr/libexec/power-profiles-daemon is not running."
+  fi
+}
+
+case "$1" in
+  'start')
+    ppd_start
+  ;;
+  'stop')
+    ppd_stop
+  ;;
+  'restart')
+    ppd_restart
+  ;;
+  'status')
+    ppd_status
+    ;;
+  *)
+    echo "usage $0 start|stop|restart|status"
+esac

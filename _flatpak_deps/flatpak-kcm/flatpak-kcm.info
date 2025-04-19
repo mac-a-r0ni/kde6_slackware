@@ -1,0 +1,8 @@
+PRGNAM="flatpak-kcm"
+VERSION="6.3.4"
+HOMEPAGE="https://download.kde.org/stable/plasma/"
+DOWNLOAD="https://download.kde.org/stable/plasma/6.3.4/flatpak-kcm-6.3.4.tar.xz"
+MD5SUM="b0eab2083af546fc17fd34762c48d0d5"
+REQUIRES="kde"
+MAINTAINER=""
+EMAIL=""

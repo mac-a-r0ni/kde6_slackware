@@ -1,0 +1,8 @@
+PRGNAM="discover"
+VERSION="6.3.4"
+HOMEPAGE="https://download.kde.org/stable/plasma/"
+DOWNLOAD="https://download.kde.org/stable/plasma/6.3.4/discover-6.3.4.tar.xz"
+MD5SUM="4eb1b8a42f11c50a13dee928c47d5d59"
+REQUIRES="kde"
+MAINTAINER=""
+EMAIL=""

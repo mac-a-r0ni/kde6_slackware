@@ -1,6 +1,0 @@
-If you want to start the power-profiles-daemon at boot, add this
-to /etc/rc.d/rc.local
-
-if [ -x /usr/libexec/power-profiles-daemon ]; then
-  /usr/libexec/power-profiles-daemon &
-fi

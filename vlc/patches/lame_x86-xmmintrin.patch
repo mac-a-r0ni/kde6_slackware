@@ -1,0 +1,31 @@
+#
+# Slightly modified version of handbrake's contrib/lame/A00-xmmintrin.patch
+# https://github.com/HandBrake/HandBrake/blob/master/contrib/lame/A00-xmmintrin.patch
+#
+--- lame-3.99.5/configure.orig	2012-02-28 19:54:37.000000000 +0100
++++ lame-3.99.5/configure	2015-10-06 23:18:10.377733885 +0200
+@@ -11913,6 +11913,15 @@
+ 
+ fi
+ 
++case $host_cpu in
++powerpc*|i?86*)
++    check_xmmintrin=
++    ;;
++*)
++    check_xmmintrin="xmmintrin.h"
++    ;;
++esac
++
+ for ac_header in \
+ 		 errno.h \
+ 		 fcntl.h \
+@@ -11922,7 +11931,7 @@
+ 		 sys/soundcard.h \
+ 		 sys/time.h \
+ 		 unistd.h \
+-		 xmmintrin.h \
++		 $check_xmmintrin \
+ 		 linux/soundcard.h
+ do :
+   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
