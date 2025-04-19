@@ -2,7 +2,7 @@
 # package versions are determined by their source tarvall.
 
 [ -z $BUILD ] && export BUILD=1
-[ -z $TAG ] && export TAG=_KDE6
+[ -z $TAG ] && export TAG=_lngn
 
 # Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
