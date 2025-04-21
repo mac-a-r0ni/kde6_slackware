@@ -7,19 +7,42 @@ This is a fork of AlienBOBs 'ktown' repo for
 latest & greatest KDE on Slackware-current systems.
 https://alien.slackbook.org/ktown/
 
-This project has been spearheaded by LuckyCyborg and info can be found here:
+This project has been spearheaded by LuckyCyborg and info can be found 
+here:
 https://www.linuxquestions.org/questions/slackware-14/building-the-plasma6-for-slackware-current-in-the-ktown-style-a-build-based-on-the-alienbob%27s-ktown-4175735773/
 
-This fork on github is a fork of a fork, basically. I follow things being done and try to integrate it here for building on aarch64,
-but also change and make my own attempts at improvements. In spirit, it's all one big project made with love for the community!
+I am not associated with the work they do, nor am I with Slackware 
+itself. I enjoy Slackware, and just hope to contribute something 
+useful to the community. If there's a bug with something you found 
+here, please submit a issue or a PR. I do my best to keep in sync 
+with the changes on current but as with any downstream project, 
+expect some occasional delays.
 
-Please let me know if anything is missing, or any optional things you'd like to see added.
+This fork on github is a fork of a fork, basically. I follow things 
+being done and try to integrate it here for building on aarch64,
+but also change and make my own attempts at improvements. In spirit, 
+it's all one big project made with love for the community!
 
-I aim to completely replace Slackware's /kde directory. This includes replacing Plasma 5 with 6
-and all supplimental applications. Please see the REMOVE_PKGS file in this folder for
-the packages not existing in this set.
+Please let me know if anything is missing, or any optional things you'd 
+like to see added.
 
-I intend to ship every possible package which existed in KDE5 with a direct
-replacement from KDE6. Other packages from /l & /n will be supplimented when qt6 libs
-are needed by a package with a "-qt6" suffixed name. This way, intrusion into your system
-is minimal, as only the /kde directory needs replacing and maintaining.
+I aim to completely replace Slackware's /kde directory. This includes
+replacing Plasma 5 with 6 and all supplimental applications. Please see 
+the REMOVE_PKGS file in this folder for the packages no longer existing 
+in this set.
+
+Recently, I'd removed the 'ffmpeg4' vlc-compat package and it's now 
+recommended to use AlienBob's static VLC package instead. No reason to re-
+invent the wheel, but I have done a few edits so it builds on arm64 as well.
+
+As of Gear 25.04 the OCR engine 'tesseract' is now required for 'skanpage'. 
+I've included the English training data, but if you require another 
+language you are to provide your own. Differing languages can be found 
+here:
+https://github.com/tesseract-ocr/tessdata
+
+There are slackpkg+ repos for both x86_64/arm64 slackware-current systems 
+available on my website here: https://slackware.lngn.net/
+
+Also, I periodically put an updated liveslak available here:
+https://rekt.lngn.net/liveslak/
