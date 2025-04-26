@@ -1,5 +1,5 @@
 # fix detection
-cat $CWD/patch/labplot/kuserfeedback.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+#cat $CWD/patch/labplot/kuserfeedback.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
 #cat $CWD/patch/labplot/qxlsx.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
 # fix qt6 build issue
-cat $CWD/patch/labplot/0edfd2862a8f953cdd06ffe4940e1da5b7b5dc17.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+#cat $CWD/patch/labplot/0edfd2862a8f953cdd06ffe4940e1da5b7b5dc17.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
