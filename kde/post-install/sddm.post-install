@@ -23,6 +23,15 @@ $PKG/usr/bin/sddm --example-config > $PKG/etc/sddm.conf
 # Set the Plasma theme 'breeze' as default (integrates better with Plasma):
 sed -i -e "/\[Theme\]/,/^\[/s/^Current.*/Current=breeze/" $PKG/etc/sddm.conf
 
+# set Wayland as default display
+sed -i 's/DisplayServer=x11/DisplayServer=wayland/g' $PKG/etc/sddm.conf
+
+# Set GreeterEnvironment for layer-shell-qt
+sed -i 's/GreeterEnvironment=/GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell/g' $PKG/etc/sddm.conf
+
+# Set kwin_wayland as compositor
+sed -i 's/CompositorCommand=weston --shell=kiosk/CompositorCommand=kwin_wayland --no-lockscreen --no-global-shortcuts/g' $PKG/etc/sddm.conf
+
 # Move the default config file to .new:
 mv $PKG/etc/sddm.conf $PKG/etc/sddm.conf.new
 

@@ -18,5 +18,6 @@ cd cmake-build
     -DENABLE_PAM:BOOL=ON \
     -DNO_SYSTEMD:BOOL=TRUE \
     -DUSE_ELOGIND:BOOL=TRUE \
+    -DSDDM_INITIAL_VT=7 \
     ..
 
