@@ -1,0 +1,4 @@
+# Remove dynamic libs from package:
+for libdir in "$PKG/usr/lib" "$PKG/usr/lib64"; do
+    find "$libdir" -name '*.a' -type f -delete
+done
