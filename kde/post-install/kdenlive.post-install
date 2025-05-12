@@ -2,7 +2,12 @@
 for libdir in "$PKG/usr/lib" "$PKG/usr/lib64"; do
     find "$libdir" -name '*.a' -type f -delete
 done
+
 # this poor lazy hack is only good on 64bit machines
 # dont do this on 32bit else there be trouble ahead
 rmdir $PKG/usr/lib
 
+# Even telling kdenlive to NOT install Imath it
+# still installs a pkgconfig file
+rm $PKG/usr/lib64/pkgconfig/Imath.pc
+rmdir $PKG/usr/lib64/pkgconfig
