@@ -9,5 +9,5 @@ rmdir $PKG/usr/lib
 
 # Even telling kdenlive to NOT install Imath it
 # still installs a pkgconfig file
-rm $PKG/usr/lib64/pkgconfig/Imath.pc
-rmdir $PKG/usr/lib64/pkgconfig
+rm $PKG/usr/lib$LIBDIRSUFFIX/pkgconfig/Imath.pc
+rmdir $PKG/usr/lib$LIBDIRSUFFIX/pkgconfig
