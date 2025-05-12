@@ -2,3 +2,7 @@
 for libdir in "$PKG/usr/lib" "$PKG/usr/lib64"; do
     find "$libdir" -name '*.a' -type f -delete
 done
+# this poor lazy hack is only good on 64bit machines
+# dont do this on 32bit else there be trouble ahead
+rmdir $PKG/usr/lib
+
