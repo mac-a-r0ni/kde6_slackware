@@ -73,3 +73,6 @@ ksystemstats
 #discover
 # moved from applications on 6.3
 spectacle
+# upcoming plasma 6.4
+#aurorae
+#kwin-x11
