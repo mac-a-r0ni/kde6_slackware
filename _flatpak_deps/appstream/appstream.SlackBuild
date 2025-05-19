@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 SRCNAM=AppStream
 PRGNAM=appstream
-VERSION=${VERSION:-1.0.4}
+VERSION=${VERSION:-1.0.5}
 BUILD=${BUILD:-1}
 TAG=${TAG:-""}
 PKGTYPE=${PKGTYPE:-txz}
