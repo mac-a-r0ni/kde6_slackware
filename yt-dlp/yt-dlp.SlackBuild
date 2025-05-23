@@ -37,7 +37,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=yt-dlp
-VERSION=${VERSION:-2025.04.30}
+VERSION=${VERSION:-2025.05.22}
 BUILD=${BUILD:-1}
 TAG=${TAG:-""}
 PKGTYPE=${PKGTYPE:-txz}
