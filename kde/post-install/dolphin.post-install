@@ -12,3 +12,7 @@ Terminal=false
 MimeType=inode/directory;
 X-KDE-SubstituteUID=true
 EOT
+
+if [ -d "$PKG"/usr/lib/systemd ]; then
+        rm -r "$PKG"/usr/lib/systemd
+fi

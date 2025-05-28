@@ -1,2 +1,6 @@
 # Fix conflicts between kwallet5 and 6 version for now
 rm "$PKG"/usr/share/dbus-1/services/org.kde.kwalletd5.service
+
+if [ -d "$PKG"/usr/lib/systemd ]; then
+        rm -r "$PKG"/usr/lib/systemd
+fi

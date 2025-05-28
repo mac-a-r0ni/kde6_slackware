@@ -43,3 +43,7 @@ install -Dm644 $CWD/post-install/plasma-workspace/pam.d/kde $PKG/etc/pam.d/kde.n
 # Since elogind does not set DBUS_SESSION_BUS_ADDRESS we need to start
 # Plasma X11 session through dbus-run-session like Wayland is launched:
 sed -i $PKG/usr/share/xsessions/plasmax11.desktop -e "s,^Exec=/,Exec=dbus-run-session /,"
+
+if [ -d "$PKG"/usr/lib/systemd ]; then
+        rm -r "$PKG"/usr/lib/systemd
+fi

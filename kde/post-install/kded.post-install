@@ -1,0 +1,3 @@
+if [ -d "$PKG"/usr/lib/systemd ]; then
+        rm -r "$PKG"/usr/lib/systemd
+fi
