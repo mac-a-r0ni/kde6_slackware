@@ -168,6 +168,14 @@ no_usr_share_doc() {
   fi
 }
 
+no_systemd() {
+  # If there are systemd files remove them:
+  if [ -d usr/lib/systemd ]; then
+    rm -fr usr/lib/systemd
+  fi
+
+}
+
 precheck() {
   # See if the sources we have match the module components we want to build:
   RETVAL=0
@@ -435,7 +443,8 @@ build_mod_pkg () {
         cd $PKG
         process_man_pages
         process_info_pages
-        no_usr_share_doc          
+        no_usr_share_doc
+        no_systemd
         mkdir -p $PKG/install
         if [ -r $CWD/slack-desc/${PKGNAME} ]; then
           cat $CWD/slack-desc/${PKGNAME} > $PKG/install/slack-desc
