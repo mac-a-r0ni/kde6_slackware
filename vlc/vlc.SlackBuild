@@ -535,7 +535,7 @@
 # Set initial variables:
 
 PRGNAM=vlc
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 NPBUILD=${NPBUILD:-1}
 TAG=${TAG:-""}
 
@@ -4579,16 +4579,17 @@ rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la || true
 # Add a package description:
 mkdir -p $PKG/install
 cat $SRCDIR/slack-desc > $PKG/install/slack-desc
+cat $SRCDIR/slack-required > $PKG/install/slack-required
 if [ -f $SRCDIR/doinst.sh ]; then
   cat $SRCDIR/doinst.sh >> $PKG/install/doinst.sh
 fi
-if [ -f $SRCDIR/slack-required ]; then
-  # Slackware added libinput, libwacom and Qt5 in 14.2+ (pre-15.0)
-  OSVER=$(cat /etc/slackware-version |cut -d' ' -f2)
-  if [ "$OSVER" != "14.2+" ] &&  [ $(echo $OSVER |cut -d. -f1) -lt 15 ] ; then
-    cat $SRCDIR/slack-required > $PKG/install/slack-required
-  fi
-fi
+#if [ -f $SRCDIR/slack-required ]; then
+#  # Slackware added libinput, libwacom and Qt5 in 14.2+ (pre-15.0)
+#  OSVER=$(cat /etc/slackware-version |cut -d' ' -f2)
+#  if [ "$OSVER" != "14.2+" ] &&  [ $(echo $OSVER |cut -d. -f1) -lt 15 ] ; then
+#    cat $SRCDIR/slack-required > $PKG/install/slack-required
+#  fi
+#fi
 
 # Build the package:
 cd $PKG
