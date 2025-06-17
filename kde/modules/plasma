@@ -49,7 +49,7 @@ plasma-pa
 #plasma-tests
 kactivitymanagerd
 xdg-desktop-portal-kde
-drkonqi
+#drkonqi
 plasma-vault
 plasma-browser-integration
 kwallet-pam
@@ -74,5 +74,5 @@ ksystemstats
 # moved from applications on 6.3
 spectacle
 # upcoming plasma 6.4
-#aurorae
-#kwin-x11
+aurorae
+kwin-x11

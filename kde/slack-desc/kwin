@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
     |-----handy-ruler------------------------------------------------------|
-kwin: kwin (KDE window manager)
+kwin: kwin (KDE Wayland Compositor)
 kwin:
-kwin: KWin is a window manager for the X Window System. It is an integral
-kwin: part, and the default window manager of the Plasma Workspaces, but it
-kwin: can also be used on its own or with other desktop environments.
-kwin:
-kwin:
-kwin:
-kwin:
-kwin:
+kwin: KWin is an easy to use, but flexible, compositor for Wayland on Linux.
+kwin: Its primary usage is in conjunction with a Desktop Shell. KWin is
+kwin: designed to go out of the way; users should not notice that they use
+kwin: a window manager at all. Nevertheless KWin provides a steep learning
+kwin: curve for advanced features, which are available, if they do not
+kwin: conflict with the primary mission. KWin does not have a dedicated
+kwin: targeted user group, but follows the targeted user group of the
+kwin: Desktop Shell using KWin as it's window manager.
 kwin:
