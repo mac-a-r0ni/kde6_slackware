@@ -21,9 +21,9 @@ if ( ! $?XDG_CONFIG_DIRS ) then
 endif
 
 # Add /etc/kde/xdg to $XDG_CONFIG_DIRS (if it exists):
-if ( -d /etc/kde/xdg ) then
-    setenv XDG_CONFIG_DIRS ${XDG_CONFIG_DIRS}:/etc/kde/xdg
-endif
+#if ( -d /etc/kde/xdg ) then
+#    setenv XDG_CONFIG_DIRS ${XDG_CONFIG_DIRS}:/etc/kde/xdg
+#endif
 
 # Commented out, since PAM should take care of this:
 #if ( ! $?XDG_RUNTIME_DIR ) then
