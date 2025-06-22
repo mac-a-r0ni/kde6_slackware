@@ -5,11 +5,11 @@ if ( ! $?KDEDIRS ) then
 endif
 
 # Add KDE paths if they exist:
-if ( -d /usr/lib/libexec/kf6 ) then
-    setenv PATH ${PATH}:/usr/lib/libexec/kf6
+if ( -d /usr/libexec/kf6 ) then
+    setenv PATH ${PATH}:/usr/libexec/kf6
 endif
-if ( -d /usr/lib/libexec/kf5 ) then
-    setenv PATH ${PATH}:/usr/lib/libexec/kf5
+if ( -d /usr/libexec/kf5 ) then
+    setenv PATH ${PATH}:/usr/libexec/kf5
 endif
 if ( -d /usr/lib/kde4/libexec ) then
     setenv PATH ${PATH}:/usr/lib/kde4/libexec
