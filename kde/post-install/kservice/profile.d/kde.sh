@@ -20,11 +20,6 @@ if [ -z "$XDG_CONFIG_DIRS" ]; then
   XDG_CONFIG_DIRS=/etc/xdg
 fi
 
-# Add /etc/kde/xdg to $XDG_CONFIG_DIRS (if it exists):
-#if [ -d /etc/kde/xdg ]; then
-#  XDG_CONFIG_DIRS=$XDG_CONFIG_DIRS:/etc/kde/xdg
-#fi
-
 export XDG_CONFIG_DIRS
 
 # Commented out, since PAM should take care of this:
