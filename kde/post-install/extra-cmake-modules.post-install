@@ -1,0 +1,3 @@
+# Remove unwanted/misplaced html docs
+rm -r $PKG/usr/doc/ECM
+
