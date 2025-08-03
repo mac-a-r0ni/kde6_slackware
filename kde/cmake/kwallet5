@@ -5,5 +5,6 @@ cd cmake-build
     "${KDE_QT5_ARGS[@]}" \
     $KDE_OPT_ARGS \
     -DBUILD_KWALLETD=OFF \
+    -DBUILD_KWALLET_QUERY=OFF \
     ..
 
