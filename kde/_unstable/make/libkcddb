@@ -1,2 +1,0 @@
-make $NUMJOBS || make || exit 1
-make install DESTDIR=$PKG || exit 1

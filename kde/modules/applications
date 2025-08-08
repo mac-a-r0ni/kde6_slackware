@@ -51,7 +51,7 @@ dolphin
 # kdesdk:
 kdebugsettings
 kapptemplate
-cervisia
+# removed 25.08 cervisia
 dolphin-plugins
 kcachegrind
 kde-dev-scripts
