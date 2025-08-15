@@ -37,7 +37,8 @@ knotifications5
 kunitconversion5
 kpty5
 kimageformats5
-kfilemetadata5
+# superceeded by framework6 version, nothing links to it, removed. 8/25
+#kfilemetadata5
 syndication5
 kquickcharts5
 # Tier 3, depends on Tier 1 and 2, Qt5, system libraries:
