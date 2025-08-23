@@ -24,20 +24,11 @@
 # to Jeremy Hansen for finding this. Filename now has the version
 # number in it, so no more caching problems for the download. Build
 # had to change slightly as there's no more CONTRIBUTING file.
-# 20240216 bkw: updated for v2023.12.30
-# 20231219 bkw: updated for v2023.11.16
-# 20231031 bkw: updated for v2023.10.13
-# 20230904 bkw: BUILD=2, silence complaints from 'pip3 check'
-# 20230711 bkw: updated for v2023.07.06
-# 20230623 bkw: updated for v2023.06.22, added version check
-# 20230402 bkw: updated for v2023.03.04
-# 20230222 bkw: updated for v2023.02.17
-# 20230104 bkw: updated for v2023.01.02
 
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=yt-dlp
-VERSION=${VERSION:-2025.08.20}
+VERSION=${VERSION:-2025.08.22}
 BUILD=${BUILD:-1}
 TAG=${TAG:-""}
 PKGTYPE=${PKGTYPE:-txz}
