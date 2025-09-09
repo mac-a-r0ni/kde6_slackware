@@ -1,2 +1,0 @@
-# work around amdgpu applying GAMMA_LUT in test-only commits
-cat $CWD/patch/kwin/7d36003cb073ed2ad48b2743883db993106c347a.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
