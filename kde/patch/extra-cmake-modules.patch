@@ -1,3 +1,0 @@
-# move away from docutils error handling patch
-cat $CWD/patch/extra-cmake-modules/888ee3e04e73ce93a83df4804856190fb35ff8d6.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
-
