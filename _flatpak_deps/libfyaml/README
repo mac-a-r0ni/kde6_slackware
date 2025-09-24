@@ -1,0 +1,4 @@
+libfyaml (Fully feature complete YAML parser and emitter)
+
+Fully feature complete YAML parser and emitter, supporting the latest
+YAML spec and passing the full YAML testsuite. 

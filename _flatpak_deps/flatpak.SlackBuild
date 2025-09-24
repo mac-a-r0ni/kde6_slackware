@@ -19,6 +19,7 @@ ALLDEPS=" \
   libstemmer \
   gcab \
   libxmlb \
+  libfyaml \
   appstream \
   libostree \
   bubblewrap \
