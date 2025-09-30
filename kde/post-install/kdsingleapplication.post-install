@@ -1,0 +1,5 @@
+# Remove unwanted/misplaced docs
+rm -r $PKG/usr/doc/KDSingleApplication-qt6
+
+# remove empty dir
+rm -rf $PKG/usr/share
