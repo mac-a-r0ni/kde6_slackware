@@ -35,7 +35,6 @@ ALLDEPS=" \
   phonon-backend-vlc \
   futuresql \
   olm \
-  yt-dlp \
   freerdp3 \
   leptonica \
   tesseract \
