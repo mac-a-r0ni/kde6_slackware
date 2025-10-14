@@ -16,11 +16,8 @@ TMP=${TMP:-/tmp}
 ALLDEPS=" \
   xdg-desktop-portal-gtk \
   xdg-dbus-proxy \
-  libstemmer \
   gcab \
   libxmlb \
-  libfyaml \
-  appstream \
   libostree \
   bubblewrap \
   flatpak \
