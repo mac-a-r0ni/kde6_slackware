@@ -1,0 +1,2 @@
+cat $CWD/patch/digikam/afe5772b.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+cat $CWD/patch/digikam/b9a5754b.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
