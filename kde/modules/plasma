@@ -67,7 +67,7 @@ wacomtablet
 #needs qt5 & fw5
 kwayland-integration
 krdp
-#oxygen
+oxygen
 #spacebar
 spectacle
 
