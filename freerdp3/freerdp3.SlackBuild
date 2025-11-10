@@ -28,7 +28,7 @@ PRGNAM=freerdp3
 SRCNAM=freerdp
 VERSION=${VERSION:-3.17.2}
 TAG=${TAG:-""}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 PKGTYPE=${PKGTYPE:-txz}
 
 if [ -z "$ARCH" ]; then
