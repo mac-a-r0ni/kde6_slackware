@@ -102,7 +102,7 @@ cd cmake-build
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DMAN_INSTALL_DIR=/usr/man \
-    -DSYSCONF_INSTALL_DIR=/etc/kde \
+    -DSYSCONF_INSTALL_DIR=/etc \
     -DLIB_SUFFIX=${LIBDIRSUFFIX} \
     -DLIB_INSTALL_DIR=lib$LIBDIRSUFFIX \
     -DQT_MAJOR_VERSION=6 \
