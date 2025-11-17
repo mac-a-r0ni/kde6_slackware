@@ -17,7 +17,6 @@ ALLDEPS=" \
   xdg-desktop-portal-gtk \
   xdg-dbus-proxy \
   gcab \
-  libxmlb \
   libostree \
   bubblewrap \
   flatpak \
