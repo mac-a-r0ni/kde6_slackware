@@ -30,7 +30,6 @@ ALLDEPS=" \
   qcoro \
   olm \
   libQuotient \
-  vlc \
   mpvqt \
   phonon-backend-vlc \
   futuresql \
