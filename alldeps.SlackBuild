@@ -31,7 +31,6 @@ ALLDEPS=" \
   olm \
   libQuotient \
   mpvqt \
-  phonon-backend-vlc \
   futuresql \
   olm \
   freerdp3 \
