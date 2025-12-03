@@ -39,6 +39,7 @@ ALLDEPS=" \
   kColorPicker \
   kImageAnnotator \
   kquickimageeditor \
+  qt-advanced-docking-system \
   "
 
 # Allow for specification of individual packages to be built:

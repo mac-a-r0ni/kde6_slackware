@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                          |-----handy-ruler------------------------------------------------------|
+qt-advanced-docking-system: qt-advanced-docking-system (Advanced Docking System for Qt)
+qt-advanced-docking-system:
+qt-advanced-docking-system: Qt Advanced Docking System lets you create customizable layouts using
+qt-advanced-docking-system: a full featured window docking system similar to what is found in
+qt-advanced-docking-system: many popular integrated development environments (IDEs) such as
+qt-advanced-docking-system: Visual Studio.
+qt-advanced-docking-system:
+qt-advanced-docking-system:
+qt-advanced-docking-system: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System
+qt-advanced-docking-system:
+qt-advanced-docking-system:
