@@ -98,6 +98,7 @@ cd cmake-build
     -DUDEVRULES_INSTALL_DIR=/lib/udev/rules.d \
     -DCMAKE_BUILD_TYPE=Release \
     -DINDI_BUILD_STATIC=OFF \
+    -DINDI_BUILD_QT_CLIENT=ON \
     .. || exit 1
   make $NUMJOBS || make || exit 1
   make install DESTDIR=$PKG || exit 1
