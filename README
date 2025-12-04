@@ -33,10 +33,6 @@ replacing Plasma 5 with 6 and all supplimental applications. Please see
 the REMOVE_PKGS file in this folder for the packages no longer existing 
 in this set.
 
-Recently, I'd removed the 'ffmpeg4' vlc-compat package and it's now 
-recommended to use AlienBob's static VLC package instead. No reason to re-
-invent the wheel, but I have done a few edits so it builds on arm64 as well.
-
 As of Gear 25.04 the OCR engine 'tesseract' is now required for 'skanpage'. 
 I've included the English training data, but if you require another 
 language you are to provide your own. Differing languages can be found 
