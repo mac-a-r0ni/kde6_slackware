@@ -1,2 +1,0 @@
-cat $CWD/patch/breeze/4a8a46aba6b9e39bfb02c7f46933079b5a50eff5.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
-cat $CWD/patch/breeze/2cd5b37dad8f213aab4029b6d3b80ca7f159ea50.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
