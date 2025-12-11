@@ -1,1 +1,0 @@
-cat $CWD/patch/calligra/poppler25.10.0.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
