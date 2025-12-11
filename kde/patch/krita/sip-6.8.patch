@@ -7,7 +7,7 @@ index 090b2d4b0c..085ddf4179 100644
  sip-include-dirs = @sip_include_dirs@
  sip-files-dir = "@module_srcs@"
 -abi-version = "12"
-+abi-version = "12.18"
++abi-version = "12.8"
  
  [tool.sip.bindings.@module_name_toml@]
  tags = @module_tags@
