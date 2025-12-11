@@ -541,6 +541,7 @@ KDEMODS=" \
   plasma-extra \
   applications:libktorrent \
   applications-extra:kdsoap-ws-discovery-client \
+  applications-extra:kdockwidgets \
   applications \
   applications-extra \
   applications:umbrello \
