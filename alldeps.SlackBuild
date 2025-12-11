@@ -40,6 +40,7 @@ ALLDEPS=" \
   kImageAnnotator \
   kquickimageeditor \
   qt-advanced-docking-system \
+  opentimelineio \
   "
 
 # Allow for specification of individual packages to be built:

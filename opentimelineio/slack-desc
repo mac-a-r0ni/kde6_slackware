@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+              |-----handy-ruler------------------------------------------------------|
+opentimelineio: opentimelineio (API for editorial timeline info)
+opentimelineio:
+opentimelineio: OpenTimelineIO is a mature framework widely deployed across the film
+opentimelineio: and television industries. It is natively supported in most non-
+opentimelineio: linear editing applications, and has deep integration in game engines,
+opentimelineio: digital content creation tools and adjacent industries as well.
+opentimelineio:
+opentimelineio: Homepage: http://opentimeline.io/
+opentimelineio:
+opentimelineio:
+opentimelineio:
