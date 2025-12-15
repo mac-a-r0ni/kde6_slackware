@@ -1,0 +1,1 @@
+cat $CWD/patch/kirigami/19127672cd812d177192cf84da4107f9abed2934.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
