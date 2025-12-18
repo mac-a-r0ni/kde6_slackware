@@ -1,0 +1,33 @@
+From d13c1cb97313947f7f0e43f54585a83286604370 Mon Sep 17 00:00:00 2001
+From: Akseli Lahtinen <akselmo@akselmo.dev>
+Date: Thu, 18 Dec 2025 11:28:20 +0200
+Subject: [PATCH] SwipeListItem: Use implicitContentHeight/Width instead of
+ contentItem.implicitHeight/Width
+
+This is more reliable value since in cases contentItem does not exist,
+it automatically reports zero.
+
+It is also used in Qt implementations over
+contentItem.implicitHeight/Width
+---
+ src/controls/SwipeListItem.qml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/controls/SwipeListItem.qml b/src/controls/SwipeListItem.qml
+index 498197a9f..7395ee294 100644
+--- a/src/controls/SwipeListItem.qml
++++ b/src/controls/SwipeListItem.qml
+@@ -191,8 +191,8 @@ QQC2.SwipeDelegate {
+     LayoutMirroring.childrenInherit: true
+ 
+     hoverEnabled: true
+-    implicitHeight: Math.max(actionsLayout.implicitHeight, contentItem.implicitHeight) + topPadding + bottomPadding
+-    implicitWidth: Math.max(actionsLayout.implicitWidth, contentItem.implicitWidth) + leftPadding + rightPadding
++    implicitHeight: Math.max(actionsLayout.implicitHeight, implicitContentHeight) + topPadding + bottomPadding
++    implicitWidth: Math.max(actionsLayout.implicitWidth, implicitContentWidth) + leftPadding + rightPadding
+     width: parent ? parent.width : implicitWidth
+ 
+     Keys.onTabPressed: (event) => {
+-- 
+GitLab
+
