@@ -27,7 +27,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 SRCNAM=OpenTimelineIO
 PKGNAM=opentimelineio
 VERSION=${VERSION:-0.18.1}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_lngn}
 PKGTYPE=${PKGTYPE:-txz}
 
@@ -80,24 +80,41 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+# Ensure that files get installed correctly:
+sed -i CMakeLists.txt \
+  -e "s/\(find_package(Imath \)QUIET/\1REQUIRED/" \
+  -e "s/\(find_package(IlmBase \)QUIET/\1REQUIRED/" \
+  -e 's|\(set(OTIO_RESOLVED_CXX_DYLIB_INSTALL_DIR "\)${CMAKE_INSTALL_PREFIX}/lib")|\1${CMAKE_INSTALL_LIBDIR}")|g'
+sed -i src/opentime/CMakeLists.txt \
+  -e 's|${OTIO_RESOLVED_CXX_INSTALL_DIR}/share/opentime|${CMAKE_INSTALL_LIBDIR}/cmake/opentime|g'
+sed -i src/opentimelineio/CMakeLists.txt \
+  -e 's|${OTIO_RESOLVED_CXX_INSTALL_DIR}/share/opentime|${CMAKE_INSTALL_LIBDIR}/cmake/opentime|g'
+
 # fix for "missing" cmake
 sed -e '/cmake/d' -i pyproject.toml
 
-mkdir build
-cd build
-cmake \
+# Configure, build, and install:
+mkdir cmake-build
+cd cmake-build
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_C_FLAGS_RELEASE:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS_RELEASE:STRING="$SLKCFLAGS" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib${LIBDIRSUFFIX} \
-    -DOTIO_RESOLVED_CXX_DYLIB_INSTALL_DIR=lib${LIBDIRSUFFIX} \
-    -DOTIO_FIND_IMATH=ON \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib${LIBDIRSUFFIX} \
+    -DCMAKE_INSTALL_MANDIR=/usr/man \
+    -DCMAKE_INSTALL_DOCDIR=/usr/doc/$PKGNAM-$VERSION \
     -DOTIO_AUTOMATIC_SUBMODULES=OFF \
     -DOTIO_DEPENDENCIES_INSTALL=OFF \
+    -DOTIO_FIND_IMATH=ON \
+    -DOTIO_SHARED_LIBS="yes" \
     -Wno-dev \
-    ..
-make
+    .. || exit 1
+  make $NUMJOBS || make || exit 1
+  make install DESTDIR=$PKG || exit 1
 cd ..
-
-DESTDIR=$PKG cmake --install build
 
 export CXXFLAGS+=" -I/usr/include/Imath"
 python -m build --wheel --no-isolation
@@ -114,7 +131,6 @@ cat $CWD/$PKGNAM.SlackBuild > $PKG/usr/doc/$PKGNAM-$VERSION/$PKGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
-cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PKGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
