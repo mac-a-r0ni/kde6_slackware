@@ -1,0 +1,12 @@
+diff -uarN xwaylandvideobridge-0.4.0.orig/CMakeLists.txt xwaylandvideobridge-0.4.0/CMakeLists.txt
+--- xwaylandvideobridge-0.4.0.orig/CMakeLists.txt       2023-12-18 16:32:38.000000000 +0100
++++ xwaylandvideobridge-0.4.0/CMakeLists.txt    2025-12-23 19:17:18.105810386 +0100
+@@ -45,6 +45,7 @@
+ )
+ 
+ if (QT_MAJOR_VERSION STREQUAL "6")
++    find_package(Qt6 REQUIRED COMPONENTS GuiPrivate)
+     find_package(KF6StatusNotifierItem ${KF_MIN_VERSION} REQUIRED)
+ endif()
+ 
+

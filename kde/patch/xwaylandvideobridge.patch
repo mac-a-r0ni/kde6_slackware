@@ -1,0 +1,2 @@
+# In Qt6 6.10, the GuiPrivate component must be explicitly specified in 'find_package()':
+cat $CWD/patch/xwaylandvideobridge/xwaylandvideobridege-0.4.0_qt610.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
