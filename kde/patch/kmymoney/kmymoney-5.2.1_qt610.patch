@@ -1,0 +1,13 @@
+diff -ru kmymoney-5.2.1.orig/CMakeLists.txt kmymoney-5.2.1/CMakeLists.txt
+--- kmymoney-5.2.1.orig/CMakeLists.txt  2025-10-07 14:38:53.055369291 +0200
++++ kmymoney-5.2.1/CMakeLists.txt       2025-10-07 14:44:41.093977132 +0200
+@@ -184,6 +184,9 @@
+ 
+ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED COMPONENTS Core DBus Widgets Svg Xml Test PrintSupport)
+ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} OPTIONAL_COMPONENTS Sql Concurrent QuickWidgets)
++if (Qt${QT_MAJOR_VERSION}_VERSION VERSION_GREATER_EQUAL 6.10)
++    find_package(Qt${QT_MAJOR_VERSION} COMPONENTS SqlPrivate REQUIRED)
++endif()
+ 
+ find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS Archive CoreAddons Config ConfigWidgets Crash I18n Completion KCMUtils ItemModels ItemViews Service XmlGui TextWidgets Notifications KIO)
+ 

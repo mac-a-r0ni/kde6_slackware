@@ -1,0 +1,94 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e5fa00711..539e367bb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -216,16 +216,16 @@ find_package(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} OPTIONAL_COMPONENTS DocTool
+ if (DEFINED AKONADI_MIN_VERSION)
+   # Akonadi 23.04 moved to KPim5 prefix, deprecating KF5
+   set(PIMPREFIX KPim${QT_MAJOR_VERSION})
+-  find_package(${PIMPREFIX}Akonadi ${AKONADI_MIN_VERSION} QUIET)
++  find_package(${PIMPREFIX}Akonadi ${AKONADI_MIN_VERSION})
+   if(NOT ${PIMPREFIX}Akonadi_FOUND)
+     set(PIMPREFIX KF${QT_MAJOR_VERSION})
+-    find_package(${PIMPREFIX}Akonadi ${AKONADI_MIN_VERSION} QUIET)
++    find_package(${PIMPREFIX}Akonadi ${AKONADI_MIN_VERSION})
+   endif()
+   if(${PIMPREFIX}Akonadi_FOUND)
+     # for config-kmymoney.h.cmake
+     set(ADDRESSBOOK_VERSION ${${PIMPREFIX}Akonadi_VERSION})
+   endif()
+-  find_package(${PIMPREFIX}IdentityManagement ${AKONADI_MIN_VERSION} QUIET)
++  find_package(${PIMPREFIX}IdentityManagementCore ${AKONADI_MIN_VERSION})
+ endif()
+ 
+ find_package(Qt${QT_MAJOR_VERSION}Keychain CONFIG REQUIRED)
+@@ -319,7 +319,7 @@ if(QT_MAJOR_VERSION LESS 6)
+ endif()
+ 
+ cmake_dependent_option(ENABLE_ADDRESSBOOK "Enable addressbook support." ON
+-                       "${PIMPREFIX}IdentityManagement_FOUND;${PIMPREFIX}Akonadi_FOUND;KF${QT_MAJOR_VERSION}Contacts_FOUND" OFF)
++                       "${PIMPREFIX}IdentityManagementCore_FOUND;${PIMPREFIX}Akonadi_FOUND;KF${QT_MAJOR_VERSION}Contacts_FOUND" OFF)
+ 
+ add_feature_info("Address book" ENABLE_ADDRESSBOOK "Allows fetching payee information from KDE PIM system.")
+ 
+diff --git a/kmymoney/mymoney/CMakeLists.txt b/kmymoney/mymoney/CMakeLists.txt
+index 8a908224e..8597601e2 100644
+--- a/kmymoney/mymoney/CMakeLists.txt
++++ b/kmymoney/mymoney/CMakeLists.txt
+@@ -137,7 +137,7 @@ target_link_libraries(kmm_mymoney
+ )
+ 
+ if(ENABLE_ADDRESSBOOK)
+-target_link_libraries(kmm_mymoney PUBLIC ${PIMPREFIX}::IdentityManagement ${PIMPREFIX}::AkonadiCore KF${QT_MAJOR_VERSION}::Contacts)
++target_link_libraries(kmm_mymoney PUBLIC ${PIMPREFIX}::IdentityManagementCore ${PIMPREFIX}::AkonadiCore KF${QT_MAJOR_VERSION}::Contacts)
+ endif()
+ 
+ set_target_properties(kmm_mymoney PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION ${PROJECT_VERSION_MAJOR})
+diff --git a/kmymoney/mymoney/mymoneycontact.cpp b/kmymoney/mymoney/mymoneycontact.cpp
+index 5d6ad06ba..5fd2573a2 100644
+--- a/kmymoney/mymoney/mymoneycontact.cpp
++++ b/kmymoney/mymoney/mymoneycontact.cpp
+@@ -8,8 +8,8 @@
+ #include "mymoneycontact.h"
+ 
+ #ifdef ENABLE_ADDRESSBOOK
+-#include <KIdentityManagement/Identity>
+-#include <KIdentityManagement/IdentityManager>
++#include <KIdentityManagementCore/Identity>
++#include <KIdentityManagementCore/IdentityManager>
+ #include <akonadi_version.h>
+ 
+ #if AKONADI_VERSION >= QT_VERSION_CHECK(5, 18, 41)
+@@ -33,8 +33,8 @@ MyMoneyContact::MyMoneyContact(QObject *parent) : QObject(parent)
+ bool MyMoneyContact::ownerExists() const
+ {
+ #ifdef ENABLE_ADDRESSBOOK
+-    KIdentityManagement::IdentityManager im;
+-    KIdentityManagement::Identity id = im.defaultIdentity();
++    KIdentityManagementCore::IdentityManager im;
++    KIdentityManagementCore::Identity id = im.defaultIdentity();
+     return !id.isNull();
+ #else
+     return false;
+@@ -44,8 +44,8 @@ bool MyMoneyContact::ownerExists() const
+ QString MyMoneyContact::ownerEmail() const
+ {
+ #ifdef ENABLE_ADDRESSBOOK
+-    KIdentityManagement::IdentityManager im;
+-    KIdentityManagement::Identity id = im.defaultIdentity();
++    KIdentityManagementCore::IdentityManager im;
++    KIdentityManagementCore::Identity id = im.defaultIdentity();
+     return id.primaryEmailAddress();
+ #else
+     return QString();
+@@ -55,8 +55,8 @@ QString MyMoneyContact::ownerEmail() const
+ QString MyMoneyContact::ownerFullName() const
+ {
+ #ifdef ENABLE_ADDRESSBOOK
+-    KIdentityManagement::IdentityManager im;
+-    KIdentityManagement::Identity id = im.defaultIdentity();
++    KIdentityManagementCore::IdentityManager im;
++    KIdentityManagementCore::Identity id = im.defaultIdentity();
+     return id.fullName();
+ #else
+     return QString();

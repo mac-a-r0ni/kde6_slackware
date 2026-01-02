@@ -1,0 +1,4 @@
+# Fix building against Qt6:
+cat $CWD/patch/kmymoney/identitymanagement.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+cat $CWD/patch/kmymoney/kmymoney-5.2.1_qt610.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+
