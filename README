@@ -1,3 +1,13 @@
+AlienBob has brought ktown back!
+https://blog.slackware.nl/kde-plasma-6_25-12-for-slackware-current/
+
+This repo and corresponding package repos will be sunset.
+
+Maintenance will continue until January 31st, 2026 to give people time to migrate
+to the official ktown, but the package repos will be removed and this source
+repo archived at that time.
+
+
 https://kde.org/announcements/plasma/6/6.5.4/
 https://kde.org/announcements/frameworks/6/6.21.0/
 https://kde.org/announcements/frameworks/5/5.116.0/
