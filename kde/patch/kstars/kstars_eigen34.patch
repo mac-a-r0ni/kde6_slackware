@@ -1,0 +1,26 @@
+diff --git a/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp b/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp
+index 9f8b2b7be21de1cb247485ad280210076775ee3d..82cfb327bade265e318ec543fac36d8bba7563ea 100644
+--- a/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp
++++ b/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/src/math_tools.cpp
+@@ -72,7 +72,7 @@ Eigen::MatrixXd squareDistance(const Eigen::MatrixXd &a, const Eigen::MatrixXd &
+     return
+         ((am.array().square().colwise().sum().transpose().rowwise().replicate(bCols).matrix()
+           + bm.array().square().colwise().sum().colwise().replicate(aCols).matrix())
+-         - 2 * (am.transpose()) * bm).array().max(0);
++         - 2 * (am.transpose()) * bm).array().max(0.0);
+ 
+     /* // verbose version
+     Eigen::MatrixXd a_square =
+diff --git a/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/tools/math_tools.cpp b/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/tools/math_tools.cpp
+index 9f8b2b7be21de1cb247485ad280210076775ee3d..82cfb327bade265e318ec543fac36d8bba7563ea 100644
+--- a/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/tools/math_tools.cpp
++++ b/kstars/ekos/guide/internalguide/MPI_IS_gaussian_process/tools/math_tools.cpp
+@@ -72,7 +72,7 @@ Eigen::MatrixXd squareDistance(const Eigen::MatrixXd &a, const Eigen::MatrixXd &
+     return
+         ((am.array().square().colwise().sum().transpose().rowwise().replicate(bCols).matrix()
+           + bm.array().square().colwise().sum().colwise().replicate(aCols).matrix())
+-         - 2 * (am.transpose()) * bm).array().max(0);
++         - 2 * (am.transpose()) * bm).array().max(0.0);
+ 
+     /* // verbose version
+     Eigen::MatrixXd a_square =

@@ -1,0 +1,3 @@
+# Fix building against eigen 3.4.x:
+cat $CWD/patch/kstars/kstars_eigen34.patch | patch -p1 --verbose || { touch ${SLACK_KDE_BUILD_DIR}/${PKGNAME}.failed ; continue ; }
+
