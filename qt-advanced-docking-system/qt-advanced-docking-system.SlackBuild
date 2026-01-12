@@ -85,7 +85,7 @@ cd build
     -DCMAKE_C_FLAGS="${SLKCFLAGS}" \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR=lib${LIBDIRSUFFIX} \
-    -DADS_VERSION="4.4.1" \
+    -DADS_VERSION="4.5.0" \
     ..
 
   make $NUMJOBS || make || exit 1
